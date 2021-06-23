@@ -1,6 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 html{
     background: #e4e3e3;
+    min-height: 100%;
+    position: relative;
 }
+
+
+/* Estilos para el Header, Navbar */
 .header{
     background: #CAC7C7;
     padding: 0;
@@ -27,4 +37,78 @@ html{
 }
 .nav-link:hover{
     color:  #d6570d !important; 
+}
+/* Estilos para el footer */
+
+ footer {
+    background: #CAC7C7;
+    position: absolute;
+    bottom: 0;
+    width: 100%;    
+    color: rgb(0, 0, 0);
+    padding-bottom: 15px;
+  }
+footer p{
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      
+  } 
+.container{
+    display: grid;
+    grid-template-columns: 1fr,1fr,1fr,1fr;
+    grid-gap: 15px;
+    margin-top: 15px;
+}
+.div-footer-1 {
+    grid-column: 1;
+    margin-top: 30px;
+    
+}
+
+.div-footer-2{
+    grid-column: 2; 
+}
+.div-footer-3{
+    grid-column: 3;
+}
+.div-footer-4{
+    grid-column: 4;
+}
+.redes-sociales{
+    width: 35px;
+    
+}
+.linea-footer{
+    background: #7e7d7d;
+    height: 1px;
+}
+
+.enlaces-footer{
+    text-decoration: none;
+    font-size: 13px;
+    color: #666565;
+    font-weight: bold;
+}
+.enlaces-footer:hover{
+    color: #4d4b4b;
+}
+.p-footer{
+    font-size: 12px;
+    color: #7e7d7d;
+    
+}
+.preguntas-footer{
+    font-size: 13px;
+    color: #666565;
+    font-weight: bold;
+}
+.copy{
+    font-size: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #4d4b4b;
+}
+.centrar-contenido{
+    text-align: center;
 }
