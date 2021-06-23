@@ -1,11 +1,20 @@
 
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import inicio from './components/Inicio';
 function App() {
   return (
-    <div className="App">
-     
-        <h1>Tienda Online Veicord</h1>
+    <Router className="App">
         
-    </div>
+          {/* rutas */}
+          <Switch>
+            <Route
+            exact path="/"
+            component={inicio}
+            />
+          </Switch>
+        
+    </Router>
   );
 }
 
