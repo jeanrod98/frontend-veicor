@@ -3,7 +3,7 @@ function Footer() {
     return (
       <footer className= "footer">
        <div className="linea-footer"></div>
-        <div className="container">
+        <div className="container-footer">
 
             <div className="div-footer-1">
                 <a href="https://www.facebook.com/AlmacenVeicor/"><img src="facebook.png" className="redes-sociales mx-2"/></a>
