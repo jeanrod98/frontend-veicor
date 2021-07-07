@@ -6,9 +6,9 @@ function Footer() {
         <div className="container-footer">
 
             <div className="div-footer-1">
-                <a href="https://www.facebook.com/AlmacenVeicor/"><img src="facebook.png" className="redes-sociales mx-2"/></a>
-                <a href="https://www.instagram.com/almacenveicor/"><img src="instagram.png" className="redes-sociales mx-4"/></a>
-                <a href="#"><img src="tw.png" className="redes-sociales mx-2"/></a>
+                <a href="https://www.facebook.com/AlmacenVeicor/"><img src="/img/logos-redes/facebook.png" className="redes-sociales mx-2"/></a>
+                <a href="https://www.instagram.com/almacenveicor/"><img src="/img/logos-redes/instagram.png" className="redes-sociales mx-4"/></a>
+                <a href="#"><img src="/img/logos-redes/tw.png" className="redes-sociales mx-2"/></a>
                 <div className="copy">Copyright &copy; 2021 almacenes VEICOR</div>
 
             </div>

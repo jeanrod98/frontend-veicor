@@ -1,0 +1,76 @@
+.Loguin{
+    background: #e4e3e3;
+    margin:0;
+    padding: 0;
+}
+.div-loguin{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+    
+    
+}
+.form-loguin {
+    grid-column: 1;
+    background: #e4e3e3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logo-loguin {
+    grid-column: 2;
+    background: #fff;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logo-loguin img{
+    width: 350px;
+    height: 300px;
+
+}
+/* Formulario  */
+.formulario-loguin{
+    background: #fff;
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.formulario-loguin h2{
+    color: #fc5c1b;
+    text-align: center;
+    
+}
+
+.formulario-loguin label{
+    font-weight: 550;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.formulario-loguin div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.formulario-loguin a{
+    margin-left: 10px;
+    margin-right: 10px;    
+    color: #fc5c1b;
+}
+#enviar-loguin{
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #fc5c1b;
+    color: #fff;
+}
+#enviar-loguin:hover{
+    background: #e7490b;
+}
+.formulario-loguin a:hover{
+    color: #b93906;
+}

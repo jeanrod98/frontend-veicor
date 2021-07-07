@@ -6,21 +6,21 @@ function Header() {
        
         <nav class="header">
           
-            <img src="logohpng2.png" className="logohpng2"/>
+            <img src="/img/logos/logohpng2.png" className="logohpng2"/>
           
           <div className="opciones-navbar">
             <ul class="nav justify-content-end">
               <li class="nav-item px-2">
-                <Link class="nav-link" to="#">Inicio</Link>
+                <Link class="nav-link" to="/">Inicio</Link>
               </li>
               <li class="nav-item px-2">
                 <Link class="nav-link" to="#">Catálogo</Link>
               </li>
               <li class="nav-item px-2">
-                <Link class="nav-link" to="#">Iniciar Sesión</Link>
+                <Link class="nav-link" to="loguin">Iniciar Sesión</Link>
               </li>
               <li class="nav-item px-2">
-                <Link class="nav-link" to="#">Registrarse</Link>
+                <Link class="nav-link" to="registro">Registrarse</Link>
               </li>
             </ul>
           

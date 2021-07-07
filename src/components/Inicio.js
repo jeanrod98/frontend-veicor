@@ -16,7 +16,7 @@ function Inicio() {
 
                 {/* Imagen del almacen  */}
                 <div className="imagenes-inicio-tamanio-3">
-                  <img src="img/veicor_1.jpg" ></img>
+                  <img src="/img/veicor_1.jpg" ></img>
                 </div>
 
                 {/* Descripcion */}
@@ -39,10 +39,10 @@ function Inicio() {
               </div>
               <div className="imagenes-inicio">
                 <div className="imagenes-inicio-tamanio-1">
-                  <img src="img/veicor_2.jpg" ></img>
+                  <img src="/img/veicor_2.jpg" ></img>
                 </div>
                 <div className="imagenes-inicio-tamanio-2">
-                  <img src="img/veicor_3.jpg" ></img>
+                  <img src="/img/veicor_3.jpg" ></img>
                 </div>
                 
               </div>
@@ -54,32 +54,32 @@ function Inicio() {
              {/* Iconos */}
              <div className="container inicio-iconos">
                 <div className="div-icono-1">
-                  <img className="svg-camion" src="img/svg/truck.svg" width="50" height="50"/>
+                  <img className="svg-camion" src="/img/svg/truck.svg" width="50" height="50"/>
                   {/* color #787575 */}
                   <p>ENTREGAS <br/> A <br/> DOMICILIO</p>
 
                 </div>
                 <div className="div-icono-2">
-                  <img className="svg-camion" src="img/svg/money.svg" width="50" height="50"/>
+                  <img className="svg-camion" src="/img/svg/money.svg" width="50" height="50"/>
                   <p>CAMBIOS Y DEVOLUCIONES <br/> ÁGILES</p>
 
                 </div>
                 <div className="div-icono-3">
-                  <img className="svg-camion" src="img/svg/tienda.svg" width="50" height="50"/>
+                  <img className="svg-camion" src="/img/svg/tienda.svg" width="50" height="50"/>
                   <p>COMPRA ONLINE <br/> Y <br/> RETIRA EN TIENDA</p>
                 </div>
                 <div className="div-icono-4">
-                  <img className="svg-camion" src="img/svg/bolsa-de-la-compra.svg" width="50" height="50"/>
+                  <img className="svg-camion" src="/img/svg/bolsa-de-la-compra.svg" width="50" height="50"/>
                   <p>COMPRA FÁCIL <br/> Y <br/> SEGURA</p>
 
                 </div>
                 <div className="div-icono-5">
-                  <img className="svg-camion" src="img/svg/garantia.svg" width="50" height="50"/>
+                  <img className="svg-camion" src="/img/svg/garantia.svg" width="50" height="50"/>
                   <p>GARANTIA <br/> EN <br/>  PRODUCTOS</p>
 
                 </div>
                 <div className="div-icono-6">
-                  <img className="svg-camion" src="img/svg/tarjeta-de-debito.svg" width="50" height="50"/>
+                  <img className="svg-camion" src="/img/svg/tarjeta-de-debito.svg" width="50" height="50"/>
                   <p>ACEPTAMOS TODAS <br/> LAS <br/> TARJETAS</p>
 
                 </div>

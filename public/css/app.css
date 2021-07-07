@@ -4,6 +4,7 @@
 #o4o4o4 negro
 #4o6o18 verde
 #44o418 rojo */
+@import url(./estilos-loguin.css);
 *{
     padding: 0;
     margin: 0;
@@ -23,7 +24,7 @@ html{
 
 /* Estilos para el Header, Navbar */
 .header{
-    background: #CAC7C7;
+    background: #c5c4c4;
     padding: 0;
     margin: 0;
     height: 4rem;

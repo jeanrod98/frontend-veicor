@@ -1,7 +1,8 @@
 
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import inicio from './components/Inicio';
+import Inicio from './components/Inicio';
+import Loguin from './components/Loguin';
 function App() {
   return (
     <Router className="App">
@@ -10,7 +11,11 @@ function App() {
           <Switch>
             <Route
             exact path="/"
-            component={inicio}
+            component={Inicio}
+            />
+            <Route
+            exact path="/loguin"
+            component={Loguin}
             />
           </Switch>
         
