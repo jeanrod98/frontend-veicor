@@ -10,12 +10,12 @@ function Loguin() {
        <div className="div-loguin">
             <div className="form-loguin">
                 
-                <form className="formulario-loguin">
+                <form className="formulario-loguin" action="#" method="">
                     <h2 className="my-4">INICIAR SESIÓN</h2>
                     <div class="form-row">
                         <div class="">
                             <label for="usuario">Usuario</label>
-                            <input type="text" class="form-control" id="usuario" placeholder="Ingrese su correo electrónico"  required/>
+                            <input type="text" class="form-control" id="usuario" placeholder="Ingrese su correo electrónico"  required autoFocus/>
                         
                         </div>
                     </div>
