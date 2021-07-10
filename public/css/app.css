@@ -130,7 +130,13 @@ footer p{
 }
 
 /* Inicio */
-
+.contenedor-inicio{
+    display: grid;
+    /* grid-template-columns: 2fr, 1fr; */
+    width: 100%;
+    max-width: 1000px;
+    
+}
 .inicio-titulo{
     margin-top: 25px;
     color: #fc5c1b;
@@ -152,7 +158,7 @@ footer p{
 .inicio-descripcion{
     width: 95%;
     margin-top: 30px;
-    margin-bottom: 30px;
+    /* margin-bottom: 20px; */
     border: 1px solid #c2bfbf !important;
 }
 .inicio-descripcion h5{
@@ -174,6 +180,7 @@ footer p{
 .div-icono-1 {
     grid-column: 1;    
     border-right: 1px solid #c2bfbf !important;
+    width: 100%;
  
 }
 .div-icono-1 p{
@@ -187,7 +194,7 @@ footer p{
 .div-icono-2{
     grid-column: 2;
     border-right: 1px solid #c2bfbf !important;
-  
+    width: 100%;
 }
 .div-icono-2 p{
     font-size: 12px; 
@@ -202,7 +209,7 @@ footer p{
 .div-icono-3{
     grid-column: 3;
     border-right: 1px solid #c2bfbf !important;
-    
+    width: 100%;
 }
 .div-icono-3 p{
     font-size: 12px; 
@@ -216,7 +223,7 @@ footer p{
 .div-icono-4{
     grid-column: 4;
     border-right: 1px solid #c2bfbf !important;
-
+    width: 100%;
 }
 .div-icono-4 p{
     font-size: 12px;
@@ -230,7 +237,7 @@ footer p{
 .div-icono-5{
     grid-column: 5;
     border-right: 1px solid #c2bfbf !important;
-
+    width: 100%;
 }
 .div-icono-5 p{
     font-size: 12px; 
@@ -244,7 +251,7 @@ footer p{
 .div-icono-6{
     grid-column: 6;
     margin-top: 20px;
-
+    width: 100%;
 }
 .div-icono-6 p{
     font-size: 12px; 
@@ -255,32 +262,80 @@ footer p{
 .div-icono-6 img{
     margin-top: 20px;
 }
-.contenedor-inicio{
-    display: grid;
-    grid-template-columns: 2fr, 1fr;
-    
-}
-.detalles-inicio{
+
+/* .detalles-inicio{
     grid-column: 1;
-}
+} */
 .imagenes-inicio{
-    grid-column: 2;
+    /* grid-column: 2; */
     margin-top: 25px;
-    text-align: center;
+    /* text-align: center; */
+    width: 100%;
 }
-.imagenes-inicio-tamanio-1 img{
+.imagenes-inicio img{
     width: 300px;
     height: 300px;
     border-radius: 5px;
 }
-.imagenes-inicio-tamanio-2 img{
-    margin-top: 56px;
-    width: 300px;
-    height: 300px;
-    border-radius: 5px;
-}
+
 .imagenes-inicio-tamanio-3 img{
     width: 95%;
-    height: 300px;
+    height: auto;
         
+}
+
+@media screen and (max-width: 800px) {
+    .contenedor-inicio{
+        display: grid;
+        grid-template-rows: 1fr, 1fr;
+        width: 100%;
+        max-width: 1000px;
+        
+    }
+    .detalles-inicio{
+        grid-row: 1;
+    }
+    .imagenes-inicio{
+        grid-row: 2;
+       display: grid;
+       grid-template-columns: 1fr, 1fr;
+       margin-bottom: 20px;
+       
+    }
+    .imagenes-inicio-tamanio-1{
+        grid-column: 1;
+    }
+    .imagenes-inicio img{
+        width: 90%;
+        height: auto;
+    }
+    .imagenes-inicio-tamanio-2{
+        grid-column: 2;
+    }
+    
+    
+    
+}
+@media screen and (min-width: 800px) {
+    .contenedor-inicio{
+        display: grid;
+        grid-template-columns: 2fr, 1fr;
+        /* width: 100%;
+        max-width: 1000px; */
+        
+    }
+    .detalles-inicio{
+        grid-column: 1;
+    }
+    .imagenes-inicio{
+        grid-column: 2;
+        /* margin-top: 25px;
+        text-align: center; */
+        margin-bottom: 20px;
+        
+    }
+    .imagenes-inicio-tamanio-2 img{
+        margin-top: 56px;
+        
+    }
 }
