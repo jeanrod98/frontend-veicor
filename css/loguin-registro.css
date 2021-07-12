@@ -1,0 +1,183 @@
+.Loguin{
+    background: #e4e3e3;
+    margin:0;
+    padding: 0;
+}
+
+.form-loguin {
+    /* grid-column: 1; */
+    background: #e4e3e3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logo-loguin {
+    /* grid-column: 2; */
+    background: #fff;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logo-loguin img{
+    width: 70%;
+    height: auto;
+
+}
+/* Formulario  */
+.formulario-loguin{
+    background: #fff;
+    width: 40%;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.formulario-loguin h2{
+    color: #fc5c1b;
+    text-align: center;
+    
+}
+
+.formulario-loguin label{
+    font-weight: 550;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.formulario-loguin div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.formulario-loguin a{
+    margin-left: 10px;
+    margin-right: 10px;    
+    color: #fc5c1b;
+}
+#enviar-loguin {
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #fc5c1b;
+    color: #fff;
+}
+#enviar-loguin:hover{
+    background: #e7490b;
+}
+.formulario-loguin a:hover{
+    color: #b93906;
+}
+/* Registro  */
+/* div imagen  */
+
+.imagen-registro{
+    background: #e4e3e3;
+    grid-column: 1;
+    border: 1px solid #fc5c1b;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.imagen-registro img{
+    width: 55%;
+    height: auto;
+    
+}
+
+/* div formulario  */
+.imagen-registro h5, h6{
+    text-align: start;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+.form-registro{
+    grid-column: 2;
+    border: 1px solid #000000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    
+}
+.form-registro div{
+    margin: 30px;
+    
+}
+.form-registro label{
+    margin-bottom: 5px;
+    
+}
+.form-registro small{
+    color: rgb(233, 105, 20) !important;
+    font-style: italic;
+}
+/* BOTONES */
+#enviar-registro{
+    width: 88.4%;
+    background: #fc5c1b;
+    color: #fff;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#enviar-registro:hover{
+    background: #e7490b;
+}
+
+@media screen and (max-width: 800px) {
+    .div-loguin{
+        display: grid;
+        grid-template-rows: 1fr;      
+                
+    }
+    .logo-loguin {
+        display: none;
+    }
+   
+    .form-loguin {
+        grid-row: 1;
+        width: 100%;
+        
+    }
+    .formulario-loguin{
+        width: 70%;
+        
+    }
+    /* Registro  */
+    .imagen-registro h6{
+        display: none;
+    }
+    .imagen-registro h5{
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+    .imagen-registro img{
+        margin-top: 50px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .div-loguin{
+        display: grid;
+        grid-template-columns: 2fr 1fr;      
+                
+    }
+    .form-loguin {
+        grid-column: 1;
+    }
+    .logo-loguin {
+        grid-column: 2;
+    }
+    /* registro  */
+    .div-registro{
+        display: grid;
+        grid-template-columns: 1fr, 2fr;
+        grid-gap: 3rem;
+    }
+}
