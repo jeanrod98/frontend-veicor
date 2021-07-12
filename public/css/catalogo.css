@@ -1,0 +1,24 @@
+.Catalogo{
+    height: 100vh;
+    background: #e4e3e3;
+}
+.search-catalogo{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.buscador{
+    width: 50% !important;
+}
+#btn-search{
+    background: #c5c4c4;
+}
+#btn-search:hover{
+    background: #cfcccc;
+}
+
+/* Slider imagenes */
+

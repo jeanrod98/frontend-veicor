@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Inicio from './components/Inicio';
 import Loguin from './components/Loguin';
 import Registro from './components/Registro';
+import Catalogo from './components/Catalogo';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
             <Route
             exact path="/registro"
             component={Registro}
+            />
+            <Route
+            exact path="/catalogo"
+            component={Catalogo}
             />
           </Switch>
         
