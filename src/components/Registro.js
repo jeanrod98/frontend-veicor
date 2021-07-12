@@ -16,10 +16,10 @@ function Registro() {
          
                     <h5>Contamos con variedad de productos para 
                     el hogar a los mejores precios del mercado.</h5>
-                    <h6>Productos de temporada.</h6>
-                    <h6>Cristalería.</h6>
-                    <h6>Juguetería.</h6>
-                    <h6>Plasticos y Desechables.</h6>
+                    <h6>Productos de temporada</h6>
+                    <h6>Cristalería</h6>
+                    <h6>Juguetería</h6>
+                    <h6>Plasticos y Desechables</h6>
                     </div>
                 </div>
 

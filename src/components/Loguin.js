@@ -28,7 +28,7 @@ function Loguin() {
                     </div>
 
                     <div class="form-row my-3">
-                       <Link>¿Perdiste el Acceso?.</Link>
+                       <Link>¿Perdiste el Acceso?</Link>
                     </div>
                     <div class="form-row">
                         <input className="btn my-3" type="submit" id="enviar-loguin" value="ACCEDER"/>
