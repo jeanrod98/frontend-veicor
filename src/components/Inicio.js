@@ -61,7 +61,7 @@ function Inicio() {
                 </div>
                 <div className="div-icono-2">
                   <img className="svg-camion" src="/img/svg/money.svg" width="50" height="50"/>
-                  <p>CAMBIOS Y DEVOLUCIONES <br/> ÁGILES</p>
+                  <p>CAMBIOS <br/> Y <br/>DEVOLUCIONES</p>
 
                 </div>
                 <div className="div-icono-3">
