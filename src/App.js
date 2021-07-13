@@ -6,6 +6,7 @@ import Loguin from './components/Loguin';
 import Registro from './components/Registro';
 import Catalogo from './components/Catalogo';
 
+
 function App() {
   return (
     <Router className="App">

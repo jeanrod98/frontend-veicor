@@ -20,5 +20,51 @@
     background: #cfcccc;
 }
 
+.publicidad-catalogo{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    margin-top: 50px;
+    text-align: center;
+    grid-gap: 70px;
+    
+}
+.publicidad-img{
+    grid-column: 2;
+    
+}
+.publicidad-img img{
+    width: 100%;
+    height: auto;
+    border-radius: 1%;
+}
 /* Slider imagenes */
+.carousel{
+    grid-column: 1;
+    width: 100%;
+    
+    
+}
+.carousel img{
+    border-radius: 1%;
+    
+}
+/* Productos a mostrar  */
+.productos{
+    background: #fff;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+.productos h1{
+    color: rgba(0,0,0,0.4);
+   
+}
+.productos ion-icon{
+    font-size: 100px;
+    color: rgba(0,0,0,0.4);
 
+}
+.productos-noexisten{
+    padding-top: 50px;
+}
