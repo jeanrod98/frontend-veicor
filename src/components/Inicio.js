@@ -32,9 +32,7 @@ function Inicio() {
                   <h5>Plasticos y Desechables.</h5>
                   </div>
                     
-                </div>
-                
-
+                </div>               
 
               </div>
               <div className="imagenes-inicio">
@@ -45,10 +43,7 @@ function Inicio() {
                   <img src="/img/veicor_3.jpg" ></img>
                 </div>
                 
-              </div>
-
-             
-
+              </div>           
 
             </div>
              {/* Iconos */}
