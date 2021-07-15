@@ -2,11 +2,12 @@
 /* #fc9411 amarillo
 #fc5c1b naranja
 #o4o4o4 negro
-#4o6o18 verde
+#406018 verde
 #44o418 rojo */
 @import url(./loguin-registro.css);
 @import url(./estilos-navbar.css);
 @import url(./catalogo.css);
+@import url(./producto.css);
 *{
     padding: 0;
     margin: 0;
@@ -187,6 +188,7 @@ footer p{
 .div-icono-1 p{
     font-size: 12px; 
     color: #787575;    
+    margin:0;
     margin-top: 10px;
 }
 
@@ -198,7 +200,7 @@ footer p{
 .div-icono-2 p{
     font-size: 12px; 
     color: #787575;
-    
+    margin:0;
     margin-top: 10px;
 
 }
@@ -211,7 +213,7 @@ footer p{
 .div-icono-3 p{
     font-size: 12px; 
     color: #787575;
-    
+    margin:0;
     margin-top: 10px;
 }
 
@@ -222,9 +224,9 @@ footer p{
 }
 .div-icono-4 p{
     font-size: 12px;
-     color: #787575;
-     
-     margin-top: 10px;
+    color: #787575;
+    margin:0;
+    margin-top: 10px;
 }
 
 .div-icono-5{
@@ -235,7 +237,7 @@ footer p{
 .div-icono-5 p{
     font-size: 12px; 
     color: #787575;
-    
+    margin:0;
     margin-top: 10px;
 }
 
@@ -246,7 +248,8 @@ footer p{
 .div-icono-6 p{
     font-size: 12px; 
     color: #787575;
-    
+    margin:0;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
 

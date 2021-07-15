@@ -5,6 +5,7 @@ import Inicio from './components/Inicio';
 import Loguin from './components/Loguin';
 import Registro from './components/Registro';
 import Catalogo from './components/Catalogo';
+import Producto from './components/Producto';
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
             <Route
             exact path="/catalogo"
             component={Catalogo}
+            />
+            <Route
+            exact path="/producto"
+            component={Producto}
             />
           </Switch>
         

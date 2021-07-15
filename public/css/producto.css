@@ -1,0 +1,119 @@
+.Producto{
+    height: 100vh;
+    background: #e4e3e3;
+}
+.contenedor-informacion{
+    background: #fff;
+    border: 1px solid #c2bfbf !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.imagen-producto{
+    grid-column: 1;
+    width: 100%;
+}
+.nombre-producto{
+    color: #fc5c1b;
+    margin: 40px;
+}
+.img-producto img{
+    width: 50%;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    border: 1px solid #c2bfbf !important;
+}
+.detalle-producto{
+    grid-column: 2;
+    width: 100%;
+    
+}
+.detalle-producto img{
+    margin-right: 15px;
+    width: 30px;
+}
+.detalle-producto h5{
+    color: rgb(56, 113, 199);
+}
+.entregaDomicilio{
+    margin-top: 40px;
+}
+.seccion-cantidad-btncarrito{
+    /* display: grid;
+    grid-template-columns: 1fr, 2fr;
+    grid-gap: 10px; */
+    margin: 40px 40px 0 0;
+    /* margin-right: 40px; */
+   
+
+}
+.seccion-cantidad{
+    /* grid-column: 1;
+    width: 25%; */
+    display: inline;
+}
+.seccion-cantidad input{
+    width: 10%;
+    height: 37px;
+}
+.seccion-btnCarrito{
+    /* grid-column: 2;
+    width: 100%; */
+    display: inline;
+    
+}
+.seccion-btnCarrito ion-icon{
+    font-size: 22px;
+       
+}
+.aggCarrito{
+    background: #5ca107 !important;
+    color: #fff !important;
+    width: 80% !important;
+    margin-left: 10%;
+      
+}
+.especificaciones-producto{
+    width: 100%;
+    margin-top: 30px;
+}
+.table{
+    width: 300px !important;
+    margin-top: 30px;
+}
+table
+{
+border-collapse: collapse;
+}
+tr /* Poner borde en td y th */
+{
+border: 1px solid black !important;
+}
+@media screen and (max-width: 800px) {
+    .detalle-producto{        
+        text-align: center;
+    }
+    .seccion-cantidad-btncarrito{
+        display: grid;
+        grid-template-rows: 1fr, 1fr;
+        grid-gap: 30px;
+    }
+    .especificaciones-producto h4{
+        margin-bottom: 30px ;
+    }
+    .table{
+        margin: auto;
+    }
+    .imagen-producto{
+        text-align: center;
+    }
+    
+}
+@media screen and (min-width: 800px) {
+    .contenedor-informacion{
+        display: grid;
+        grid-template-columns: 1fr, 1fr;
+        grid-gap: 10px;
+
+    }
+
+}
