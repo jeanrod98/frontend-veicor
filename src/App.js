@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import clienteAxios from './config/axios';
@@ -17,6 +16,7 @@ function App() {
   const [productos, guardarProductos] = useState([]);
 
   useEffect( () => {
+    // if(productos){
     const consultarAPI = () => {
       clienteAxios.get('/productos')
       .then(respuesta => {
@@ -30,11 +30,11 @@ function App() {
       })
     }
     consultarAPI();
+  // }
   }, [] );
 
   return (
-    <Router className="App">
-        
+    <Router className="App">        
           {/* rutas */}
           <Switch>
             <Route
@@ -54,8 +54,15 @@ function App() {
             component={() => <Catalogo productos={productos} />}
             />
             <Route
-            exact path="/producto:id"
-            component={Producto}
+            exact path="/producto/:id"
+            render={(props) => {
+              const producto = productos.filter(producto => producto.id_producto === props.match.params.id)
+              return(
+                <Producto
+                  producto={producto[0]}
+                />
+                )
+            }}
             />
           </Switch>
         

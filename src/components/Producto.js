@@ -1,18 +1,19 @@
 import Header from './Header';
 import Footer from './Footer';
 import {useState} from 'react';
+import {withRouter} from 'react-router-dom';
 
-function Producto() {
+function Producto(props) {
 
-const nombre_producto = "Set de Ollas unco 6 piezas";
 
-const descripcion = {
-    "material" : `Una tabla se inserta con la etiqueta <table> y la líneas se definen con la etiqueta <tr>. Cada línea contiene celdas <td> 
-    (celdas normales) o celdas <th> (encabezado). 
-    El título de la tabla se define con <caption>. /n
-    Puedes agregar un borde a las celdas de la tabla con ​border.`
-}
-// const [count, setCount] = useState(1);
+    if(!props.producto){
+        props.history.push('/');        
+        return null;
+    }
+    // Extraer por props 
+    const {producto: {nombre_produc, dscpLarga_produc, imagen_produc}} = props;
+
+
 
     return (
       <div className="Producto">
@@ -23,11 +24,11 @@ const descripcion = {
                     <div className="imagen-producto">
                         <div className="nombre-producto">
 
-                            <h2>{nombre_producto}</h2>
+                            <h2>{nombre_produc}</h2>
                         </div>
                     {/* Contenedor de la imagen del producto  */}
                         <div className="img-producto">
-                            <img src="/img/imguso.jpg"></img>
+                            <img src={imagen_produc}></img>
                         </div>
 
                     </div>
@@ -41,7 +42,7 @@ const descripcion = {
                         <div className="seccion-cantidad-btncarrito">
                             <div className="seccion-cantidad">
 
-                                <input type="number" min="1" defaultValue="1"></input>
+                                <input className="text-center" type="number" min="1" defaultValue="1"></input>
                             </div>
 
                             <div className="seccion-btnCarrito">
@@ -65,7 +66,7 @@ const descripcion = {
                                         <tr>
                                         {/* <th scope="row">1</th> */}
                                         
-                                        <td>{descripcion.material}</td>
+                                        <td>{dscpLarga_produc}</td>
                                     
                                         </tr>
                                     </tbody>
@@ -115,4 +116,4 @@ const descripcion = {
     );
   }
   
-  export default Producto;
+  export default withRouter(Producto);

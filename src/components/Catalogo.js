@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 // Carousel
@@ -131,8 +132,8 @@ function Catalogo({productos}) {
                       {productos.map(producto => (
                       <div className="contenedor-card">
 
-                      <a key={producto.id_producto} href='#'>
-                        <div className="card">
+                      <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} href='#'>
+                        <div className="card card-producto">
                         <img class="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
                         <div className="card-body">
                           <h5>{producto.nombre_produc}</h5>
@@ -150,7 +151,7 @@ function Catalogo({productos}) {
                          
                         </div>
                         
-                      </a>
+                      </Link>
                       </div>
 
                       ))}
