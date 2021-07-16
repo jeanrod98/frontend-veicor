@@ -1,7 +1,13 @@
 import Header from './Header';
 import Footer from './Footer';
+import {useState} from 'react'
 
-function Inicio() {
+function Inicio(props) {
+
+  // const [tipo, setTipo] = useState("cliente");
+ 
+  
+  
     return (
       <div className="Inicio">
         <Header/>

@@ -60,6 +60,39 @@ html{
 .nav-link:hover{
     color: #fa9247  !important; 
 }
+.navbar-nav a{
+    margin: auto !important;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    font-size: 18px !important;
+}
+#icono-usuario{
+    font-size: 22px !important;
+    color: #d6570d;    
+    padding: 0 !important;
+    margin: auto;
+    text-align: left !important;
+}
+.link-usuario{
+    padding: 0 !important;
+    margin: auto !important;
+    
+}
+#carrito{
+    font-size: 32px !important;
+}
+#cerrar_sesion{
+   
+    background: none;
+    width: 35px;
+    padding: 0;
+    height: auto;
+    border: none;
+    text-align: left;
+}
+#cerrar-sesion-icono{
+    font-size: 26px;
+}
 /* Estilos para el footer */
 
  footer {
@@ -278,6 +311,7 @@ footer p{
         
 }
 
+
 @media screen and (max-width: 800px) {
     .contenedor-inicio{
         display: grid;
@@ -342,6 +376,11 @@ footer p{
     }
     .div-footer-4{
         grid-row: 3;
+    }
+/* Icono usuario  */
+    
+    #icono-usuario{
+        display: none !important;
     }
 }
 @media screen and (min-width: 800px) {

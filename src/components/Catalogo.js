@@ -30,8 +30,12 @@ const items = [
 
 function Catalogo(props) {
 
+
+// Configuraciones y uso del stage para el carousel de imagenes 
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
+
+
   
     const next = () => {
       if (animating) return;
@@ -52,6 +56,7 @@ function Catalogo(props) {
   
     const slides = items.map((item) => {
       return (
+        // carousel de imagenes 
         <CarouselItem
           onExiting={() => setAnimating(true)}
           onExited={() => setAnimating(false)}

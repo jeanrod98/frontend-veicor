@@ -1,9 +1,26 @@
 import {Link} from 'react-router-dom';
 
+
 import Header from './Header';
 import Footer from './Footer';
 
-function Loguin() {
+
+function Loguin(props) {
+    
+
+    
+    // Funcion para loguear el usuario 
+    const loguin = e =>{
+        // mandamos el estado del usuario si existe al storage 
+        localStorage.removeItem('estado');
+        localStorage.setItem('estado','iniciado')
+        // redireccionamos al inicio pero logueado 
+        props.history.push('/');
+
+        
+        // const [tipo, setTipo] = useState("cliente");
+    };
+
     return (
       <div className= "Loguin">
        <Header/>
@@ -31,7 +48,12 @@ function Loguin() {
                        <Link>¿Perdiste el Acceso?</Link>
                     </div>
                     <div class="form-row">
-                        <input className="btn my-3" type="submit" id="enviar-loguin" value="ACCEDER"/>
+                        <input 
+                        className="btn my-3" 
+                        type="submit" 
+                        id="enviar-loguin" 
+                        value="ACCEDER"
+                        onClick={loguin}/>
                     </div>
                 </form>
             </div>
