@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Producto from './Producto';
 
 const items = [
   {
@@ -28,7 +29,10 @@ const items = [
 ];
 
 
-function Catalogo(props) {
+function Catalogo({productos}) {
+
+// console.log(productos);
+// Si el arreglo viene vacio no retorna nada 
 
 
 // Configuraciones y uso del stage para el carousel de imagenes 
@@ -69,6 +73,8 @@ function Catalogo(props) {
     });
   
 
+    if(productos.length === 0 ) return null;
+    
 
     return (
       <div className="Catalogo">
@@ -108,16 +114,48 @@ function Catalogo(props) {
             </div>
 {/* Muestra los productos en tarjetas */}
             <div className="productos">
-                <div className="productos-noexisten">
+                {productos.length === 0 &&<div className="productos-noexisten">
 
                     <h1>No hay productos para mostrar</h1>
                     <div className="text-center">
 
                         <ion-icon name="close-circle-outline"></ion-icon>
                     </div>
-                </div>
+                </div>}
                 <div className="productos-existen">
                     {/* Aqui van los productos  */}
+                    {/* <div className="list-group"> */}
+                    <div className="recomendados">
+                    <h4>RECOMENDACIONES PARA TI</h4>
+                    </div>
+                      {productos.map(producto => (
+                      <div className="contenedor-card">
+
+                      <a key={producto.id_producto} href='#'>
+                        <div className="card">
+                        <img class="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
+                        <div className="card-body">
+                          <h5>{producto.nombre_produc}</h5>
+                          <div class="input-group-prepend">
+                            <p className="descripcion">{producto.descripcion_produc}</p>
+                          </div>
+                          <div class="input-group-prepend precio">
+                            
+                            <p>$ {producto.precio_produc}</p>
+                          </div>
+                          
+
+                        </div>
+
+                         
+                        </div>
+                        
+                      </a>
+                      </div>
+
+                      ))}
+
+                    {/* </div> */}
                 </div>
             </div>
         </div>
