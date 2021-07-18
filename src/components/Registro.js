@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import css from '../css/loguin-registro.css'
 
 function Registro() {
     return (

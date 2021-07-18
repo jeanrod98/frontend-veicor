@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import css from '../css/catalogo.css';
 // Carousel
 import {
   Carousel,
@@ -74,7 +75,7 @@ function Catalogo({productos}) {
     });
   
 
-    if(productos.length === 0 ) return null;
+    // if(productos.length === 0 ) return null;
     
 
     return (
@@ -132,26 +133,29 @@ function Catalogo({productos}) {
                       {productos.map(producto => (
                       <div className="contenedor-card">
 
-                      <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} href='#'>
-                        <div className="card card-producto">
-                        <img class="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
-                        <div className="card-body">
-                          <h5>{producto.nombre_produc}</h5>
-                          <div class="input-group-prepend">
-                            <p className="descripcion">{producto.descripcion_produc}</p>
-                          </div>
-                          <div class="input-group-prepend precio">
+                        <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} href='#'>
+                          <div className="card card-producto">
+                          <img className="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
+                          <div className="card-body">
+                            <h5>{producto.nombre_produc}</h5>
+                            <div className="input-group-prepend">
+                              <p className="descripcion">{producto.descripcion_produc}</p>
+                            </div>
+                            <div class="input-group-prepend">
+                              <p className="existencia"><span>Unidades Disponibles: </span>{producto.cantidad_produc}</p>
+                            </div>
+                            <div className="input-group-prepend precio">
+                              
+                              <p>$ {producto.precio_produc}</p>
+                            </div>
                             
-                            <p>$ {producto.precio_produc}</p>
+
+                          </div>
+
+                          
                           </div>
                           
-
-                        </div>
-
-                         
-                        </div>
-                        
-                      </Link>
+                        </Link>
                       </div>
 
                       ))}

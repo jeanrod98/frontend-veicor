@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-
+import css from '../css/loguin-registro.css'
 
 import Header from './Header';
 import Footer from './Footer';
