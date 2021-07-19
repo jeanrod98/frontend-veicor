@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import css from '../css/catalogo.css';
+import '../css/catalogo.css';
+import Swal from 'sweetalert2';
+
 // Carousel
 import {
   Carousel,
@@ -59,24 +61,66 @@ function Catalogo({productos}) {
       if (animating) return;
       setActiveIndex(newIndex);
     }
-  
+
+    
     const slides = items.map((item) => {
       return (
         // carousel de imagenes 
         <CarouselItem
-          onExiting={() => setAnimating(true)}
-          onExited={() => setAnimating(false)}
-          key={item.src}
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item.src}
         >
           <img src={item.src} alt={item.altText} width="100%" height="auto"/>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
     });
-  
-
+    
+    
     // if(productos.length === 0 ) return null;
     
+    
+    //* Agregar al carrito de compras
+    const agregarCarrito = e =>{
+
+      e.preventDefault();
+
+      Swal.fire({
+        icon: 'info',
+        title: 'No se puede agregar al Carrito',
+        text: 'Por favor, primero inicie sesión.',
+        footer: '<a id="a-iniciarSesion" href="/registro">¡Quiero registrarme!</a>',
+        confirmButtonColor: "#fc5c1b",
+        showCloseButton: true
+        
+      })
+
+
+
+
+    }
+
+    //agregar producto al localStorage
+    const addLocalStorage = e => {
+      e.preventDefault();
+      //Extraer datos del card
+      const card = e.target.parentElement.parentElement;
+
+      const infoProduct = {
+        imagen: card.querySelector('img').src,
+        nombre: card.querySelector('h5').textContent,
+        precio: card.querySelector('.precio span').textContent
+      }
+
+
+      //add producto a local storage
+      localStorage.setItem('carrito', JSON.stringify(infoProduct));
+
+     
+    }
+
+
 
     return (
       <div className="Catalogo">
@@ -133,29 +177,42 @@ function Catalogo({productos}) {
                       {productos.map(producto => (
                       <div className="contenedor-card">
 
-                        <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} href='#'>
+                        
                           <div className="card card-producto">
-                          <img className="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
-                          <div className="card-body">
-                            <h5>{producto.nombre_produc}</h5>
-                            <div className="input-group-prepend">
-                              <p className="descripcion">{producto.descripcion_produc}</p>
+                            <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} onClick={agregarCarrito}>
+                            <img name="imagen" className="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
+                           
+                            <div className="card-body titulo">
+                              <h5 name="nombre" >{producto.nombre_produc}</h5>
                             </div>
-                            <div class="input-group-prepend">
-                              <p className="existencia"><span>Unidades Disponibles: </span>{producto.cantidad_produc}</p>
-                            </div>
-                            <div className="input-group-prepend precio">
+                            </Link>
+                            <div className="card-body">
+                              <div className="input-group-prepend">
+                                <p name="descripcion" className="descripcion">{producto.descripcion_produc}</p>
+                              </div>
+                              <div class="input-group-prepend">
+                                <p name="existencia" className="existencia"><span>Unidades Disponibles: </span>{producto.cantidad_produc}</p>
+                              </div>
+                              <div className="input-group-prepend precio">
+                                
+                                <p name="precio" >$ <span>{producto.precio_produc}</span></p>
+                              </div>
                               
-                              <p>$ {producto.precio_produc}</p>
+
+                            </div>
+                            <div className="addCarrito-catalogo">
+
+                              <button className="btn" onClick={addLocalStorage}>Agregar al Carrito</button>
                             </div>
                             
 
-                          </div>
+
 
                           
                           </div>
                           
-                        </Link>
+                          
+                        
                       </div>
 
                       ))}

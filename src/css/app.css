@@ -93,6 +93,15 @@ html{
 #cerrar-sesion-icono{
     font-size: 26px;
 }
+/* Modal  */
+.close{
+    border: none !important;
+    font-size: 25px;
+}
+.modal-body h5{
+    color: rgba(0,0,0,0.4);
+}
+
 /* Estilos para el footer */
 
  footer {
@@ -383,6 +392,7 @@ footer p{
         display: none !important;
     }
 }
+
 @media screen and (min-width: 800px) {
     .contenedor-inicio{
         display: grid;
