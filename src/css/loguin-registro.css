@@ -91,9 +91,18 @@
     height: auto;
     
 }
+/* .descripcion-regis, h5, h6{
+    margin-right: 5px !important;
+} */
 
 /* div formulario  */
-.imagen-registro h5, h6{
+.descripcion-regis  h6{
+    text-align: start;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+.descripcion-regis  h4{
     text-align: start;
     margin-left: 50px;
     margin-right: 50px;
@@ -154,10 +163,8 @@
     .imagen-registro h6{
         display: none;
     }
-    .imagen-registro h5{
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 50px;
+    .imagen-registro h4{
+        margin: 25px;
     }
     .imagen-registro img{
         margin-top: 50px;

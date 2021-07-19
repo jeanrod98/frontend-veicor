@@ -1,0 +1,171 @@
+.Carrito{
+    height: 100vh;
+    background: #e4e3e3 !important;
+    
+}
+/* Posiciones  */
+.carrito-productos{
+    display: flex;
+
+    align-items: center;
+}
+
+.carrito-detalle{
+    /* grid-column: 1; */
+    min-height: 53vh;
+    width: 70%;
+    border: 1px solid #000;
+    margin: 10px;
+    border-radius: 10px;
+}
+.carrito-descripcion{
+        /* grid-column: 2; */
+        width: 30%;
+        border: 1px solid #fc5c1b;
+        margin: 10px;
+        border-radius: 10px;
+        max-height: 55vh;
+
+}
+.carrito-logo{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.carrito-logo h1{
+    border-left: 2px solid #000000;
+
+    color: #000000;
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+.carrito-logo div{
+    border-left: 2px solid #000000;
+    margin-left: 10px;
+  
+
+}
+
+.carrito-logo ion-icon{
+    font-size: 128px !important;
+    color: #fc5c1b;
+}
+
+.carrito-productos{
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    min-height: 55vh;
+    margin-bottom: 20px;
+}
+
+
+
+.descripcion-titulo{
+
+    border-bottom: 1px solid #fc5c1b;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    /* border-top-right-radius: 10px; */
+}
+.descripcion-titulo h4{
+    
+    width: 40%;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-top-left-radius: 10px;
+}
+.descripcion-detalles, .contenedor-subtotal, .contenedor-total{
+    margin-top: 10px;
+}
+
+.carrito-condiciones{
+    margin: 15px;
+}
+.carrito-delivery{
+
+    border-bottom: 1px solid #fc5c1b;
+    margin-left: 5px;
+    margin-right: 5px;
+    
+}
+.form-check{
+    margin: 15px !important;
+}
+#emailHelp{
+    font-size: 12px;
+    color: #fc5c1b;
+}
+/* Tablas  */
+.contenedor-subtotal{
+    display: flex;
+    flex-direction: row;
+  }
+.subtotal{
+    /* display: inline; */
+    width: 79%;
+    margin-left: 1%;
+}
+.cantidad-subtotal{
+    /* display: inline; */
+    width: 19%;
+    margin-right: 1%;
+    color: #fc5c1b;
+    /* text-align: end; */
+}
+.contenedor-total{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #fc5c1b;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+.total{
+    /* display: inline; */
+    width: 79%;
+    margin-left: 1%;
+    margin-bottom: 10px;
+    
+}
+.cantidad-total{
+    /* display: inline; */
+    width: 19%;
+    margin-right: 1%;
+    color: #fc5c1b;
+    /* text-align: end; */
+}
+/* Botones  */
+.carrito-botones{
+    /* width: 50%; */
+    margin: 15px;
+    /* height: 32%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* background: #fc5c1b; */
+}
+.finalizar-pago{
+    margin-bottom: 20px;
+    background: #084d86 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    border: none !important;
+    width: 100%;
+    margin-top: 5px;
+    /* margin-bottom: 5px; */
+    
+}
+
+.mas-productos{
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.4) !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;    
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+}

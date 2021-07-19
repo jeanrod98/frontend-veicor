@@ -1,8 +1,9 @@
 // import logo from '../../public/logohpng2.png';
 import {Link, withRouter} from 'react-router-dom';
 import {useState} from 'react';
-import css from '../css/app.css'
-import estilosNav from '../css/estilos-navbar.css'
+import '../css/app.css'
+import '../css/estilos-navbar.css'
+import logohpng2 from '../assets/logos/logohpng2.png'
 
 function Header(props) {
 
@@ -31,7 +32,7 @@ const cerrar_sesion = e =>{
       <div className= "Header">
        
         <nav class="navbar navbar-expand-lg navbar-light ">
-          <a class="navbar-brand" href="/"><img class="navbar-brand" src="/img/logos/logohpng2.png" className="logohpng2"/></a>
+          <a class="navbar-brand" href="/"><img class="navbar-brand" src={logohpng2} className="logohpng2"/></a>
           <button class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -51,7 +52,7 @@ const cerrar_sesion = e =>{
               
               { newEestado_sesion == 'iniciado' && <ion-icon id="icono-usuario" name="person-circle"></ion-icon>}
               { newEestado_sesion == 'iniciado' &&  <Link class="nav-link mx-3 link-usuario" to="/perfil">{usuario_nombre}</Link>}
-              { newEestado_sesion == 'iniciado' && <Link class="nav-link mx-3" id="carrito" to="/carrito"><ion-icon name="cart"></ion-icon></Link>}
+              { newEestado_sesion == 'iniciado' && <Link class="nav-link mx-3" id="carrito" to="/carrito"><ion-icon name="cart-outline"></ion-icon></Link>}
               { newEestado_sesion == 'iniciado' && <button id="cerrar_sesion" class="nav-link mx-3" onClick={cerrar_sesion} ><ion-icon id="cerrar-sesion-icono" name="log-out"></ion-icon></button>}
               
             

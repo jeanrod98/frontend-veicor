@@ -1,6 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
-import css from '../css/loguin-registro.css'
+import '../css/loguin-registro.css'
+import logopng2 from '../assets/logos/logopng2.png'
 
 function Registro() {
     return (
@@ -11,16 +12,16 @@ function Registro() {
 
                 
                 <div className="imagen-registro">
-                    <div className="text-center">
+                    <div className="descripcion-regis text-center">
 
-                    <img src="/img/logos/logopng2.png" />                   
-         
-                    <h5>Contamos con variedad de productos para 
-                    el hogar a los mejores precios del mercado.</h5>
-                    <h6>Productos de temporada</h6>
-                    <h6>Cristalería</h6>
-                    <h6>Juguetería</h6>
-                    <h6>Plasticos y Desechables</h6>
+                        <img src= {logopng2} />                   
+            
+                        <h4>Contamos con variedad de productos para 
+                        el hogar a los mejores precios del mercado.</h4>
+                        <h6>Productos de temporada</h6>
+                        <h6>Cristalería</h6>
+                        <h6>Juguetería</h6>
+                        <h6>Plasticos y Desechables</h6>
                     </div>
                 </div>
 

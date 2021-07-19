@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
-import css from '../css/loguin-registro.css'
+import '../css/loguin-registro.css'
+import logo2 from '../assets/logos/logo2.jpg'
 
 import Header from './Header';
 import Footer from './Footer';
@@ -59,7 +60,7 @@ function Loguin(props) {
             </div>
 
            <div className="logo-loguin">
-               <img src="/img/logos/logo2.jpg" />
+               <img src={logo2}/>
 
            </div>
        </div>

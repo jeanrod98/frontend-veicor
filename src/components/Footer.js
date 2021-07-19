@@ -1,5 +1,8 @@
 import {Link} from 'react-router-dom';
-import css from '../css/app.css'
+import '../css/app.css'
+import fb from '../assets/logos-redes/facebook.png'
+import tw from '../assets/logos-redes/tw.png'
+import ig from '../assets/logos-redes/instagram.png'
 
 function Footer() {
     return (
@@ -8,9 +11,9 @@ function Footer() {
         <div className="container-footer">
 
             <div className="div-footer-1">
-                <a href="https://www.facebook.com/AlmacenVeicor/"><img src="/img/logos-redes/facebook.png" className="redes-sociales mx-2"/></a>
-                <a href="https://www.instagram.com/almacenveicor/"><img src="/img/logos-redes/instagram.png" className="redes-sociales mx-4"/></a>
-                <a href="#"><img src="/img/logos-redes/tw.png" className="redes-sociales mx-2"/></a>
+                <a href="https://www.facebook.com/AlmacenVeicor/"><img src={fb} className="redes-sociales mx-2"/></a>
+                <a href="https://www.instagram.com/almacenveicor/"><img src={ig} className="redes-sociales mx-4"/></a>
+                <a href="#"><img src={tw} className="redes-sociales mx-2"/></a>
                 <div className="copy">Copyright &copy; 2021 almacenes VEICOR</div>
 
             </div>

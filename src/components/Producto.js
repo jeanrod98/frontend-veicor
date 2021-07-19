@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import css from "../css/producto.css";
 import clienteAxios from "../config/axios";
+import Servicios from './Servicios'
 
 function Producto(props) {
   // console.log(props.producto);
@@ -113,76 +114,7 @@ function Producto(props) {
         </div>
 
         {/* Iconos */}
-        <div className="container inicio-iconos">
-          <div className="div-icono-1">
-            <img
-              className="svg-camion"
-              src="/img/svg/truck.svg"
-              width="50"
-              height="50"
-            />
-            {/* color #787575 */}
-            <p>
-              ENTREGAS <br /> A <br /> DOMICILIO
-            </p>
-          </div>
-          <div className="div-icono-2">
-            <img
-              className="svg-camion"
-              src="/img/svg/money.svg"
-              width="50"
-              height="50"
-            />
-            <p>
-              CAMBIOS <br /> Y <br />
-              DEVOLUCIONES
-            </p>
-          </div>
-          <div className="div-icono-3">
-            <img
-              className="svg-camion"
-              src="/img/svg/tienda.svg"
-              width="50"
-              height="50"
-            />
-            <p>
-              COMPRA ONLINE <br /> Y <br /> RETIRA EN TIENDA
-            </p>
-          </div>
-          <div className="div-icono-4">
-            <img
-              className="svg-camion"
-              src="/img/svg/bolsa-de-la-compra.svg"
-              width="50"
-              height="50"
-            />
-            <p>
-              COMPRA FÁCIL <br /> Y <br /> SEGURA
-            </p>
-          </div>
-          <div className="div-icono-5">
-            <img
-              className="svg-camion"
-              src="/img/svg/garantia.svg"
-              width="50"
-              height="50"
-            />
-            <p>
-              GARANTIA <br /> EN <br /> PRODUCTOS
-            </p>
-          </div>
-          <div className="div-icono-6">
-            <img
-              className="svg-camion"
-              src="/img/svg/tarjeta-de-debito.svg"
-              width="50"
-              height="50"
-            />
-            <p>
-              ACEPTAMOS TODAS <br /> LAS <br /> TARJETAS
-            </p>
-          </div>
-        </div>
+        <Servicios/>
       </div>
       <Footer />
     </div>

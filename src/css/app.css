@@ -68,7 +68,7 @@ html{
 }
 #icono-usuario{
     font-size: 22px !important;
-    color: #d6570d;    
+    color: #000000;    
     padding: 0 !important;
     margin: auto;
     text-align: left !important;
@@ -80,6 +80,10 @@ html{
 }
 #carrito{
     font-size: 32px !important;
+
+}
+#carrito ion-icon{
+    color: #000;
 }
 #cerrar_sesion{
    

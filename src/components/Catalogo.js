@@ -5,6 +5,12 @@ import Footer from './Footer';
 import '../css/catalogo.css';
 import Swal from 'sweetalert2';
 
+// Imagenes Carousel 
+import cat_1 from '../assets/carousel/cat_1.jpg';
+import cat_2 from '../assets/carousel/cat_2.jpg';
+import cat_3 from '../assets/carousel/cat_3.jpg';
+import cat_4 from '../assets/carousel/cat_40.jpg';
+
 // Carousel
 import {
   Carousel,
@@ -19,15 +25,15 @@ import Producto from './Producto';
 
 const items = [
   {
-    src: './img/carousel/cat_1.jpg',
+    src: cat_1,
 
   },
   {
-    src: './img/carousel/cat_2.jpg',
+    src: cat_2,
 
   },
   {
-    src: './img/carousel/cat_3.jpg',
+    src: cat_3,
 
   }
 ];
@@ -153,7 +159,7 @@ function Catalogo({productos}) {
                 </div>
 
                 <div className="publicidad-img">
-                    <img src="/img/carousel/cat_40.jpg"></img>
+                    <img src={cat_4}></img>
                 </div>
             
                 
@@ -168,7 +174,7 @@ function Catalogo({productos}) {
                         <ion-icon name="close-circle-outline"></ion-icon>
                     </div>
                 </div>}
-                <div className="productos-existen">
+                {productos.length > 0 &&<div className="productos-existen">
                     {/* Aqui van los productos  */}
                     {/* <div className="list-group"> */}
                     <div className="recomendados">
@@ -205,20 +211,14 @@ function Catalogo({productos}) {
                               <button className="btn" onClick={addLocalStorage}>Agregar al Carrito</button>
                             </div>
                             
-
-
-
-                          
                           </div>
-                          
-                          
-                        
+                    
                       </div>
 
-                      ))}
+                    ))}
 
                     {/* </div> */}
-                </div>
+                </div>}
             </div>
         </div>
         <Footer/>
