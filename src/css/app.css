@@ -85,6 +85,9 @@ html{
 #carrito ion-icon{
     color: #000;
 }
+#carrito ion-icon:hover{
+    color: #d6570d;
+}
 #cerrar_sesion{
    
     background: none;

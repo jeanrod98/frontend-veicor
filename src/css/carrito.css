@@ -4,10 +4,21 @@
     
 }
 /* Posiciones  */
-.carrito-productos{
+/* .carrito-productos{
     display: flex;
 
     align-items: center;
+} */
+.detalle-productos{
+
+    min-height: 45vh;
+}
+.productos-noexisten{
+    color: rgba(0,0,0,0.4);
+}
+.productos-noexisten ion-icon{
+    font-size: 100px;
+    color: rgba(0,0,0,0.4);
 }
 
 .carrito-detalle{
@@ -49,7 +60,7 @@
 }
 
 .carrito-logo ion-icon{
-    font-size: 128px !important;
+    font-size: 100px !important;
     color: #fc5c1b;
 }
 
@@ -60,6 +71,8 @@
     height: auto;
     min-height: 55vh;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -138,7 +151,25 @@
     color: #fc5c1b;
     /* text-align: end; */
 }
+.detalle-btnVaciar{
+    text-align: center;
+    
+}
+
 /* Botones  */
+.vaciar-carrito{
+    margin-bottom: 20px;
+    background: #860808 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    border: none !important;
+    width: 50%;
+    margin-top: 5px;
+}
+.vaciar-carrito:hover{
+    background: #a50e0e !important;
+}
 .carrito-botones{
     /* width: 50%; */
     margin: 15px;
@@ -160,6 +191,9 @@
     /* margin-bottom: 5px; */
     
 }
+.finalizar-pago:hover{
+    background: #0a61a8 !important;
+}
 
 .mas-productos{
     width: 100%;
@@ -168,4 +202,68 @@
     font-weight: 700 !important;    
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
+}
+/* Modal Transaccion  */
+
+.seccion-modal-tarjeta-datos{
+    display: flex;
+    flex-direction: row;
+    
+}
+.modal-form-group{
+    margin-top: 20px;
+    border-style: none;
+}
+.modal-title-pago{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+}
+.modal-title-pago h4{
+    margin-left: 10px;
+    color: #fc5c1b;
+    text-align: center;
+}
+.btn-modal-pago{
+    background: #fc5c1b !important;
+    border: 1px solid #f05416 !important;
+}
+.btn-modal-pago:hover{
+    background: #ff6d33 !important;
+    border: 1px solid #f05416 !important;
+}
+
+@media screen and (max-width: 800px) {
+    .carrito-productos    {
+        /* display: flex; */
+        flex-direction: column;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .carrito-descripcion{
+        width: 90%;
+        
+    }
+    .carrito-detalle{
+        width: 90%;
+    }
+    .carrito-logo h1{
+        border-left: 2px solid #000000;
+    
+        color: #000000;
+        margin-left: 10px;
+        padding-left: 10px;
+        margin-bottom: 0;
+        font-size: 24px;
+    }
+    .carrito-logo div{
+        border-left: 2px solid #000000;
+        margin-left: 10px;
+      
+    
+    }
+    .carrito-logo ion-icon{
+        font-size: 64px !important;
+        color: #fc5c1b;
+    }
 }
