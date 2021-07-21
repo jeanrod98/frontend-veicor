@@ -8,6 +8,8 @@ import Loguin from "./components/Loguin";
 import Registro from "./components/Registro";
 import Catalogo from "./components/Catalogo";
 import Producto from "./components/Producto";
+import PerfilCliente from "./components/PerfilCliente";
+import PerfilAdmin from "./components/PerfilAdmin";
 
 function App() {
   //State de la aoo
@@ -60,6 +62,11 @@ function App() {
           path="/carrito"
           component={() => <Carrito/>}
         />
+        <Route exact path="/perfil-usuario" component={PerfilCliente} />
+        <Route exact path="/perfil-admin" component={PerfilAdmin} />
+
+
+
       </Switch>
     </Router>
   );

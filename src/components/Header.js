@@ -7,25 +7,36 @@ import logohpng2 from '../assets/logos/logohpng2.png'
 
 function Header(props) {
 
-// preguntamos por el estado 
-const estado_sesion = localStorage.getItem('estado');
-// Si no existe lo creamos 
-if (estado_sesion == null){
-  
-  localStorage.setItem('estado', 'no iniciado');
-    
-}
-// traemos los nuevos datos 
-const newEestado_sesion = localStorage.getItem('estado');
+let ruta = '/perfil-usuario'
 
-//constante para mostrar nombre de usuario (provicional)
-const usuario_nombre = 'Jean Rodriguez';
+
+// traemos los nuevos datos 
+const objetoUsuario = localStorage.getItem('usuario');
+const newEestado_sesion = JSON.parse(objetoUsuario);
+
 
 // evento para cerrar sesion 
 const cerrar_sesion = e =>{
  
-  localStorage.removeItem('estado');
+  localStorage.removeItem('usuario');
   props.history.push('/');
+}
+
+
+
+// enlace deshabilitado 
+const desabilitado = e =>{
+
+  
+  if (newEestado_sesion != null){
+    if (newEestado_sesion.tipo == 'Administrador'){
+      props.history.push('/perfil-admin');
+      // e.preventDefault()
+    }else if (newEestado_sesion.tipo == 'Usuario'){
+      props.history.push('/perfil-usuario');
+    }
+  
+  }
 }
 
     return (
@@ -39,21 +50,26 @@ const cerrar_sesion = e =>{
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               {/* validamos el estado de la sesion para mostrar opciones de navegacion  */}
-              { newEestado_sesion == 'no iniciado'  && <Link class="nav-link mx-3" to="/">Inicio</Link>} 
+              { newEestado_sesion == null  && <Link class="nav-link mx-3" to="/">Inicio</Link>} 
                                 
-              { newEestado_sesion == 'no iniciado' &&  <Link class="nav-link mx-3" to="catalogo">Catálogo</Link>}
+              { newEestado_sesion == null &&  <Link class="nav-link mx-3" to="catalogo">Catálogo</Link>}
                                   
-              { newEestado_sesion == 'no iniciado' && <Link class="nav-link mx-3" to="loguin">Iniciar Sesión</Link>}
+              { newEestado_sesion == null && <Link class="nav-link mx-3" to="loguin">Iniciar Sesión</Link>}
                                         
-              { newEestado_sesion == 'no iniciado' && <Link class="nav-link mx-3" to="registro">Registrarse</Link>}
+              { newEestado_sesion == null && <Link class="nav-link mx-3" to="registro">Registrarse</Link>}
 
-              { newEestado_sesion == 'iniciado' && <Link class="nav-link mx-3" to="/">Inicio</Link>}
-              { newEestado_sesion == 'iniciado' && <Link class="nav-link mx-3" to="/catalogo">Catálogo</Link>}
+
+              { newEestado_sesion != null && <Link class="nav-link mx-3" to="/">Inicio</Link>}
+              { newEestado_sesion != null && <Link class="nav-link mx-3" to="/catalogo">Catálogo</Link>}              
+              { newEestado_sesion != null && <ion-icon id="icono-usuario" name="person-circle-outline"></ion-icon>}
+
+              { newEestado_sesion != null && 
               
-              { newEestado_sesion == 'iniciado' && <ion-icon id="icono-usuario" name="person-circle"></ion-icon>}
-              { newEestado_sesion == 'iniciado' &&  <Link class="nav-link mx-3 link-usuario" to="/perfil">{usuario_nombre}</Link>}
-              { newEestado_sesion == 'iniciado' && <Link class="nav-link mx-3" id="carrito" to="/carrito"><ion-icon name="cart-outline"></ion-icon></Link>}
-              { newEestado_sesion == 'iniciado' && <button id="cerrar_sesion" class="nav-link mx-3" onClick={cerrar_sesion} ><ion-icon id="cerrar-sesion-icono" name="log-out"></ion-icon></button>}
+                <div className="contenedor-navUsuario"> <Link onClick={desabilitado} className="nav-link link-usuario" >{newEestado_sesion.usuario}</Link><span className="usuario-span">{newEestado_sesion.tipo}</span></div>
+              }
+
+              { newEestado_sesion != null && <Link class="nav-link mx-3" id="carrito" to="/carrito"><ion-icon name="cart-outline"></ion-icon></Link>}
+              { newEestado_sesion != null && <button id="cerrar_sesion" class="nav-link mx-3" onClick={cerrar_sesion} ><ion-icon id="cerrar-sesion-icono" name="log-out"></ion-icon></button>}
               
             
             </div>

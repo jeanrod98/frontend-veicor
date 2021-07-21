@@ -62,6 +62,7 @@ html{
 }
 .navbar-nav a{
     margin: auto !important;
+    
     margin-left: 15px !important;
     margin-right: 15px !important;
     font-size: 18px !important;
@@ -75,9 +76,35 @@ html{
 }
 .link-usuario{
     padding: 0 !important;
-    margin: auto !important;
+    /* cursor: no-drop !important; */
+    /* margin: auto !important; */
     
 }
+.contenedor-navUsuario a{
+    margin-bottom: 0 !important;
+}
+.contenedor-navUsuario{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+    /* background: chartreuse; */
+    /* text-align: center; */
+    
+    /* align-items: center; */
+    
+}
+.usuario-span{
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    font-weight: bold;
+
+    
+}
+
 #carrito{
     font-size: 32px !important;
 

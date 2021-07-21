@@ -1,0 +1,100 @@
+/* perfil de administrador  */
+
+.PerfilAdmin{
+    height: 100vh;
+    background: #e4e3e3 !important;
+}
+.container{
+    min-height: 100vh;
+    margin-top: 30px;
+}
+.opciones-admin{
+    margin-top: 30px;
+    /* border: 1px solid #fc5c1b; */
+    border: 1px solid #2b2727;
+    background: rgb(0,0,0);
+    background: linear-gradient(10deg, rgba(0,0,0,1) 0%, rgba(252,92,27,1) 72%);
+
+}
+.perfil-titulo{
+    background: #fc5c1b !important;
+    border-bottom: 1px solid #2b2727;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.perfil-titulo h3{
+   color: #fff;
+   font-weight: bold;
+    
+}
+.opciones{
+    display: flex;
+    flex-direction: row;
+  flex-wrap: wrap;
+    min-height: 60vh;
+    
+}
+.opciones-productos{
+    margin: auto;
+}
+
+.img-producto{
+    font-size: 124px !important;
+}
+.opciones-usuarios{
+    margin: auto;
+}
+.img-usuario{
+    font-size: 124px !important;
+}
+.opciones-facturas{
+    margin: auto;
+}
+.img-factura{
+    font-size: 124px !important;
+}
+
+.cards{
+    /* border: 1px solid #fc5c1b; */
+    width: 18rem;
+}
+.card-body{
+    background: rgb(247, 214, 68);
+}
+.cards-title{
+    font-weight: bold;
+}
+.btn-adminOpciones{
+    background: #fc5c1b;
+    border: #fc5c1b;
+}
+.btn-adminOpciones:hover{
+    background: #020202;
+    border: #000000;
+}
+
+@media screen and (max-width: 800px) {
+    .opciones-admin{
+        margin-bottom: 30px;
+    }
+    .opciones{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .cards{
+        /* border: 1px solid #fc5c1b; */
+        width: 18rem !important;
+
+        
+    }
+    .opciones-usuarios{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    
+}

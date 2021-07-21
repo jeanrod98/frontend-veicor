@@ -8,13 +8,16 @@ import Footer from './Footer';
 
 function Loguin(props) {
     
-
+const objUsuario = {
+    usuario: 'Jean Rodriguez',
+    tipo: 'Administrador',
+}
     
     // Funcion para loguear el usuario 
     const loguin = e =>{
         // mandamos el estado del usuario si existe al storage 
-        localStorage.removeItem('estado');
-        localStorage.setItem('estado','iniciado')
+        localStorage.removeItem('usuario');
+        localStorage.setItem('usuario', JSON.stringify(objUsuario))
         // redireccionamos al inicio pero logueado 
         props.history.push('/');
 
