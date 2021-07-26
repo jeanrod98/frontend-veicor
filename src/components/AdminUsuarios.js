@@ -10,51 +10,54 @@ function AdminUsuarios() {
   return (
     <div className="AdminUsuarios">
       <Header />
-      <div className="container">
+      <div className="container ">
         {/* Seccion de titulo y busqueda   */}
         <div>
             <Link to="/perfil-admin" className="btn-atras">
                 <ion-icon name="arrow-back-circle-outline"></ion-icon>
             </Link>
         </div>
-        <div className="usuarios-busqueda">
-          <div className="tarjeta-usuario">
-            <Card className="cards text-center">
-              <Card.Body className="cards-body">
-                <Card.Title className="cards-title">USUARIOS</Card.Title>
-              </Card.Body>
-                <div className="img-usuario">
-                  <ion-icon name="person-add-outline"></ion-icon>
-                </div>
-            </Card>
-          </div>
+        <div className="container-adminUsuarios">
 
-          <div className="buscador-addUsers">
-            {/* <div className="buscador"> */}
-
-            <div class="buscador-usuarios input-group">
-              <input
-                type="search"
-                class="search-input-usuarios form-control rounded"
-                placeholder="ID del Usuario..."
-                aria-label="Search"
-                aria-describedby="search-addon"
-              />
-              <button id="btn-search-usuarios" type="button" class="btn">
-                <ion-icon name="search-outline"></ion-icon>
-              </button>
+          
+          <div className="usuarios-busqueda">
+            <div className="tarjeta-usuario">
+              <Card className="cards text-center">
+                <Card.Body className="cards-body">
+                  <Card.Title className="cards-title">USUARIOS</Card.Title>
+                </Card.Body>
+                  <div className="img-usuario">
+                    <ion-icon name="person-add-outline"></ion-icon>
+                  </div>
+              </Card>
             </div>
 
-            
-            <div className="agregarUsuarios">
-              <Button className="btn-agregarUsuarios" >
-                Crear Usuarios
-              </Button>
+            <div className="buscador-addUsers">
+              {/* <div className="buscador"> */}
+
+              <div class="buscador-usuarios input-group">
+                <input
+                  type="search"
+                  class="search-input-usuarios form-control rounded"
+                  placeholder="ID del Usuario..."
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                />
+                <button id="btn-search-usuarios" type="button" class="btn">
+                  <ion-icon name="search-outline"></ion-icon>
+                </button>
+              </div>
+
+              
+              <div className="agregarUsuarios">
+                <Button className="btn-agregarUsuarios" >
+                  Crear Usuarios
+                </Button>
+              </div>
+              {/* </div> */}
             </div>
-            {/* </div> */}
           </div>
         </div>
-
         {/* Seccion de los usuarios  */}
         <div className="usuarios-listado">
           <div className="titulo">
@@ -111,6 +114,7 @@ function AdminUsuarios() {
             </tbody>
           </Table>
         </div>
+        
       </div>
       <Footer />
     </div>

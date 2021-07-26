@@ -4,8 +4,21 @@
     background: #e4e3e3;
 
 }
+.container-adminProductos{
+    background: rgb(0,0,0);
+    background: linear-gradient(10deg, rgba(0,0,0,1) 0%, rgba(252,92,27,1) 75%);
+    /* border-radius: 5px; */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    padding-bottom: 40px;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
 .productos-busqueda{
     /* background: #fff; */
+    padding-top: 40px;
     display: flex;
     flex-direction: row;
     /* align-items: center; */
@@ -37,31 +50,38 @@
 }
 .search-input-productos{
     width: 50% !important;
-    height: 40px;
+    height: 41px;
     border-radius: 0 !important;
+    border: 1px solid #777474;
 }
 #btn-search-productos{
-    background: #999696;
-    height: 40px;
+    border: 1px solid #777474;
+    background: #e7cf62;
+    height: 41px;
     border-radius: 0 !important;
 }
 #btn-search-productos:hover{
-    background: #b6b2b2;
+    background: #eed875;
 }
 .btn-agregarProductos{
     background: #fc5c1b !important;
     border: 1px solid #fc5c1b;
 }
 .btn-agregarProductos:hover{
-    background: #ff6a2f !important;
+    background: #0000 !important;
     border: 1px solid #fc5c1b;
 }
 .productos-listado{
     min-height: 30rem;
     background: #fff;
-    margin-top: 40px;
+    /* margin-top: 40px; */
     margin-bottom: 20px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
 }
 /* Tabla de productos  */
 .tabla-productos{
@@ -76,7 +96,7 @@
     
 }
 .titulo{
-    border-bottom: 1px solid #fc5c1b;
+    border-bottom: 2px solid #fc5c1b;
     padding: 0 !important;
     
 }
@@ -125,8 +145,21 @@ tbody{
     background: #e4e3e3;
 
 }
+.container-adminUsuarios{
+    background: rgb(0,0,0);
+    background: linear-gradient(10deg, rgba(0,0,0,1) 0%, rgba(252,92,27,1) 75%);
+    /* border-radius: 5px; */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 
+    padding-bottom: 40px;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
 .usuarios-busqueda{
+    padding-top: 40px;
+    /* background: #999696; */
     /* background: #fff; */
     display: flex;
     flex-direction: row;
@@ -159,16 +192,19 @@ tbody{
 }
 .search-input-usuarios{
     width: 50% !important;
-    height: 40px;
+    height: 41px;
     border-radius: 0 !important;
+    border: 1px solid #777474;
 }
 #btn-search-usuarios{
-    background: #999696;
-    height: 40px;
+    border: 1px solid #777474;
+    background: #e7cf62;
+    height: 41px;
     border-radius: 0 !important;
 }
 #btn-search-usuarios:hover{
-    background: #b6b2b2;
+    background: #eed875;
+
 }
 .btn-agregarUsuarios{
     background: #fc5c1b !important;
@@ -176,15 +212,20 @@ tbody{
     
 }
 .btn-agregarUsuarios:hover{
-    background: #ff6a2f !important;
+    background: #0000 !important;
     border: 1px solid #fc5c1b;
 }
 .usuarios-listado{
     min-height: 30rem;
     background: #fff;
-    margin-top: 40px;
+    /* margin-top: 40px; */
     margin-bottom: 20px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
 }
 
 /* Tabla de productos  */
@@ -260,4 +301,6 @@ tbody{
         margin-bottom: 20px;
         
     }
+    /* Facturas  */
+
 }

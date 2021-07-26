@@ -18,38 +18,41 @@ function AdminProductos() {
                         <ion-icon name="arrow-back-circle-outline"></ion-icon>
                     </Link>
                 </div>
-                <div className="productos-busqueda">
+                <div className="container-adminProductos">
 
-                    <div className="tarjeta-producto">
-                        <Card className='cards text-center'>
-                            
-                            <Card.Body className='cards-body'>
-                                <Card.Title className='cards-title'>PRODUCTOS</Card.Title>
+                    <div className="productos-busqueda">
+
+                        <div className="tarjeta-producto">
+                            <Card className='cards text-center'>
                                 
-                            </Card.Body>
-                            <div className="img-producto"><ion-icon name="storefront-outline"></ion-icon></div>
-                        </Card>
+                                <Card.Body className='cards-body'>
+                                    <Card.Title className='cards-title'>PRODUCTOS</Card.Title>
+                                    
+                                </Card.Body>
+                                <div className="img-producto"><ion-icon name="storefront-outline"></ion-icon></div>
+                            </Card>
 
-                    </div>
-
-                    <div className="buscador-addProducts">
-
-                    {/* <div className="buscador"> */}
-                       
-                            <div class="buscador-productos input-group">
-                                <input type="search" class="search-input-productos form-control rounded" placeholder="Código de Producto..." aria-label="Search"
-                                    aria-describedby="search-addon" />
-                                <button id="btn-search-productos" type="button" class="btn"><ion-icon name="search-outline"></ion-icon></button>
-                            </div>
-
-                    {/* </div> */}
-
-                    {/* <div className="agregar-productos"> */}
-                        <div className="agregarProducto">
-                            <Button className="btn-agregarProductos">Agregar Productos</Button>
                         </div>
-                    {/* </div> */}
 
+                        <div className="buscador-addProducts">
+
+                        {/* <div className="buscador"> */}
+                        
+                                <div class="buscador-productos input-group">
+                                    <input type="search" class="search-input-productos form-control rounded" placeholder="Código de Producto..." aria-label="Search"
+                                        aria-describedby="search-addon" />
+                                    <button id="btn-search-productos" type="button" class="btn"><ion-icon name="search-outline"></ion-icon></button>
+                                </div>
+
+                        {/* </div> */}
+
+                        {/* <div className="agregar-productos"> */}
+                            <div className="agregarProducto">
+                                <Button className="btn-agregarProductos">Agregar Productos</Button>
+                            </div>
+                        {/* </div> */}
+
+                        </div>
                     </div>
                 </div>
 
@@ -111,6 +114,7 @@ function AdminProductos() {
                     </tbody>
                     </Table>
                 </div>
+                
 
             
             </div>
