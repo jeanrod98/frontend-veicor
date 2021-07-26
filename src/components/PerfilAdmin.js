@@ -1,8 +1,9 @@
-import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import '../css/perfiles.css'
-import {Card, Button} from 'react-bootstrap'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import '../css/perfiles.css';
+import {Card} from 'react-bootstrap';
 
 function PerfilAdmin() {
 
@@ -10,7 +11,7 @@ function PerfilAdmin() {
     return (
         <div className="PerfilAdmin">
             <Header/>
-            <div className="container">
+            <div className="container contenedor-perfilAdmin">
                 <h2>Bienvenido Administrador</h2>
 
 
@@ -30,7 +31,7 @@ function PerfilAdmin() {
                                     <Card.Text >
                                         Ingresar - Consultar - Actualizar - Eliminar
                                     </Card.Text>
-                                    <Button className="btn btn-adminOpciones">Administrar Productos</Button>
+                                    <Link to="/perfil-admin/productos" className="btn btn-adminOpciones">Administrar Productos</Link>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -45,7 +46,7 @@ function PerfilAdmin() {
                                     <Card.Text >
                                         Ingresar - Consultar - Actualizar - Eliminar
                                     </Card.Text>
-                                    <Button className="btn btn-adminOpciones">Administrar Usuarios</Button>
+                                    <Link to="/perfil-admin/usuarios" className="btn btn-adminOpciones">Administrar Usuarios</Link>
                                 </Card.Body>
                             </Card>
 
@@ -59,7 +60,7 @@ function PerfilAdmin() {
                                     <Card.Text >
                                         Facturas pendientes de entrega por DELIVERY
                                     </Card.Text>
-                                    <Button className="btn btn-adminOpciones">Revisar Facturas</Button>
+                                    <Link to="/perfil-admin/facturas" className="btn btn-adminOpciones">Revisar Facturas</Link>
                                 </Card.Body>
                             </Card>
 

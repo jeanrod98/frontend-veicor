@@ -6,6 +6,7 @@ import bolsaCompra from '../assets/svg/bolsa-de-la-compra.svg'
 import garantia from '../assets/svg/garantia.svg'
 import tarjetaDebito from '../assets/svg/tarjeta-de-debito.svg'
 
+
 function Servicios() {
     return (
         <div>

@@ -11,6 +11,10 @@ import Producto from "./components/Producto";
 import PerfilCliente from "./components/PerfilCliente";
 import PerfilAdmin from "./components/PerfilAdmin";
 
+import AdminProductos from "./components/AdminProductos";
+import AdminUsuarios from "./components/AdminUsuarios";
+import AdminFacturas from "./components/AdminFacturas";
+
 function App() {
   //State de la aoo
   const [productos, guardarProductos] = useState([]);
@@ -65,7 +69,9 @@ function App() {
         <Route exact path="/perfil-usuario" component={PerfilCliente} />
         <Route exact path="/perfil-admin" component={PerfilAdmin} />
 
-
+        <Route exact path="/perfil-admin/productos" component={AdminProductos} />
+        <Route exact path="/perfil-admin/usuarios" component={AdminUsuarios} />
+        <Route exact path="/perfil-admin/facturas" component={AdminFacturas} />
 
       </Switch>
     </Router>

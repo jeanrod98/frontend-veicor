@@ -1,0 +1,263 @@
+/* EStilos para CRUD de Productos  */
+.AdminProductos{
+    height: 100vh;
+    background: #e4e3e3;
+
+}
+.productos-busqueda{
+    /* background: #fff; */
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    /* align-content: center;
+    text-align: center;
+    justify-content: center; */
+}
+
+.buscador-addProducts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 60px;
+    /* align-content: center; */
+    /* width: 100%; */
+    /* display: flex;
+    flex-direction: column; */
+    
+
+}
+
+.agregarProducto{
+    /* margin: auto; */
+    margin-top: 30px;
+}
+.search-input-productos{
+    width: 50% !important;
+    height: 40px;
+    border-radius: 0 !important;
+}
+#btn-search-productos{
+    background: #999696;
+    height: 40px;
+    border-radius: 0 !important;
+}
+#btn-search-productos:hover{
+    background: #b6b2b2;
+}
+.btn-agregarProductos{
+    background: #fc5c1b !important;
+    border: 1px solid #fc5c1b;
+}
+.btn-agregarProductos:hover{
+    background: #ff6a2f !important;
+    border: 1px solid #fc5c1b;
+}
+.productos-listado{
+    min-height: 30rem;
+    background: #fff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+/* Tabla de productos  */
+.tabla-productos{
+    width: 96% !important;
+    margin-left: 2%;
+    margin-bottom: 2%;
+   
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* align-content: center; */
+ 
+    
+}
+.titulo{
+    border-bottom: 1px solid #fc5c1b;
+    padding: 0 !important;
+    
+}
+.titulo h2{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background: #fc5c1b;
+    width: 400px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+tbody{
+    font-weight: 500;
+}
+.opciones-tabla{
+    display: flex;     
+    flex-direction: row;
+    min-height: 100px;
+    align-items: center;
+   
+
+}
+.opciones-tabla button{
+    width: 70px;
+    height: 35px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.btn-atras{
+    font-size: 64px !important;
+    color: #fc5c1b;
+}
+.btn-atras:hover{
+    /* font-size: 64px; */
+    color: #000000;
+    /* cursor: pointer; */
+}
+
+
+/* Estilos para Crud de usuarios */
+.AdminUsuarios{
+    height: 100vh;
+    background: #e4e3e3;
+
+}
+
+.usuarios-busqueda{
+    /* background: #fff; */
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    /* align-content: center;
+    text-align: center;
+    justify-content: center; */
+}
+
+.buscador-addUsers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 60px;
+    /* align-content: center; */
+    /* width: 100%; */
+    /* display: flex;
+    flex-direction: column; */
+    
+
+}
+
+.agregarUsuarios{
+    /* margin: auto; */
+    margin-top: 30px;
+}
+.search-input-usuarios{
+    width: 50% !important;
+    height: 40px;
+    border-radius: 0 !important;
+}
+#btn-search-usuarios{
+    background: #999696;
+    height: 40px;
+    border-radius: 0 !important;
+}
+#btn-search-usuarios:hover{
+    background: #b6b2b2;
+}
+.btn-agregarUsuarios{
+    background: #fc5c1b !important;
+    border: 1px solid #fc5c1b;
+    
+}
+.btn-agregarUsuarios:hover{
+    background: #ff6a2f !important;
+    border: 1px solid #fc5c1b;
+}
+.usuarios-listado{
+    min-height: 30rem;
+    background: #fff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Tabla de productos  */
+.tabla-usuarios{
+    width: 96% !important;
+    margin-left: 2%;
+    margin-bottom: 2%;
+   
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* align-content: center; */
+ 
+    
+}
+
+.opciones-tabla-usuario{
+    display: flex;     
+    flex-direction: row;
+   
+
+}
+.opciones-tabla-usuario button{
+    width: 70px;
+    height: 35px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+
+
+
+
+/* Estilos para facturas  */
+.AdminFacturas{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* responsive  */
+@media screen and (max-width: 800px) {
+    /* Productos  */
+    .productos-busqueda{
+        /* background: #fff; */
+        /* display: flex; */
+        flex-direction: column;
+        /* justify-content: center; */
+    }
+    .tarjeta-producto{
+        /* text-align: center !important; */
+        margin: auto;
+        margin-bottom: 20px;
+        
+    }
+    /* Usuarios  */
+    .usuarios-busqueda{
+        /* background: #fff; */
+        /* display: flex; */
+        flex-direction: column;
+        /* justify-content: center; */
+    }
+    .tarjeta-usuario{
+        /* text-align: center !important; */
+        margin: auto;
+        margin-bottom: 20px;
+        
+    }
+}

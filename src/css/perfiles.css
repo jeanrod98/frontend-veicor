@@ -4,7 +4,7 @@
     height: 100vh;
     background: #e4e3e3 !important;
 }
-.container{
+.contenedor-perfilAdmin{
     min-height: 100vh;
     margin-top: 30px;
 }
@@ -69,10 +69,12 @@
 .btn-adminOpciones{
     background: #fc5c1b;
     border: #fc5c1b;
+    color: #fff;
 }
 .btn-adminOpciones:hover{
     background: #020202;
     border: #000000;
+    color: #fff;
 }
 
 @media screen and (max-width: 800px) {
