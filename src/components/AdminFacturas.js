@@ -52,7 +52,7 @@ function AdminFacturas() {
     return (
         <div className="AdminFacturas">
             <Header/>
-            <div className="container">
+            <div className="container contenedor-adminFact">
                 <div className="adminFactura-titulo">
                     <ion-icon name="newspaper-outline"></ion-icon>
                     <h2>FACTURACIÓN</h2>

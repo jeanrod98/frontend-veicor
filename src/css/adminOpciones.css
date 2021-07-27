@@ -306,7 +306,7 @@ tbody{
     
 }
 .datos-cliente{
-    height: 13rem;
+    min-height: 13rem;
     /* background: #e0dede; */
 }
 
@@ -391,6 +391,8 @@ tbody{
 }
 .contenedor-producto-factura{
     min-height: 14.7rem;
+    /* overflow-y: hidden; 
+overflow-x: auto; */
 
 }
 .titulos-productos-fact{
@@ -539,5 +541,120 @@ tbody{
         
     }
     /* Facturas  */
+    .contenedor-adminFact{
+        height: 150vh;
+        /* background: #e4e3e3; */      
+    }
+    .adminFactura{
+      
+        min-height: 130vh;
+        
+    }
+    .buscador-cliente-factura{
+        width: 50%;
+        /* margin-right: 5px; */
+    }
+    .datos-cliente{
+        min-height: 26rem;
+        /* background: #e0dede; */
+    }
+   
+    .totalFactura{
+        /* display: flex; */
+        /* background: #f87f4f; */
+        flex-direction: column-reverse;
+        align-items: center;
+       
+        
+    }
+    .contenedor-totales{
+        width: 100%;
+    }
+    .contenedor-producto-factura{
+        /* width: 120%; */
+        /* background: #fc5c1b; */
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .titulos-productos-fact{
+        width: 35rem; 
+        padding-right: 5px;
+    }
+    .producto-fact{
+        width: 35rem;
+        padding-right: 5px;
+    }
+   
+    /* Tamaño de los titulos  */
+    .tl-cod {
+        /* background: rgb(247, 125, 125); */
+        width: 200px;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-cod input{
+        height: 20px;
+        font-size: 12px;
+        width: 98%;
+        
+    }
+    .tl-nom {
+        /* background: #fff; */
+        /* background: rgb(161, 34, 34); */
+        width: 200px;
+        height: 20px;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-nom input{
+        height: 20px;
+        width: 98%;
+        
+    }
+    .tl-des {
+        /* background: #fff; */
+        width: 350px;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-des input{
+        height: 20px;
+        font-size: 12px;
+        width: 98%;
+    }
+    .tl-pre {
+        /* background: #fff; */
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-pre input{
+        height: 20px;
+        font-size: 12px;
+        width: 98%;
+    }
+    .tl-can {
+        /* background: #fff; */
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-can input{
+        height: 20px;
+        font-size: 12px;
+    }
+    .in-can, .in-pre{
+        width: 50px;
+    }
+
 
 }
