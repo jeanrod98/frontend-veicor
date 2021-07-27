@@ -254,7 +254,72 @@ tbody{
     margin-left: 10px;
 }
 
+/* !Lista de facturas pendientes de entrega  */
 
+.contenedor-adminListFact{
+    min-height: 100vh;
+    
+}
+.titulo-listado-facturas{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+}
+.titulo-listado-facturas h2{
+    font-size: 36px;
+    margin-left: 12px;
+    margin-bottom: 0;
+}
+.titulo-listado-facturas ion-icon{
+    font-size: 44px;
+    color: #fc5c1b;
+}
+.listado-facturas-pendientes{
+    min-height: 50vh;
+    background: #fff;
+    border: 1px solid #fc5c1b;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    
+}
+/* card de lista factura  */
+.card-lista-fact{
+    background: #eeecec;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.card-titulo-lista{
+    color: rgba(0,0,0,0.5);
+}
+.contenido-fact{
+    display: flex !important;
+    flex-direction: row !important;
+    /* background: #e4e3e3; */
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+.select-card-lista{
+    width: 150px;
+    font-size: 12px;
+}
+.link-card-listado{
+    color: #fc5c1b;
+}
+.link-card-listado:hover{
+    color: #504d4d;
+}
+.btn-card-listado{
+    background: #fc5c1b;
+    color: #fff;
+    border: 1px solid #fc5c1b;
+}
+.btn-card-listado:hover{
+    background: #fa733d;
+    color: #fff;
+    border: 1px solid #fc5c1b;
+}
 
 
 
@@ -288,6 +353,14 @@ tbody{
         margin-bottom: 20px;
         
     }
+    /* Facturas  */
+
+    .contenido-fact{
+    display: inline !important;
     
+    }
+    .listado-facturas-pendientes{
+        margin-bottom: 20px;
+    }
 
 }
