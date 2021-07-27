@@ -14,6 +14,7 @@ import PerfilAdmin from "./components/PerfilAdmin";
 import AdminProductos from "./components/AdminProductos";
 import AdminUsuarios from "./components/AdminUsuarios";
 import AdminFacturas from "./components/AdminFacturas";
+import Facturacion from "./components/Facturacion";
 
 function App() {
   //State de la aoo
@@ -72,6 +73,7 @@ function App() {
         <Route exact path="/perfil-admin/productos" component={AdminProductos} />
         <Route exact path="/perfil-admin/usuarios" component={AdminUsuarios} />
         <Route exact path="/perfil-admin/facturas" component={AdminFacturas} />
+        <Route exact path="/facturacion" component={Facturacion} />
 
       </Switch>
     </Router>

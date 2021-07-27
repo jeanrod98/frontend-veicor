@@ -47,6 +47,12 @@ function Carrito(props) {
                       <ion-icon name="alert-circle-outline"></ion-icon>
                     </div>
                 </div>
+
+                {/* Aqui van los productos del carrito  */}
+                <div className="productos-existen-carrito">
+
+                </div>
+
             </div>
 
             <div className="detalle-btnVaciar">

@@ -3,6 +3,7 @@
     background: #e4e3e3 !important;
     
 }
+
 /* Posiciones  */
 /* .carrito-productos{
     display: flex;
@@ -11,7 +12,7 @@
 } */
 .detalle-productos{
 
-    min-height: 45vh;
+    min-height: 25rem;
 }
 .productos-noexisten{
     color: rgba(0,0,0,0.4);
@@ -35,7 +36,8 @@
         border: 1px solid #fc5c1b;
         margin: 10px;
         border-radius: 10px;
-        max-height: 55vh;
+        max-height: 30rem;
+        /* background: #c2bdbd; */
 
 }
 .carrito-logo{

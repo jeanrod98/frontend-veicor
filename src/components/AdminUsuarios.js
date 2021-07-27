@@ -23,7 +23,7 @@ function AdminUsuarios() {
           <div className="usuarios-busqueda">
             <div className="tarjeta-usuario">
               <Card className="cards text-center">
-                <Card.Body className="cards-body">
+                <Card.Body className="cards-body card-bodyAdmin">
                   <Card.Title className="cards-title">USUARIOS</Card.Title>
                 </Card.Body>
                   <div className="img-usuario">

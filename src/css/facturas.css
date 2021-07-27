@@ -1,0 +1,395 @@
+/* DISEÑO DE FACTURA  */
+.Facturacion{
+    min-height: 100vh;
+    background: #e4e3e3;
+
+}
+/* Estilos para facturas  */
+.AdminFacturas{
+    height: 100vh;
+    background: #e4e3e3;
+    
+
+}
+
+.adminFactura-titulo{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    /* color: #fc5c1b; */
+}
+.adminFactura-titulo ion-icon{
+    font-size: 44px;
+    color: #fc5c1b;
+}
+.adminFactura-titulo h2{
+    font-size: 36px;
+    margin-left: 12px;
+}
+.container-adminFactura{
+    width: 100%;
+    min-height: 44.3rem;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.adminFactura{
+    /* width: 100%;
+    background: #fff;
+    border: 1px solid #fc5c1b;
+    /* min-height: 86vh; */
+    /*border-radius: 5px;
+    display: flex;
+    flex-direction: column; */
+}
+
+.container-adminFactura{
+    /* min-height: 750px; */
+    background: #ffffff;
+    border: 1px solid #fc5c1b;
+}
+
+.headerProducto, .headerCliente{
+    background: #fc5c1b;
+    text-align: center;
+    color: #fff;
+    
+}
+.contenedor-fact{
+    /* min-height: 50rem; */
+    /* background: #e95959;       */
+}
+.datos-cliente{
+    min-height: 225px;
+    /* background: #e0dede; */
+}
+
+
+
+.subtotal-factura, .impuesto-factura, .total-factura{
+    display: flex;
+}
+.impuesto-factura{
+    border-bottom: 1px solid #fc5c1b;
+}
+.alineacion{
+    /* background: chartreuse; */
+    width: 100%;
+    text-align: center;
+}
+/* Buscar usuario por ID  */
+.contenedor-buscador-fact{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    /* text-align: center; */
+    width: 100%;
+    height: 45px;
+   
+}
+.buscador-cliente-factura{
+    width: 25%;
+    margin-right: 5px;
+}
+.search-input-cliente-fact{
+    height: 35px;
+}
+#btn-search-cliente-fact{
+    background: #fc5c1b;
+    height: 35px;
+    
+}
+#btn-search-cliente-fact:hover{
+    background: #f87f4f;
+    /* height: 35px; */
+    
+}
+#btn-search-cliente-fact ion-icon{
+    color: #fff;
+    /* height: 35px; */
+    
+}
+/* Formulario del cliente  */
+.form-factura-cliente{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 162px;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    
+    /* background: chartreuse; */
+}
+.form-factura-cliente input{
+  width: 250px !important;
+}
+
+/* Seccion detalle del producto  */
+
+.datos-producto{
+    min-height: 270px;
+    /* min-height: 17rem; */
+    /* background: #d1cccc; */
+    border-bottom: 1px solid #fc5c1b;
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-end; */
+}
+.footer-producto-fact{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: flex-end;
+    width: 100%;
+
+}
+
+.contenedor-producto-factura{
+    min-height: 14.7rem;
+    overflow-y: hidden; 
+    overflow-x: auto;
+    margin-bottom: 10px;
+
+}
+.titulos-productos-fact{
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-bottom: 5px !important;
+    border-bottom: 1px solid #fc5c1b;
+}
+/* Tamaño de los titulos  */
+.tl-cod {
+    /* background: #fff; */
+    width: 115px;
+    /* margin: 0 !important; */
+
+}
+.tl-nom {
+    /* background: #fff; */
+    width: 200px;
+    /* margin: 0 !important; */
+
+}
+.tl-des {
+    /* background: #fff; */
+    width: 250px;
+    /* margin: 0 !important; */
+
+}
+.tl-pre {
+    /* background: #fff; */
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    /* margin: 0 !important; */
+
+}
+.tl-can {
+    /* background: #fff; */
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    /* margin: 0 !important; */
+
+}
+.in-can, .in-pre{
+    width: 50px;
+}
+
+.producto-fact{
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 10px;
+}
+.btn-addProducto-fact{
+    width: 100%;
+    color: #fff;
+    background: rgba(252,92,27,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+
+}
+.btn-addProducto-fact ion-icon{
+    font-size: 32px;
+}
+
+
+.totalFactura{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    /* background: #807e7e; */
+    width: 100%;
+    /* min-height: 270px; */
+    /* min-height: 4rem; */
+    /* align-items: center; */
+}
+.btn-impimir-factura{
+    width: 75%;
+    height: 129px;
+    /* background: chocolate; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.btn-generar-fact{
+    background: #f78254;
+    border: 1px solid #f54702;
+    color: #fff;
+    width: 300PX;
+    height: 60px;
+}
+.btn-generar-fact:hover{
+    background: #0e0d0d;
+    border: 1px solid #000000;
+    color: #fff;
+    /* border: 1px solid #f54702; */
+    /* height: 60px; */
+}
+.contenedor-totales{
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    background: #ffdfbb;
+    border-radius: 5px;
+    border-left: 1px solid #fc5c1b;
+    width: 25%;
+    padding-left: 10px;
+    /* align-items: center; */
+}
+
+@media screen and (max-width: 800px) {
+    /* Facturas  */
+    /* .contenedor-fact{
+        height: 150vh;
+        background: #e4e3e3;      
+    } */
+    .adminFactura{
+      
+        min-height: 130vh;
+        
+    }
+    .buscador-cliente-factura{
+        width: 50%;
+        /* margin-right: 5px; */
+    }
+    .datos-cliente{
+        min-height: 26rem;
+        /* background: #e0dede; */
+    }
+   
+    .totalFactura{
+        /* display: flex; */
+        /* background: #f87f4f; */
+        flex-direction: column-reverse;
+        align-items: center;
+       
+        
+    }
+    .contenedor-totales{
+        width: 100%;
+    }
+    .contenedor-producto-factura{
+        /* width: 120%; */
+        /* background: #fc5c1b; */
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .titulos-productos-fact{
+        width: 35rem; 
+        padding-right: 5px;
+    }
+    .producto-fact{
+        width: 35rem;
+        padding-right: 5px;
+    }
+   
+    /* Tamaño de los titulos  */
+    .tl-cod {
+        /* background: rgb(247, 125, 125); */
+        width: 200px;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-cod input{
+        height: 20px;
+        font-size: 12px;
+        width: 98%;
+        
+    }
+    .tl-nom {
+        /* background: #fff; */
+        /* background: rgb(161, 34, 34); */
+        width: 200px;
+        height: 20px;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-nom input{
+        height: 20px;
+        width: 98%;
+        
+    }
+    .tl-des {
+        /* background: #fff; */
+        width: 350px;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-des input{
+        height: 20px;
+        font-size: 12px;
+        width: 98%;
+    }
+    .tl-pre {
+        /* background: #fff; */
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-pre input{
+        height: 20px;
+        font-size: 12px;
+        width: 98%;
+    }
+    .tl-can {
+        /* background: #fff; */
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        /* margin: 0 !important; */
+
+    }
+    .tl-can input{
+        height: 20px;
+        font-size: 12px;
+    }
+    .in-can, .in-pre{
+        width: 50px;
+    }
+    .btn-generar-fact{
+        font-size: 12px;
+    }
+
+    
+}

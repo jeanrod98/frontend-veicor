@@ -26,7 +26,7 @@ function PerfilAdmin() {
                         <div className="opciones-productos">
                             <Card className='cards'>
                                 <div className="img-producto"><ion-icon name="storefront-outline"></ion-icon></div>
-                                <Card.Body className='cards-body'>
+                                <Card.Body className='cards-body card-bodyAdmin'>
                                     <Card.Title className='cards-title'>PRODUCTOS EN TIENDA</Card.Title>
                                     <Card.Text >
                                         Ingresar - Consultar - Actualizar - Eliminar
@@ -41,7 +41,7 @@ function PerfilAdmin() {
                         <div className="opciones-usuarios">
                             <Card className='cards'>
                                 <div className="img-usuario"><ion-icon name="person-add-outline"></ion-icon></div>
-                                <Card.Body className='cards-body'>
+                                <Card.Body className='cards-body card-bodyAdmin'>
                                     <Card.Title className='cards-title'>USUARIOS REGISTRADOS</Card.Title>
                                     <Card.Text >
                                         Ingresar - Consultar - Actualizar - Eliminar
@@ -55,7 +55,7 @@ function PerfilAdmin() {
                         <div className="opciones-facturas">
                             <Card className='cards'>
                                 <div className="img-factura"><ion-icon name="reader-outline"></ion-icon></div>
-                                <Card.Body className='cards-body'>
+                                <Card.Body className='cards-body card-bodyAdmin'>
                                     <Card.Title className='cards-title'>FACTURAS PENDIENTES</Card.Title>
                                     <Card.Text >
                                         Facturas pendientes de entrega por DELIVERY

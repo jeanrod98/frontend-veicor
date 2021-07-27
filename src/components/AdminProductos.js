@@ -25,7 +25,7 @@ function AdminProductos() {
                         <div className="tarjeta-producto">
                             <Card className='cards text-center'>
                                 
-                                <Card.Body className='cards-body'>
+                                <Card.Body className='cards-body card-bodyAdmin'>
                                     <Card.Title className='cards-title'>PRODUCTOS</Card.Title>
                                     
                                 </Card.Body>
