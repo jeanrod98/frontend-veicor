@@ -21,14 +21,14 @@ function AdminFacturas() {
                 </div>
                 <div className="listado-facturas-pendientes">
 
-                    <div className="productos-noexisten">
+                    {/* <div className="productos-noexisten">
 
                         <h1>No hay facturas para mostrar</h1>
                         <div className="text-center">
 
                             <ion-icon name="alert-circle-outline"></ion-icon>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Cuando existen facturas con delivery se muestran  */}
                     {/* formato */}

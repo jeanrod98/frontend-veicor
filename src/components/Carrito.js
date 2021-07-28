@@ -8,7 +8,7 @@ import {Modal, Button, Form, FormControl, InputGroup, FormGroup} from 'react-boo
 
 function Carrito(props) {
 
-  const total_inpu = 5 * 0.12;
+  const total_inpu = (5 * 0.12)+5;
 
   const detalles = {
     subtotal: 5,

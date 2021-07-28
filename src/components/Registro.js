@@ -28,8 +28,7 @@ function Registro() {
     contrasenia_usu_rep: "",
     contrasenia_usu_rep: "",
     correo_usu: "",
-    isInvalid: false,
-    isValid: false,
+    
   });
   // Estado para la validacion
   //! nombre
@@ -171,8 +170,7 @@ function Registro() {
 
           <div className="form-registro">
             <form
-              action="#"
-              method=""
+              
               onFocusCapture={guardarState}
               onClick={guardarState}
             >
@@ -236,7 +234,7 @@ function Registro() {
               </div>
               <div class="form-row">
                 <div class="">
-                  <label for="correo">Correo:</label>
+                  <label for="correo">Correo Electrónico:</label>
                   <FormControl
                     isValid={validCorreo} 
                     isInvalid={inValidCorreo}
