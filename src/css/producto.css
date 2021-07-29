@@ -1,5 +1,5 @@
 .Producto{
-    height: 100vh;
+    min-height: 100vh;
     background: #e4e3e3;
 }
 .contenedor-informacion{
@@ -7,6 +7,7 @@
     border: 1px solid #c2bfbf !important;
     margin-top: 20px;
     margin-bottom: 20px;
+    min-height: 35rem;
 }
 .imagen-producto{
     grid-column: 1;
@@ -91,16 +92,36 @@
 .aggCarrito:hover{
     background: #72c70b !important;
 }
+/* precio  */
+.seccion-precio{
+    margin-top: 5px;
+}
+.seccion-precio span{
+    font-weight: bold;
+    font-size: 18px;
+    
+
+}
+.seccion-precio label{
+    font-size: 18px;
+    color: #fc5c1b;
+    font-weight: 600;
+    margin-left: 5px;
+
+}
+/* existencia  */
 .seccion-existencia{
     margin-top: 25px;
 }
 .seccion-existencia span{
     font-weight: bold;
-    font-size: 12px;
+    font-size: 13px;
 
 }
 .seccion-existencia label{
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 5px;
 
 }
 .especificaciones-producto{

@@ -1,12 +1,24 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import {useState} from 'react';
 import "../css/carrito.css";
-import logo from '../assets/logos/logopng2.png'
-import {Modal, Button, Form, FormControl, InputGroup, FormGroup} from 'react-bootstrap';
+import logo from '../assets/logos/logopng2.png';
+import Swal from 'sweetalert2';
+import {Modal, Button, Card, ListGroup, Form, FormControl, InputGroup, FormGroup} from 'react-bootstrap';
 
 function Carrito(props) {
+
+  const history = useHistory();
+
+  const storageProducts = JSON.parse(localStorage.getItem('poductCarrito'));
+  // console.log(storageProducts);
+
+  // if(storageProducts == null){
+  //   console.log('No hay productos');
+  // }else{
+  //   console.log('Si hay productos');
+  // }
 
   const total_inpu = (5 * 0.12)+5;
 
@@ -21,6 +33,50 @@ function Carrito(props) {
 
   // estado para el modal de terminos 
   const [openModalTerminos, setOpenModalTerminos] = useState(false)
+
+  //* Funcion para vaciar el carrito de compras
+
+  const vaciarCarrito = e => {
+    e.preventDefault();
+    // console.log('Se borro el carrito');
+    if(storageProducts == null){
+      // No hay productos para borrar
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se puede vaciar el carrito de compras porque no hay productos en el.',
+        confirmButtonColor: '#f05416',
+        footer: '<a href="/catalogo">Te gustaría selecionar productos?</a>'
+      })
+
+
+    }else{
+      Swal.fire({
+        title: 'Estás seguro de vacíar el carrito de compras?',
+        text: "Se perderan todos los productos seleccionados!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#f05416',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sí, borrar todo!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          localStorage.removeItem('poductCarrito');
+          Swal.fire(
+            'Productos Eliminados!',
+            'Los productos fueron eliminados con éxito.',
+            'success'
+          )
+          
+
+        }
+        history.push('/carrito');
+      })
+      
+    }
+  }
 
   return (
     <div className="Carrito">
@@ -38,8 +94,78 @@ function Carrito(props) {
           {/* Detalle de los Productos  */}
           <div className="carrito-detalle">
             <div className="detalle-productos">
+              {storageProducts
+               ?
+                  <div className="productos-existen-carrito">
+                    <Card className="card-carrito-title">
+                        <Card.Body className="card-lista-carrito">
+                          <ListGroup className="card-group-lista-carrito-title">
+                            <Card.Text>
+                              <strong>Código</strong>
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito-title">
+                            <Card.Text className="card-img-lista-carrito">
+                              <strong>Imagen</strong>
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito-title">
+                            <Card.Text>
+                              <strong>Nombre</strong>
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito-title">
+                            <Card.Text>
+                              <strong>Cantidad</strong>
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito-title">
+                            <Card.Text>
+                              <strong>Precio</strong>
+                            </Card.Text>
+                          </ListGroup>
+                        
+                        </Card.Body>
+                      </Card>
+                    {storageProducts.map(storageProduct => (
+                      <Card className="card-carrito">
+                        <Card.Body className="card-lista-carrito">
+                          <ListGroup className="card-group-lista-carrito">
+                            <Card.Text>
+                              {storageProduct.id_producto}
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito">
+                            <Card.Text className="card-img-lista-carrito">
+                              <img src={storageProduct.imagen_produc} />
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito">
+                            <Card.Text>
+                              {storageProduct.nombre_produc}
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito">
+                            <Card.Text>
+                              {storageProduct.cantidad_producto}
+                            </Card.Text>
+                          </ListGroup>
+                          <ListGroup className="card-group-lista-carrito">
+                            <Card.Text>
+                              $ {storageProduct.precio_produc}
+                            </Card.Text>
+                          </ListGroup>
+                        
+                        </Card.Body>
+                      </Card>
+                    
+                    
+                      ))}
 
-              <div className="productos-noexisten">
+                  </div>
+                
+              :
+                <div className="productos-noexisten">
 
                     <h1>El carrito está vacío</h1>
                     <div className="text-center">
@@ -47,16 +173,13 @@ function Carrito(props) {
                       <ion-icon name="alert-circle-outline"></ion-icon>
                     </div>
                 </div>
+              }
 
-                {/* Aqui van los productos del carrito  */}
-                <div className="productos-existen-carrito">
-
-                </div>
 
             </div>
 
             <div className="detalle-btnVaciar">
-              <button className="btn vaciar-carrito">VACIAR CARRITO</button>
+              <button onClick={vaciarCarrito} className="btn vaciar-carrito">VACIAR CARRITO</button>
             </div>
             
           </div>

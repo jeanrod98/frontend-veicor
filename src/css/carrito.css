@@ -76,7 +76,38 @@
     display: flex;
     align-items: center;
 }
+/* Detalle cards  */
+.card-carrito{
+    margin: 10px;
+}
+.card-carrito-title{
+    background: #f05416 !important;
+    margin: 10px;
+}
+.card-lista-carrito{
+    display: flex !important;
+    flex-direction: row !important;
+}
 
+
+.card-group-lista-carrito-title{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+.card-group-lista-carrito{
+    /* background: #b1cde4; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+.card-img-lista-carrito img{
+    width: 50px;
+    height: auto;
+}
 
 
 .descripcion-titulo{

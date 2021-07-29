@@ -103,11 +103,11 @@
     color: #000;
 
 }
-.input-group-prepend .existencia span{
+.input-group-prepend .existencia, .codigo span{
     font-weight: bold;
     font-size: 12px;
 }
-.input-group-prepend .existencia{
+.input-group-prepend .existencia, .codigo{
     color: #000;
     font-size: 12px;
 }

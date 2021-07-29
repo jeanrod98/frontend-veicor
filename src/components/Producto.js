@@ -2,12 +2,15 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import css from "../css/producto.css";
+import "../css/producto.css";
 import clienteAxios from "../config/axios";
 import Servicios from './Servicios'
+import Swal from 'sweetalert2';
 
 function Producto(props) {
   // console.log(props.producto);
+  
+
   const {
     match: { params },
   } = props;
@@ -44,7 +47,64 @@ function Producto(props) {
   // Extraer por props
   // const {producto: {nombre_produc, dscpLarga_produc, imagen_produc}} = props.producto;
   // console.log(props.producto)
+//* Funcion para agregar productos al carrito
+const agregarCarrito = e =>{
+  // e.prventDefaut();
+  e.preventDefault();
+  const cantidad_producto = document.getElementById('cantidadProducto').value; 
+  const {id_producto, nombre_produc, imagen_produc, precio_produc } = producto;
 
+  // console.log(nombre_produc);
+  // console.log(id_producto);
+  // console.log(imagen_produc);
+  // console.log(cantidad_producto);
+  // Objeto que va a contener el producto seleccionado 
+  const ObjetProduct = {
+    id_producto: id_producto,
+    nombre_produc: nombre_produc,
+    precio_produc: precio_produc,
+    imagen_produc: imagen_produc,
+    cantidad_producto: cantidad_producto,
+  }
+ 
+  Swal.fire({
+    title: 'Te gustaria agregar el producto al carrito de compras?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonColor: '#f05416',
+    confirmButtonText: `Agregar al Carrito`,
+    denyButtonText: `No Agregar al Carrito`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      const storage = localStorage.getItem('poductCarrito');
+      if(storage){
+        // Agregar el producto al storage 
+        const productosCarrito = JSON.parse(localStorage.getItem('poductCarrito'));
+        productosCarrito.push(ObjetProduct);
+        localStorage.setItem('poductCarrito', JSON.stringify(productosCarrito));
+
+      }else{
+        // Arreglo para guardar los objetos 
+        const arrayObjectProducts = [ObjetProduct];
+        localStorage.setItem('poductCarrito',JSON.stringify(arrayObjectProducts));
+      }
+      Swal.fire('Producto Agregado!', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('Producto Descartado', '', 'info')
+    }
+  })
+  
+
+  
+  
+
+  // Subimos el arreglo con los productos agregados
+  // localStorage.setItem('poductCarrito', JSON.stringify(productosCarrito));
+
+
+ 
+}
   return (
     <div className="Producto">
       <Header />
@@ -73,6 +133,7 @@ function Producto(props) {
               <div className="seccion-cantidad">
                 <label>Cantidad</label>
                 <input
+                  id="cantidadProducto"
                   className="text-center"
                   type="number"
                   min="1"
@@ -81,14 +142,21 @@ function Producto(props) {
               </div>
 
               <div className="seccion-btnCarrito">
-                <button id="aggCarrito" className="btn aggCarrito">
+                <button 
+                onClick={agregarCarrito}
+                id="aggCarrito" className="btn aggCarrito">
                   <ion-icon name="cart-outline"></ion-icon> Agregar al carrito
                 </button>
               </div>
             </div>
 
             <div className="seccion-existencia">
-              <label><span>Unidades Disponibles:</span> {producto.cantidad_produc}</label>
+              <span>Unidades Disponibles:</span> 
+              <label>{producto.cantidad_produc}</label>
+            </div>
+            <div className="seccion-precio">
+              <span>Precio del producto: </span>
+              <label>$ {producto.precio_produc}</label>
             </div>
 
             <div className="especificaciones-producto">

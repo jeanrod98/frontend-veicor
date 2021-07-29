@@ -20,7 +20,12 @@ import ProductosCRUD from './components/ProductosCRUD';
 import UsuariosCRUD from './components/UsuariosCRUD';
 
 function App() {
-  //State de la aoo
+
+  // *Arreglo para los productos en el storage
+  // const arregloProductos = [];
+  // localStorage.setItem('poductCarrito', JSON.stringify(arregloProductos));
+
+  //State de los productos
   const [productos, guardarProductos] = useState([]);
 
   useEffect(() => {

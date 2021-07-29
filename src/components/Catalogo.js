@@ -41,7 +41,7 @@ const items = [
 
 function Catalogo({productos}) {
 
-// console.log(productos);
+console.log(productos);
 // Si el arreglo viene vacio no retorna nada 
 
 
@@ -86,21 +86,24 @@ function Catalogo({productos}) {
     
     // if(productos.length === 0 ) return null;
     
-    
+    const usuarioStorage = localStorage.getItem('usuario');
     //* Agregar al carrito de compras
-    const agregarCarrito = e =>{
+    const productoPerfil = e =>{
 
       e.preventDefault();
-
-      Swal.fire({
-        icon: 'info',
-        title: 'No se puede agregar al Carrito',
-        text: 'Por favor, primero inicie sesión.',
-        footer: '<a id="a-iniciarSesion" href="/registro">¡Quiero registrarme!</a>',
-        confirmButtonColor: "#fc5c1b",
-        showCloseButton: true
+      
+      
+        Swal.fire({
+          icon: 'info',
+          title: 'No se puede agregar al Carrito',
+          text: 'Por favor, primero inicie sesión.',
+          footer: '<a id="a-iniciarSesion" href="/registro">¡Quiero registrarme!</a>',
+          confirmButtonColor: "#fc5c1b",
+          showCloseButton: true
+          
+        })
         
-      })
+      
 
 
 
@@ -108,23 +111,23 @@ function Catalogo({productos}) {
     }
 
     //agregar producto al localStorage
-    const addLocalStorage = e => {
-      e.preventDefault();
-      //Extraer datos del card
-      const card = e.target.parentElement.parentElement;
+    // const addLocalStorage = e => {
+    //   e.preventDefault();
+    //   //Extraer datos del card
+    //   const card = e.target.parentElement.parentElement;
 
-      const infoProduct = {
-        imagen: card.querySelector('img').src,
-        nombre: card.querySelector('h5').textContent,
-        precio: card.querySelector('.precio span').textContent
-      }
+    //   const infoProduct = {
+    //     imagen: card.querySelector('img').src,
+    //     nombre: card.querySelector('h5').textContent,
+    //     precio: card.querySelector('.precio span').textContent
+    //   }
 
 
-      //add producto a local storage
-      localStorage.setItem('carrito', JSON.stringify(infoProduct));
+    //   //add producto a local storage
+    //   localStorage.setItem('carrito', JSON.stringify(infoProduct));
 
      
-    }
+    // }
 
 
 
@@ -166,15 +169,20 @@ function Catalogo({productos}) {
             </div>
 {/* Muestra los productos en tarjetas */}
             <div className="productos">
-                {productos.length === 0 &&<div className="productos-noexisten">
-
+            {productos.length == 0 &&
+                  <>
+                <div className="productos-noexisten">
                     <h1>No hay productos para mostrar</h1>
                     <div className="text-center">
 
                         <ion-icon name="close-circle-outline"></ion-icon>
                     </div>
-                </div>}
-                {productos.length > 0 &&<div className="productos-existen">
+                </div>
+                </>
+                }
+                {productos.length > 0 &&
+                <>
+                <div className="productos-existen">
                     {/* Aqui van los productos  */}
                     {/* <div className="list-group"> */}
                     <div className="recomendados">
@@ -185,13 +193,25 @@ function Catalogo({productos}) {
 
                         
                           <div className="card card-producto">
-                            <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} onClick={agregarCarrito}>
+                            {usuarioStorage 
+                            ? 
+                            <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} > 
                             <img name="imagen" className="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
                            
-                            <div className="card-body titulo">
-                              <h5 name="nombre" >{producto.nombre_produc}</h5>
-                            </div>
-                            </Link>
+                           <div className="card-body titulo">
+                             <h5 name="nombre" >{producto.nombre_produc}</h5>
+                           </div>
+                           </Link>
+                            : 
+                            <Link to={`/producto/catalogo`} key={producto.id_producto}  onClick={productoPerfil} >  
+                            <img name="imagen" className="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>
+                           
+                           <div className="card-body titulo">
+                             <h5 name="nombre" >{producto.nombre_produc}</h5>
+                           </div>
+                           </Link>
+                            }
+                            
                             <div className="card-body">
                               <div className="input-group-prepend">
                                 <p name="descripcion" className="descripcion">{producto.descripcion_produc}</p>
@@ -206,10 +226,10 @@ function Catalogo({productos}) {
                               
 
                             </div>
-                            <div className="addCarrito-catalogo">
+                            {/* <div className="addCarrito-catalogo">
 
                               <button className="btn" onClick={addLocalStorage}>Agregar al Carrito</button>
-                            </div>
+                            </div> */}
                             
                           </div>
                     
@@ -218,7 +238,9 @@ function Catalogo({productos}) {
                     ))}
 
                     {/* </div> */}
-                </div>}
+                </div>
+                </>
+                }
             </div>
         </div>
         <Footer/>
