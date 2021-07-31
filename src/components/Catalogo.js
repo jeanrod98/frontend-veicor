@@ -22,6 +22,7 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Producto from './Producto';
+import useAuth from '../auth/useAuth';
 
 const items = [
   {
@@ -41,7 +42,8 @@ const items = [
 
 function Catalogo({productos}) {
 
-console.log(productos);
+  const auth = useAuth();
+// console.log(productos);
 // Si el arreglo viene vacio no retorna nada 
 
 
@@ -86,7 +88,7 @@ console.log(productos);
     
     // if(productos.length === 0 ) return null;
     
-    const usuarioStorage = localStorage.getItem('usuario');
+    // const usuarioStorage = localStorage.getItem('usuario');
     //* Agregar al carrito de compras
     const productoPerfil = e =>{
 
@@ -193,7 +195,7 @@ console.log(productos);
 
                         
                           <div className="card card-producto">
-                            {usuarioStorage 
+                            { auth.isLogged()
                             ? 
                             <Link to={`/producto/${producto.id_producto}`} key={producto.id_producto} > 
                             <img name="imagen" className="card-img-top" src={producto.imagen_produc} alt={producto.nombreImg_produc}/>

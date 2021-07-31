@@ -1,15 +1,16 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import "../css/producto.css";
 import clienteAxios from "../config/axios";
 import Servicios from './Servicios'
 import Swal from 'sweetalert2';
+import useAuth from "../auth/useAuth";
 
 function Producto(props) {
   // console.log(props.producto);
-  
+  const auth = useAuth();
 
   const {
     match: { params },
@@ -20,6 +21,7 @@ function Producto(props) {
   //State de la aoo
   const [producto, guardarProducto] = useState([]);
 
+  
   useEffect(() => {
     // if(productos){
     const consultarAPI = () => {
@@ -111,6 +113,9 @@ const agregarCarrito = e =>{
       <div className="container">
         {/* Informacion de Producto  */}
         <div className="contenedor-informacion">
+          {auth.isLogged()
+           ? 
+           <>
           <div className="imagen-producto">
             <div className="nombre-producto">
               <h2>{producto.nombre_produc}</h2>
@@ -179,6 +184,11 @@ const agregarCarrito = e =>{
               </div>
             </div>
           </div>
+           
+           </> 
+           : 
+           <Redirect to ="/loguin"/>
+           }
         </div>
 
         {/* Iconos */}
