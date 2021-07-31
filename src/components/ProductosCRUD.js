@@ -254,7 +254,10 @@ function ProductosCRUD() {
           </div>
           {/* SECCION 2  */}
           <div className="crud-seccion-2">
-            <Form className="text-center">
+            <Form className="text-center"
+            onFocusCapture={guardarState}
+            onClick={guardarState}
+            >
               <Form.Group className="lbl-descripcion-crud">
                 <Form.Label> Descripción Larga</Form.Label>
               </Form.Group>

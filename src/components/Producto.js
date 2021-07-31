@@ -7,6 +7,7 @@ import clienteAxios from "../config/axios";
 import Servicios from './Servicios'
 import Swal from 'sweetalert2';
 import useAuth from "../auth/useAuth";
+import { Form } from "react-bootstrap";
 
 function Producto(props) {
   // console.log(props.producto);
@@ -20,7 +21,7 @@ function Producto(props) {
   // clienteAxios.get(`/productos/?id=${params.id}`)
   //State de la aoo
   const [producto, guardarProducto] = useState([]);
-
+  
   
   useEffect(() => {
     // if(productos){
@@ -53,20 +54,16 @@ function Producto(props) {
 const agregarCarrito = e =>{
   // e.prventDefaut();
   e.preventDefault();
-  const cantidad_producto = document.getElementById('cantidadProducto').value; 
+  // const cantidad_producto = document.getElementById('cantidadProducto').value; 
   const {id_producto, nombre_produc, imagen_produc, precio_produc } = producto;
 
-  // console.log(nombre_produc);
-  // console.log(id_producto);
-  // console.log(imagen_produc);
-  // console.log(cantidad_producto);
-  // Objeto que va a contener el producto seleccionado 
+  
   const ObjetProduct = {
     id_producto: id_producto,
     nombre_produc: nombre_produc,
     precio_produc: precio_produc,
     imagen_produc: imagen_produc,
-    cantidad_producto: cantidad_producto,
+    cantidad_producto: cantidadEstado.cantidadInput,
   }
  
   Swal.fire({
@@ -97,16 +94,54 @@ const agregarCarrito = e =>{
     }
   })
   
-
-  
-  
-
-  // Subimos el arreglo con los productos agregados
-  // localStorage.setItem('poductCarrito', JSON.stringify(productosCarrito));
-
-
- 
 }
+
+//! cantidad
+// cantidad 
+const [cantidadEstado, setCantidadEstado] = useState({
+  cantidadInput: '1',
+});
+
+const [validCantidad, setValidCantidad] = useState(false);
+const [inValidCantidad, setInValidCantidad] = useState(false);
+// boton habilitado o disabilitado
+const [boton, setBoton] = useState(false);
+//*Funcion para validar la cantidad
+
+const validacion = e =>{
+
+  
+  const expresionCantidad = /^\d{1,3}$/; //  numeros.
+
+  const cantidad_producto = document.getElementById('cantidadProducto').value; 
+  // validacion del input cantidad 
+  console.log(cantidad_producto.indexOf(",",0));
+  if (cantidad_producto < 1 || cantidad_producto == ' '){
+    setInValidCantidad(true);
+    setValidCantidad(false);
+    setBoton(true)
+  }else if(expresionCantidad.test(cantidad_producto)){
+
+    setInValidCantidad(false);
+    setValidCantidad(true);
+    setBoton(false)
+    // SI el dato es correcto lo mandamos al estado
+    setCantidadEstado({
+      ...cantidadEstado,
+      [e.target.name] : e.target.value
+    })
+  }else{
+    setInValidCantidad(true);
+    setValidCantidad(false);
+    setBoton(true)
+  }
+
+
+}
+
+
+
+
   return (
     <div className="Producto">
       <Header />
@@ -137,23 +172,31 @@ const agregarCarrito = e =>{
             <div className="seccion-cantidad-btncarrito">
               <div className="seccion-cantidad">
                 <label>Cantidad</label>
-                <input
+                <Form.Control
+                  name="cantidadInput"
+                  isValid={validCantidad}
+                  isInvalid={inValidCantidad}
                   id="cantidadProducto"
                   className="text-center"
+                  onChange={validacion}
                   type="number"
                   min="1"
                   defaultValue="1"
-                ></input>
+                ></Form.Control>
+                
               </div>
+              
 
               <div className="seccion-btnCarrito">
                 <button 
                 onClick={agregarCarrito}
+                disabled={boton}
                 id="aggCarrito" className="btn aggCarrito">
                   <ion-icon name="cart-outline"></ion-icon> Agregar al carrito
                 </button>
               </div>
             </div>
+            
 
             <div className="seccion-existencia">
               <span>Unidades Disponibles:</span> 

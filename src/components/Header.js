@@ -91,7 +91,7 @@ function Header(props) {
               Inicio
             </Link>
 
-            <Link class="nav-link mx-3" to="catalogo">
+            <Link class="nav-link mx-3" to="/catalogo">
               Catálogo
             </Link>
 

@@ -55,7 +55,7 @@
     /* grid-column: 1;
     width: 25%; */
     display: inline;
-    width: 12%;
+    width: 22%;
 }
 .seccion-cantidad label{
     font-size: 10px;
@@ -63,7 +63,7 @@
 
 }
 .seccion-cantidad input{
-    width: 90%;
+    width: 100%;
     height: 30px;
 }
 .seccion-btnCarrito{
@@ -71,7 +71,7 @@
     width: 100%; */
     display: inline;
     margin-left: 15px;
-    width: 70%;
+    width: 50%;
     bottom: 0;
     
     
