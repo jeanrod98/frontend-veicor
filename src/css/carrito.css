@@ -130,7 +130,18 @@
 }
 
 .carrito-condiciones{
-    margin: 15px;
+    margin: 5px;
+}
+.carrito-condiciones input:checked{
+    /* width: 15px;
+    height: 15px; */
+    background-color: #fc5c1b !important;
+    /* color:  #fff !important; */
+    border: 1px solid #fc5c1b !important;
+}
+.carrito-condiciones label{
+    font-size: 12px;
+    font-weight: 600;
 }
 .carrito-delivery{
 
@@ -138,6 +149,17 @@
     margin-left: 5px;
     margin-right: 5px;
     
+}
+.carrito-delivery label{
+    font-size: 13px;
+    font-weight: 600;
+}
+.carrito-delivery input:checked{
+    /* width: 15px;
+    height: 15px; */
+    background-color: #fc5c1b !important;
+    /* color:  #fff !important; */
+    border: 1px solid #fc5c1b !important;
 }
 .form-check{
     margin: 15px !important;
@@ -163,11 +185,34 @@
     color: #fc5c1b;
     /* text-align: end; */
 }
+.cantidad-subtotal h5{
+    padding-left: 0 !important;
+}
+/* Delivery  */
+.contenedor-delivery{
+    display: flex;
+    flex-direction: row;
+  }
+.delivery{
+    /* display: inline; */
+    width: 79%;
+    margin-left: 1%;
+}
+.cantidad-delivery{
+    /* display: inline; */
+    width: 19%;
+    margin-right: 1%;
+    color: #fc5c1b;
+    /* text-align: end; */
+}
+.cantidad-delivery h5{
+    padding-left: 0 !important;
+}
 .contenedor-total{
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #fc5c1b;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     margin-right: 5px;
   }
 .total{
@@ -183,6 +228,9 @@
     margin-right: 1%;
     color: #fc5c1b;
     /* text-align: end; */
+}
+.cantidad-total h5{
+    padding-left: 0 !important;
 }
 .detalle-btnVaciar{
     text-align: center;
@@ -298,5 +346,20 @@
     .carrito-logo ion-icon{
         font-size: 64px !important;
         color: #fc5c1b;
+    }
+    .card-carrito{
+        margin: 0;
+    }
+    .card-carrito-title{
+        margin-top: 0;
+        border-top-left-radius: 10px !important;
+        border-top-right-radius: 10px !important;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+    .card-img-lista-carrito img{
+        width: 30px;
+        height: auto;
     }
 }
