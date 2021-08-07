@@ -16,6 +16,7 @@ import {
   InputGroup,
   FormGroup,
 } from "react-bootstrap";
+import clienteAxios from "../config/axios";
 
 function Carrito(props) {
   const history = useHistory();
@@ -28,23 +29,71 @@ function Carrito(props) {
   // }else{
   //   console.log('Si hay productos');
   // }
-  // Estado para almacenar el precio del delivery
+  // !Estado para cambiar el valor del delibery 
+  
   const [valDelivery, setvalDelivery] = useState(0);
+
+  // !variable para ir calculando el sub total 
+  let subtotalCarrito = 0;
+  // !variable para ir calculando el total 
+  let totalCarrito = 0;
+  
+  // let deliveryCarrito = 0;
+
+  // *validarque el carrito tiene productos
+  if(storageProducts != null){
+    // Calculando el total del subtotal 
+    storageProducts.forEach(subtotal => {
+      const cantidad = parseInt(subtotal.cantidad_producto);
+      subtotalCarrito += (subtotal.precio_produc * cantidad); 
+
+      
+    });
+    // console.log(subtotalCarrito);
+    totalCarrito = subtotalCarrito + valDelivery
+
+  }
+
+
+
+
   // estado para marcar el check
   // const [checkDelivery, setvalDelivery] = useState(true);
 
-  const total_inpu = 5 * 0.12 + 5;
+  // const total_inpu = 5 * 0.12 + 5;
 
-  const detalles = {
-    subtotal: 5,
-    total: total_inpu,
-  };
+  // const detalles = {
+  //   subtotal: 5,
+  //   total: total_inpu,
+  // };
 
   // Estado para el modal de transaccion
   const [openModalTransaccion, setOpenModalTransaccion] = useState(false);
 
   // estado para el modal de terminos
   const [openModalTerminos, setOpenModalTerminos] = useState(false);
+
+  //estado para habilitar o deshabilitar el boton de comprar
+
+  const [btnFinalizar, setBtnFinalizar] = useState(true)
+
+   //estado para los terminos y condiciones
+
+   const [terminosCondiciones, setterminosCondiciones] = useState(null)
+
+  //  validar los terminos para hacer la compra
+  const terminos = e => {
+    const check = document.getElementById('chekckTerminos').checked
+    // console.log(check);
+    if(storageProducts != null && check == true ){
+      setBtnFinalizar(false)
+
+    
+    }else{
+
+      setBtnFinalizar(true)
+    }
+  }
 
   //* Funcion para vaciar el carrito de compras
 
@@ -60,7 +109,9 @@ function Carrito(props) {
         confirmButtonColor: "#f05416",
         footer: '<a href="/catalogo">Te gustaría selecionar productos?</a>',
       });
+      setBtnFinalizar(true)
     } else {
+      
       Swal.fire({
         title: "Estás seguro de vacíar el carrito de compras?",
         text: "Se perderan todos los productos seleccionados!",
@@ -80,10 +131,17 @@ function Carrito(props) {
           );
         }
         history.push("/carrito");
+        setBtnFinalizar(true)
       });
+      // Si hay elementos validamos que los terminos esten marcados para habilitar el boton 
+      
     }
   };
+  // if(terminosCondiciones == true){
 
+        
+  //   setBtnFinalizar(false)
+  // }
   // funcion para capturar si se checkea sin delivery
   const checkedSinDelivery = (e) => {
     // console.log("chekeado sin");
@@ -92,7 +150,16 @@ function Carrito(props) {
   // funcion para capturar si se checkea con delivery
   const checkedConDelivery = (e) => {
     // console.log("chekeado con");
-    setvalDelivery(2);
+    // aqui hay que consultar a la base de datos por el precio del delivery 
+    clienteAxios.get('/delivery/1')
+    .then( respuesta => {
+      const newPrecio = respuesta.data.precio_deli
+      setvalDelivery(newPrecio);
+      
+    })
+    .catch(error => {
+      console.log(error);
+    })
   };
 
   return (
@@ -201,7 +268,7 @@ function Carrito(props) {
                 </div>
 
                 <div className="cantidad-subtotal">
-                  <h5 className="val-subtotal">$ {detalles.subtotal}</h5>
+                  <h5 className="val-subtotal">$ {subtotalCarrito}</h5>
                 </div>
               </div>
               <div className="contenedor-delivery">
@@ -218,7 +285,7 @@ function Carrito(props) {
                 </div>
 
                 <div className="cantidad-total">
-                  <h5 className="val-total">$ {detalles.total}</h5>
+                  <h5 className="val-total">$ {totalCarrito}</h5>
                 </div>
               </div>
             </div>
@@ -253,6 +320,8 @@ function Carrito(props) {
                   type="checkbox"
                   class="form-check-input"
                   id="chekckTerminos"
+                  // isChecked={() => setterminosCondiciones(true) }
+                  onClick={terminos}
                 />
                 <label class="form-check-label" for="exampleCheck1">
                   Acepto los términos y condiciones{" "}
@@ -268,6 +337,7 @@ function Carrito(props) {
               <div className="btn-1">
                 <button
                   className="btn finalizar-pago"
+                  disabled={btnFinalizar}
                   onClick={() => {
                     setOpenModalTransaccion(true);
                   }}
