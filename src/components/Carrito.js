@@ -16,7 +16,73 @@ import {
   InputGroup,
   FormGroup,
 } from "react-bootstrap";
+
+import {loadStripe} from '@stripe/stripe-js'
+import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
 import clienteAxios from "../config/axios";
+
+//stripe
+const stripePromise = loadStripe('pk_test_51JMFb2IlbeGS9J0JfqYi3Gjd83j8gOW2uZ4zhwdRQNUTTXRIMJfwsQPnM7T5Dd4mC06jJPUrIZIzwulDIU98cXsU00wU9KlacD');
+
+const CheckoutForm = () => {
+
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const localUsuario = JSON.parse(localStorage.getItem('dataUser'))
+  const correoUsuario = localUsuario.correo_usu
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    // console.log('click');
+  
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+    })
+    if(!error){
+      console.log(paymentMethod);
+      console.log(correoUsuario);
+      
+    }else{
+      console.log('no hay datos');
+    }
+  
+  }
+  return (<Form >
+  {/* Correo  */}
+  <InputGroup>
+    <InputGroup.Text>
+      <ion-icon name="mail-outline"></ion-icon>
+    </InputGroup.Text>
+    <FormControl
+      isValid={true}
+      isInvalid={false}
+      type = "mail"
+      id="modalCorreo"
+      defaultValue={correoUsuario}     
+      disabled={true}
+      />
+  </InputGroup>
+  {/* Tarjeta  */}
+  <FormGroup className="modal-form-group text-center">
+    <h5>DATOS DE LA TARJETA</h5>
+  </FormGroup>
+  <FormGroup className="modal-form-group">
+    
+   {/* CardElement */}
+   <CardElement/>
+  
+  </FormGroup>
+  <FormGroup className="modal-form-group text-center">
+
+    <Button onClick={handleSubmit} className="btn-modal-pago">Realizar Pago</Button>
+  </FormGroup>
+</Form>)
+}
+
+
+
 
 function Carrito(props) {
   const history = useHistory();
@@ -384,8 +450,10 @@ function Carrito(props) {
         </Modal.Footer>
       </Modal>
       {/* Modal de Transaccion  */}
-      <Modal centered show={openModalTransaccion}>
-        <Modal.Header>
+      <Modal centered show={openModalTransaccion} onHide={() => {
+              setOpenModalTransaccion(false);
+            }} >
+        <Modal.Header closeButton={true} closeLabel>
           <Modal.Title className="modal-title-pago">
             <img src={logo} width="80px" height="65px" />
             <h4>TRANSACCIÓN DE PAGO</h4>
@@ -393,70 +461,16 @@ function Carrito(props) {
         </Modal.Header>
 
         <Modal.Body>
-          <Form>
-            {/* Correo  */}
-            <InputGroup>
-              <InputGroup.Text>
-                <ion-icon name="mail-outline"></ion-icon>
-              </InputGroup.Text>
-              <FormControl
-                isValid={false}
-                isInvalid={false}
-                id="modalCorreo"
-                placeholder="Correo electrónico"
-              />
-            </InputGroup>
-            {/* Tarjeta  */}
-            <FormGroup className="modal-form-group">
-              <InputGroup>
-                <InputGroup.Text>
-                  <ion-icon name="card-outline"></ion-icon>
-                </InputGroup.Text>
-                <FormControl
-                  isValid={false}
-                  isInvalid={false}
-                  id="modalNumTarjeta"
-                  placeholder="Número de Tarjeta"
-                />
-              </InputGroup>
-              <div className="seccion-modal-tarjeta-datos">
-                <InputGroup>
-                  <InputGroup.Text>
-                    <ion-icon name="calendar-clear-outline"></ion-icon>
-                  </InputGroup.Text>
-                  <FormControl
-                    isValid={false}
-                    isInvalid={false}
-                    id="modalMesAnioTarjeta"
-                    placeholder="MM/YY"
-                  />
-                </InputGroup>
-
-                <InputGroup inline>
-                  <InputGroup.Text>
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                  </InputGroup.Text>
-                  <FormControl
-                    isValid={false}
-                    isInvalid={false}
-                    id="modalCvcTarjeta"
-                    placeholder="CVC"
-                  />
-                </InputGroup>
-              </div>
-            </FormGroup>
-          </Form>
+          <Elements stripe={stripePromise}>
+                
+            <CheckoutForm/>
+          </Elements>
         </Modal.Body>
-        <Modal.Footer>
-          <Button className="btn-modal-pago">Realizar Pago</Button>
-          <Button
-            onClick={() => {
-              setOpenModalTransaccion(false);
-            }}
-            variant="secondary"
-          >
-            Cerrar
-          </Button>
+        <Modal.Footer >
+          <div className="footer-modal-pago">
+
+          <p>Almacen Veicor - &copy; 2021 Todos los derechos reservados</p>
+          </div>
         </Modal.Footer>
       </Modal>
 

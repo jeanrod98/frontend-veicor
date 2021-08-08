@@ -308,11 +308,24 @@
 .btn-modal-pago{
     background: #fc5c1b !important;
     border: 1px solid #f05416 !important;
+    width: 100%;
 }
 .btn-modal-pago:hover{
     background: #ff6d33 !important;
     border: 1px solid #f05416 !important;
 }
+.footer-modal-pago{
+    width: 100%;
+    text-align: center;
+}
+.footer-modal-pago p {
+    font-size: 12px;
+}
+.modal-header, .close span{
+    font-size: 40px !important;
+    
+}
+
 
 @media screen and (max-width: 800px) {
     .carrito-productos    {
