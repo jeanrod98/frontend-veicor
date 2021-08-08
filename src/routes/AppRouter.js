@@ -10,6 +10,7 @@ import Catalogo from "../components/Catalogo";
 import Producto from "../components/Producto";
 import PerfilCliente from "../components/PerfilCliente";
 import PerfilAdmin from "../components/PerfilAdmin";
+import PerfilOperativo from "../components/PerfilOperativo"
 
 import AdminProductos from "../components/AdminProductos";
 import AdminUsuarios from "../components/AdminUsuarios";
@@ -79,6 +80,7 @@ function AppRouter() {
         <PrivateRoute exact path="/carrito" component={() => <Carrito/>}/>
         <PrivateRoute exact path="/perfil-usuario" component={PerfilCliente} />
         <PrivateRoute exact path="/perfil-admin" component={PerfilAdmin} />
+        <PrivateRoute exact path="/perfil-operativo" component={PerfilOperativo} />
 
         <PrivateRoute exact path="/perfil-admin/productos" component={AdminProductos} />
         <PrivateRoute exact path="/perfil-admin/usuarios" component={AdminUsuarios} />

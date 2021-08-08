@@ -174,9 +174,9 @@ function Facturacion() {
                         {/* totales  */}
                         <div className="totalFactura">
                             <div className="btn-impimir-factura">
-                                <button className="btn btn-generar-fact">
+                                {/* <button className="btn btn-generar-fact">
                                     ENVIAR FACTURA POR CORREO
-                                </button>
+                                </button> */}
                                 
                                 <button className="btn btn-generar-fact mx-4">
                                     IMPRIMIR FACTURA

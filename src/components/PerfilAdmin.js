@@ -65,6 +65,19 @@ function PerfilAdmin() {
                             </Card>
 
                         </div>
+                        <div className="opciones-modulo-facturacion">
+                            <Card className='cards'>
+                                <div className="img-factura"><ion-icon name="print-outline"></ion-icon></div>
+                                <Card.Body className='cards-body card-bodyAdmin'>
+                                    <Card.Title className='cards-title'>MODULO DE FACTURACIÓN</Card.Title>
+                                    <Card.Text >
+                                        Modulo de facturación para la tienda
+                                    </Card.Text>
+                                    <Link to="/facturacion" className="btn btn-adminOpciones">Entrar al Modulo</Link>
+                                </Card.Body>
+                            </Card>
+
+                        </div>
                     </div>
                 </div>
             </div>

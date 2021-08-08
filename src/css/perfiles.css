@@ -1,10 +1,10 @@
-/* perfil de administrador  */
+/* perfil de administrador y Operativo */
 
 .PerfilAdmin{
     height: 100vh;
     background: #e4e3e3 !important;
 }
-.contenedor-perfilAdmin{
+.contenedor-perfilAdmin, .contenedor-perfil-operativo{
     min-height: 100vh;
     margin-top: 30px;
 }
@@ -32,7 +32,7 @@
 .opciones{
     display: flex;
     flex-direction: row;
-  flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     min-height: 60vh;
     
 }
@@ -40,25 +40,28 @@
     margin: auto;
 }
 
-.img-producto{
-    font-size: 124px !important;
+.img-producto, .img-usuario, .img-factura{
+    font-size: 100px !important;
 }
 .opciones-usuarios{
     margin: auto;
 }
-.img-usuario{
-    font-size: 124px !important;
-}
+/* .img-usuario{
+    font-size: 100px !important;
+} */
 .opciones-facturas{
     margin: auto;
 }
-.img-factura{
-    font-size: 124px !important;
+.opciones-modulo-facturacion{
+    margin: auto;
 }
+/* .img-factura{
+    font-size: 124px !important;
+} */
 
 .cards{
     /* border: 1px solid #fc5c1b; */
-    width: 18rem;
+    width: 14rem;
 }
 .card-bodyAdmin{
     background: rgb(247, 214, 68);
@@ -76,7 +79,98 @@
     border: #000000;
     color: #fff;
 }
+/* perfil de Usuario  */
+.Perfil-Cliente{
+    min-height: 100vh;
+    background: #e4e3e3 !important;
+}
+.contenedor-pefil-usuario{
+    min-height: 32rem;
+    margin-top: 30px;
+    background: #fff;
+    padding: 0;
+    margin-bottom: 30px;
+}
+.contenido-perfil{
+    /* background: #aee3f3; */
+    display: flex;
 
+}
+.opciones-usuario{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    border: 1px solid #bdbdbd;
+    background: #d6d5d4;
+}
+.imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagen ion-icon{
+    font-size: 170px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.menu a{
+    background: rgba(252,92,27,1);
+    margin-top: 10px;
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+    font-weight: 600;
+}
+.menu a:hover{
+    background: rgb(255, 255, 255);
+    color: #000;
+}
+.delete-cuenta:hover{
+    color: rgb(224, 10, 10) !important;
+    background: rgb(255, 255, 255);
+}
+.info-componentes{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.informacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: chartreuse; */
+    min-height: 12rem;
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+    
+}
+.titulo-info-perfil-user{
+    border-bottom: 1px solid #fc5c1b;
+    height: 30px;
+}
+.titulo-info-perfil-user h4{
+    color: #fff;
+    background: #fc5c1b;
+    height: 30px;
+    padding-left: 10px;
+    width: 290px;
+}
+.labels{
+    display: flex;
+    flex-direction: column;
+}
+.labels label{
+    margin-bottom: 2px;
+}
+.componentes{
+    min-height: 20rem;
+    /* background: rgb(226, 58, 248); */
+}
 @media screen and (max-width: 800px) {
     .opciones-admin{
         margin-bottom: 30px;
@@ -97,6 +191,18 @@
         margin-top: 30px;
         margin-bottom: 30px;
     }
-    
+    .opciones-modulo-facturacion{
+        margin-top: 30px;
+    }
+    .contenido-perfil{
+        flex-direction: column;
+    }
+    .opciones-usuario{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .info-componentes{
+        width: 100%;
+    }
     
 }

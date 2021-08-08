@@ -9,9 +9,32 @@ import Swal from "sweetalert2";
 
 function Header(props) {
   const auth = useAuth();
+  // console.log(auth);
   // Consultamos en el storage los datos del usuario
   // const usuario = JSON.parse(localStorage.getItem('dataUser'));
   // console.log(usuario);
+
+// Extraemos el tipo de usuario para saber a que perfil redirigirlo 
+
+  
+// console.log(usuarioTipo);
+
+// Funcion para validar el tipo de usuario y redirigirlo al perfil correspondiente 
+const validarTipoUsuario = e => {
+  e.preventDefault();
+  const usuarioLocal = JSON.parse(localStorage.getItem('dataUser'))
+  const usuarioTipo = usuarioLocal.tipo_usu || null;
+
+  if(usuarioTipo == "Administrador" ){
+    props.history.push('/perfil-admin')
+  }else if (usuarioTipo == "Operativo"){
+    props.history.push('/perfil-operativo')
+  }else if (usuarioTipo == "Cliente"){
+    props.history.push('/perfil-usuario')
+  }else{
+    console.log(usuarioTipo);
+  }
+}
 
   // Funcion de cerrar cesion
   const cerrarSesion = (e) => {
@@ -115,7 +138,7 @@ function Header(props) {
                 <ion-icon id="icono-usuario" name="person-circle-outline" />
 
                 <div className="contenedor-navUsuario">
-                  <Link className="nav-link link-usuario">
+                  <Link className="nav-link link-usuario" onClick={validarTipoUsuario}>
                     {auth.user.nombre_usu + " " + auth.user.apellido_usu}
                   </Link>
                   <span className="usuario-span">{auth.user.tipo_usu}</span>
