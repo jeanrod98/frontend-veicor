@@ -22,32 +22,109 @@ import { Elements, CardElement, useStripe, useElements } from "@stripe/react-str
 
 import clienteAxios from "../config/axios";
 
+let deliveryConfirmacion = 0;
+//!variable para confirmar el deliveri
+// let valdeli = 0;
 //stripe
 const stripePromise = loadStripe('pk_test_51JMFb2IlbeGS9J0JfqYi3Gjd83j8gOW2uZ4zhwdRQNUTTXRIMJfwsQPnM7T5Dd4mC06jJPUrIZIzwulDIU98cXsU00wU9KlacD');
 
 const CheckoutForm = () => {
 
+  // estados para el modal de pago, espiner y mensaje
+  const [loading, setloading] = useState(false)
+  
+  const [invalid, setinvalid] = useState('')
+  
+  
   const stripe = useStripe();
   const elements = useElements();
-
-  const localUsuario = JSON.parse(localStorage.getItem('dataUser'))
-  const correoUsuario = localUsuario.correo_usu
+  // obtenemos los datos del usuario 
+  const localUsuario = JSON.parse(localStorage.getItem('dataUser'));
+  // obtenemos los productos del carrito 
+  const localProductos = JSON.parse(localStorage.getItem('poductCarrito'));
+  // obtenemos los precios del carrito 
+  const localPrecios = JSON.parse(localStorage.getItem('prices'));
+  
   const handleSubmit = async (e) =>{
     e.preventDefault();
     // console.log('click');
-  
+    
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
     })
+
+    
+
+
     if(!error){
-      console.log(paymentMethod);
-      console.log(correoUsuario);
-      
+      // console.log(paymentMethod);
+      // console.log(correoUsuario);
+      // if(valdeli > 0){deliveryConfirmacion = 1}
+      setloading(true)
+      const {id} = paymentMethod;
+      // datos para la factura 
+      const objetoUsuarioFactura = {
+        nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
+        id_usuario: localUsuario.id_usuario,
+        direccion_cli: localUsuario.direccion_usu,
+        celular_cli: localUsuario.celular_usu,
+        productos: localProductos,
+        subTotal_produc: localPrecios.subTotal_produc,
+        total_produc: localPrecios.total_produc,
+        delivery_id: localPrecios.delivery_precio,   
+        id_transaccion: id    
+        
+        
+      }
+      // console.log(objetoUsuarioFactura);
+      try {
+        
+        const {data} = await clienteAxios.post("/transaccion", {
+           nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
+           id_usuario: localUsuario.id_usuario,
+           direccion_cli: localUsuario.direccion_usu,
+           celular_cli: localUsuario.celular_usu,
+           productos: localProductos,
+           subTotal_produc: localPrecios.subTotal_produc,
+           total_produc: localPrecios.total_produc,
+           delivery_precio: localPrecios.delivery_precio,   
+           id_transaccion: id,   
+           amount: (objetoUsuarioFactura.total_produc * 100),
+   
+         })
+        //  console.log(data);
+        
+
+         if(data.message){
+          setinvalid(data.message)
+
+         }else{
+          setinvalid('')
+          //borramos el formulario  
+          elements.getElement(CardElement).clear();
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Su pago se realizó con éxito!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+         }
+         
+
+
+      } catch (error) {
+        console.log(error);
+        
+      }
+
+      setloading(false)
     }else{
-      console.log('no hay datos');
+      setinvalid('Por favor llene bien los datos de la tarjeta!.')
     }
-  
+    
   }
   return (<Form >
   {/* Correo  */}
@@ -60,7 +137,7 @@ const CheckoutForm = () => {
       isInvalid={false}
       type = "mail"
       id="modalCorreo"
-      defaultValue={correoUsuario}     
+      defaultValue={localUsuario.correo_usu}     
       disabled={true}
       />
   </InputGroup>
@@ -74,9 +151,21 @@ const CheckoutForm = () => {
    <CardElement/>
   
   </FormGroup>
+  
+  <div class="invalid">{invalid}</div>
+ 
   <FormGroup className="modal-form-group text-center">
 
-    <Button onClick={handleSubmit} className="btn-modal-pago">Realizar Pago</Button>
+    <Button onClick={handleSubmit} disabled={!stripe ? true:false} className="btn-modal-pago">
+      {loading
+        ?
+        <div class="spinner-border text-dark" role="status">
+          <span class="sr-only"></span>
+        </div>
+        :
+      "Realizar Pago"
+      }
+    </Button>
   </FormGroup>
 </Form>)
 }
@@ -86,74 +175,74 @@ const CheckoutForm = () => {
 
 function Carrito(props) {
   const history = useHistory();
-
+  
   const storageProducts = JSON.parse(localStorage.getItem("poductCarrito"));
   // console.log(storageProducts);
-
-  // if(storageProducts == null){
-  //   console.log('No hay productos');
-  // }else{
-  //   console.log('Si hay productos');
-  // }
-  // !Estado para cambiar el valor del delibery 
-  
-  const [valDelivery, setvalDelivery] = useState(0);
-
   // !variable para ir calculando el sub total 
   let subtotalCarrito = 0;
   // !variable para ir calculando el total 
   let totalCarrito = 0;
   
-  // let deliveryCarrito = 0;
-
-  // *validarque el carrito tiene productos
-  if(storageProducts != null){
-    // Calculando el total del subtotal 
-    storageProducts.forEach(subtotal => {
-      const cantidad = parseInt(subtotal.cantidad_producto);
+  // if(storageProducts == null){
+    //   console.log('No hay productos');
+    // }else{
+      //   console.log('Si hay productos');
+      // }
+      // !Estado para cambiar el valor del delibery 
+      
+      const [valDelivery, setvalDelivery] = useState(0);
+      
+      
+      // let deliveryCarrito = 0;
+      
+      // *validarque el carrito tiene productos
+      if(storageProducts != null){
+        // Calculando el total del subtotal 
+        storageProducts.forEach(subtotal => {
+          const cantidad = parseInt(subtotal.cantidad_producto);
       subtotalCarrito += (subtotal.precio_produc * cantidad); 
-
+      
       
     });
     // console.log(subtotalCarrito);
     totalCarrito = subtotalCarrito + valDelivery
-
+    
   }
-
-
-
-
+  
+  
+  
+  
   // estado para marcar el check
   // const [checkDelivery, setvalDelivery] = useState(true);
-
+  
   // const total_inpu = 5 * 0.12 + 5;
-
+  
   // const detalles = {
-  //   subtotal: 5,
-  //   total: total_inpu,
-  // };
-
-  // Estado para el modal de transaccion
-  const [openModalTransaccion, setOpenModalTransaccion] = useState(false);
-
-  // estado para el modal de terminos
-  const [openModalTerminos, setOpenModalTerminos] = useState(false);
-
-  //estado para habilitar o deshabilitar el boton de comprar
-
-  const [btnFinalizar, setBtnFinalizar] = useState(true)
-
-   //estado para los terminos y condiciones
-
-   const [terminosCondiciones, setterminosCondiciones] = useState(null)
-
-  //  validar los terminos para hacer la compra
-  const terminos = e => {
-    const check = document.getElementById('chekckTerminos').checked
-    // console.log(check);
-    if(storageProducts != null && check == true ){
-      setBtnFinalizar(false)
-
+    //   subtotal: 5,
+    //   total: total_inpu,
+    // };
+    
+    // Estado para el modal de transaccion
+    const [openModalTransaccion, setOpenModalTransaccion] = useState(false);
+    
+    // estado para el modal de terminos
+    const [openModalTerminos, setOpenModalTerminos] = useState(false);
+    
+    //estado para habilitar o deshabilitar el boton de comprar
+    
+    const [btnFinalizar, setBtnFinalizar] = useState(true)
+    
+    //estado para los terminos y condiciones
+    
+    //  const [terminosCondiciones, setterminosCondiciones] = useState(null)
+    
+    //  validar los terminos para hacer la compra
+    const terminos = e => {
+      const check = document.getElementById('chekckTerminos').checked
+      // console.log(check);
+      if(storageProducts != null && check == true ){
+        setBtnFinalizar(false)
+        
     
     }else{
 
@@ -212,6 +301,7 @@ function Carrito(props) {
   const checkedSinDelivery = (e) => {
     // console.log("chekeado sin");
     setvalDelivery(0);
+    // valdeli = 0;
   };
   // funcion para capturar si se checkea con delivery
   const checkedConDelivery = (e) => {
@@ -221,6 +311,7 @@ function Carrito(props) {
     .then( respuesta => {
       const newPrecio = respuesta.data.precio_deli
       setvalDelivery(newPrecio);
+      // valdeli = 1;
       
     })
     .catch(error => {
@@ -405,6 +496,12 @@ function Carrito(props) {
                   className="btn finalizar-pago"
                   disabled={btnFinalizar}
                   onClick={() => {
+                    const prices = {
+                      subTotal_produc: subtotalCarrito,
+                      total_produc: totalCarrito,
+                      delivery_precio: valDelivery,
+                    }
+                    localStorage.setItem('prices', JSON.stringify(prices) )
                     setOpenModalTransaccion(true);
                   }}
                 >
@@ -451,7 +548,9 @@ function Carrito(props) {
       </Modal>
       {/* Modal de Transaccion  */}
       <Modal centered show={openModalTransaccion} onHide={() => {
+              localStorage.removeItem('prices')
               setOpenModalTransaccion(false);
+
             }} >
         <Modal.Header closeButton={true} closeLabel>
           <Modal.Title className="modal-title-pago">
@@ -468,6 +567,7 @@ function Carrito(props) {
         </Modal.Body>
         <Modal.Footer >
           <div className="footer-modal-pago">
+            <p><strong>AL finalizar la compra puede ver las facturas  en su perfil</strong></p>
 
           <p>Almacen Veicor - &copy; 2021 Todos los derechos reservados</p>
           </div>

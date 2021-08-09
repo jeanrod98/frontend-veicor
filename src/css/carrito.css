@@ -323,9 +323,19 @@
 }
 .modal-header, .close span{
     font-size: 40px !important;
+    background: #fff !important;
+    margin: 0 !important;
     
 }
+.modal-header, .close{
+    background: #fff;
+}
 
+.invalid{
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+}
 
 @media screen and (max-width: 800px) {
     .carrito-productos    {
