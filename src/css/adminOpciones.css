@@ -261,7 +261,7 @@ tbody{
     
 }
 .titulo-listado-facturas{
-    margin-top: 30px;
+    /* margin-top: 30px; */
     margin-bottom: 30px;
     display: flex;
 }
@@ -285,11 +285,17 @@ tbody{
 /* card de lista factura  */
 .card-lista-fact{
     background: #eeecec;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px; */
+    margin: 10px;
 }
 .card-titulo-lista{
+    display: flex;
     color: rgba(0,0,0,0.5);
+}
+.card-titulo-lista p{
+    color: rgba(0,0,0,0.5);
+    margin: 0 !important;
+    justify-content: start;
 }
 .contenido-fact{
     display: flex !important;
@@ -300,8 +306,12 @@ tbody{
     
     
 }
+.contenido-fact h6{
+    font-size: 14px;
+    color: rgba(0,0,0,0.8);
+}
 .select-card-lista{
-    width: 150px;
+    width: 185px;
     font-size: 12px;
 }
 .link-card-listado{
@@ -356,11 +366,28 @@ tbody{
     /* Facturas  */
 
     .contenido-fact{
-    display: inline !important;
+    /* display: inline !important; */
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
     
+    }
+    .contenido-fact p{
+        margin: 10px !important;
     }
     .listado-facturas-pendientes{
         margin-bottom: 20px;
+    }
+    .titulo-listado-facturas, h2{
+        font-size: 26px !important;
+
+    }
+    .titulo-listado-facturas ion-icon{
+        font-size: 36px !important;
+    }
+    .card-lista-fact, .card-body{
+        /* font-size: 12px !important; */
+        width: 95% !important;
     }
 
 }

@@ -63,7 +63,7 @@ const agregarCarrito = e =>{
     nombre_produc: nombre_produc,
     precio_produc: precio_produc,
     imagen_produc: imagen_produc,
-    cantidad_producto: cantidadEstado.cantidadInput,
+    cantidad_producto: parseInt(cantidadEstado.cantidadInput),
   }
  
   Swal.fire({

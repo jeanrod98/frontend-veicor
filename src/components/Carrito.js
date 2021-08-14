@@ -64,20 +64,20 @@ const CheckoutForm = () => {
       setloading(true)
       const {id} = paymentMethod;
       // datos para la factura 
-      const objetoUsuarioFactura = {
-        nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
-        id_usuario: localUsuario.id_usuario,
-        direccion_cli: localUsuario.direccion_usu,
-        celular_cli: localUsuario.celular_usu,
-        productos: localProductos,
-        subTotal_produc: localPrecios.subTotal_produc,
-        total_produc: localPrecios.total_produc,
-        delivery_id: localPrecios.delivery_precio,   
-        id_transaccion: id    
+      // const objetoUsuarioFactura = {
+      //   nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
+      //   id_usuario: localUsuario.id_usuario,
+      //   direccion_cli: localUsuario.direccion_usu,
+      //   celular_cli: localUsuario.celular_usu,
+      //   productos: localProductos,
+      //   subTotal_produc: localPrecios.subTotal_produc,
+      //   total_produc: localPrecios.total_produc,
+      //   delivery_id: localPrecios.delivery_precio,   
+      //   id_transaccion: id    
         
         
-      }
-      // console.log(objetoUsuarioFactura);
+      // }
+      console.log(localPrecios.total_produc * 100);
       try {
         
         const {data} = await clienteAxios.post("/transaccion", {
@@ -90,7 +90,7 @@ const CheckoutForm = () => {
            total_produc: localPrecios.total_produc,
            delivery_precio: localPrecios.delivery_precio,   
            id_transaccion: id,   
-           amount: (objetoUsuarioFactura.total_produc * 100),
+           amount: Math.round(localPrecios.total_produc * 100),
    
          })
         //  console.log(data);

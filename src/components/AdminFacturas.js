@@ -1,19 +1,105 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
 import Header from './Header';
 import Footer from './Footer';
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {Card, Button, ListGroup, Form} from 'react-bootstrap'
 
 import '../css/adminOpciones.css'
+import clienteAxios from '../config/axios';
+import Swal from 'sweetalert2';
 
 function AdminFacturas() {
+    const history = useHistory();
+    //guardar consultar
+    const [guardarConsultar, setguardarConsultar] = useState(true)
 
+    const [DataFactPendiente, setDataFactPendiente] = useState([]);
 
+  useEffect(() => {
+    if(guardarConsultar){
+        const consultarAPI = () => {
+            // datos de factura pendiente
+            clienteAxios
+              .get(`/facturas-pendientes`)
+              .then((respuesta) => {
+                // console.log(respuesta.data);
+      
+                // Guardar en el state el resultado
+                setDataFactPendiente(respuesta.data);
+                setguardarConsultar(false);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+      
+          };
+          consultarAPI();
+    }
+    // }
+  }, [guardarConsultar]);
+
+//*actualizarEstadoFac
+const actualizarEstadoFac = e =>{
+    e.preventDefault();
+    // const newEstado = document.querySelector('.select-card-lista').value
+    // const url = document.querySelector('link-card-listado').href
+    // const id_factura = document.querySelector('link-card-listado').href
+    const elemento = e.target.parentElement.parentElement
+    // console.log(elemento.querySelector('p').textContent);
+    // console.log(elemento.querySelector('.cedula-card h6').textContent);
+    // console.log(elemento.querySelector('.fecha-card h6').textContent);
+    // console.log(elemento.querySelector('.estado-card select').value);
+    // console.log(elemento.querySelector('.url-card a').href);
+    const fecha = new Date();
+    const fechaActual = fecha.toUTCString()
+
+    const codigo_fac = parseInt(elemento.querySelector('p').textContent)
+    const facturaActualizada = {
+        // codigo_fac: parseInt(elemento.querySelector('p').textContent),
+        // id_usuario: elemento.querySelector('.cedula-card h6').textContent,
+        // url_fac: elemento.querySelector('.url-card a').href,
+        // fechaReg_fac: fechaActual,
+        estado_fac: elemento.querySelector('.estado-card select').value,
+
+    }
+
+    // console.log(facturaActualizada);
+    clienteAxios.put(`/estado-factura/${codigo_fac}`, facturaActualizada)
+    .then(respuesta => {
+        console.log(respuesta);
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'La factura se actualizó con éxito!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setguardarConsultar(true)
+        setTimeout(() => {
+            history.push('/perfil-admin/facturas')
+        }, 1550);
+          
+    })
+    .catch(error => {
+        console.log(error);
+    })
+  
+    
+
+}
     
     return (
         <div className="AdminFacturas">
             <Header/>
+            <div className="container">
+
+            <div>
+                <Link to="/perfil-admin" className="btn-atras">
+                    <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                </Link>
+            </div>
             <div className="container contenedor-adminListFact">
                 <div className="titulo-listado-facturas">
                     <ion-icon name="newspaper-outline"></ion-icon>
@@ -33,75 +119,47 @@ function AdminFacturas() {
                     {/* Cuando existen facturas con delivery se muestran  */}
                     {/* formato */}
                     <div className="contenedor-lista-fact">
-                        <Card className="card-lista-fact">
-                        <Card.Body>
-                            <Card.Title className="card-titulo-lista" >Factura #0001</Card.Title>
-                            <ListGroup className="contenido-fact">
-                                <Card.Text>
-                                <strong>Nombres:</strong>
-                                    <br />
-                                    Jean Carlos Rodriguez Choez
-                                </Card.Text>
-                                <Card.Text>
-                                <strong>Producto:</strong>
-                                    <br />
-                                    Olla unco dos piezas
-                                </Card.Text>
-                                
-                                <Card.Text>
-                                <strong>Estado/Factura: </strong>
-                                    <br />
-                                    <select class="form-select select-card-lista">
-                                        <option>Pendiente Entrega</option>
-                                        <option>Entregado</option>
-                                    </select>
-                                </Card.Text>
-                                <Card.Text>
-                                    <Card.Link className="link-card-listado" href="#">Ver Factura</Card.Link>
-                                </Card.Text>
-                                <Button className="btn-card-listado">Guardar Cambios</Button>
-                            </ListGroup>
-                        </Card.Body>
-                        </Card>
+                        {DataFactPendiente.map(factura => (
 
                         <Card className="card-lista-fact">
                         <Card.Body>
-                            <Card.Title className="card-titulo-lista">Factura #0001</Card.Title>
+                            <Card.Title className="card-titulo-lista" >Factura # 00 <p>{factura.codigo_fac}</p></Card.Title>
                             <ListGroup className="contenido-fact">
-                                <Card.Text>
-                                <strong>Nombres:</strong>
+                                <Card.Text className="cedula-card">
+                                <strong>Cédula Cliente:</strong>
                                     <br />
-                                    Jean Carlos Rodriguez Choez
+                                    <h6>{factura.id_usuario}</h6>
                                 </Card.Text>
-                                <Card.Text>
-                                <strong>Producto:</strong>
+                                <Card.Text className="fecha-card">
+                                <strong>Fecha de Factura:</strong>
                                     <br />
-                                    Olla unco dos piezas
+                                    <h6>{factura.fechaReg_fac}</h6>
                                 </Card.Text>
                                 
-                                <Card.Text>
+                                <Card.Text className="estado-card">
                                 <strong>Estado/Factura: </strong>
                                     <br />
                                     <select class="form-select select-card-lista">
-                                        <option>Pendiente Entrega</option>
-                                        <option>Entregado</option>
+                                        <option>{factura.estado_fac}</option>
+                                        <option>Pagado (entregado)</option>
                                     </select>
                                 </Card.Text>
-                                <Card.Text>
-                                    <Card.Link className="link-card-listado" href="#">Ver Factura</Card.Link>
+                                <Card.Text className="url-card">
+                                    <Card.Link className="link-card-listado" href={factura.url_fac} target="_blank">Ver Factura</Card.Link>
                                 </Card.Text>
-                                <Button className="btn-card-listado">Guardar Cambios</Button>
+                                <Button className="btn-card-listado" onClick={actualizarEstadoFac}>Guardar Cambios</Button>
                             </ListGroup>
                         </Card.Body>
                         </Card>
+                        ))}
 
                         
-
                     </div>
                 
 
                 </div>
                 
+            </div>
             </div>
 
             <Footer/>

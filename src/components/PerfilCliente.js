@@ -4,17 +4,20 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import clienteAxios from "../config/axios";
 // import useAuth from "../auth/useAuth";
+import {Card} from 'react-bootstrap';
 
 function PerfilCliente() {
   const auth = JSON.parse(localStorage.getItem("dataUser"));
   const usuario_id = auth.id_usuario;
 
-  //* Consultamos la API por los datos del usuario
+  //* Consultamos la API por los datos del usuario y facturas
 
   const [UsuarioData, setUsuarioData] = useState([]);
+  const [UsuarioDataFact, setUsuarioDataFact] = useState([]);
 
   useEffect(() => {
     const consultarAPI = () => {
+      //datos de usuario
       clienteAxios
         .get(`/usuarios/${usuario_id}`)
         .then((respuesta) => {
@@ -26,6 +29,19 @@ function PerfilCliente() {
         .catch((error) => {
           console.log(error);
         });
+      // datos de factura
+      clienteAxios
+        .get(`/facturas/${usuario_id}`)
+        .then((respuesta) => {
+          // console.log(respuesta.data);
+
+          // Guardar en el state el resultado
+          setUsuarioDataFact(respuesta.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
     };
     consultarAPI();
     // }
@@ -50,7 +66,7 @@ const eliminarCuenta = e => {
     setetiqueta('ELIMINAR CUENTA')
 }
 
-
+console.log(UsuarioDataFact);
   return (
     <div className="Perfil-Cliente">
       <Header />
@@ -119,10 +135,41 @@ const eliminarCuenta = e => {
                 }
 
                 {etiqueta == 'MIS FACTURAS' &&
-                    <div className="text-center">
+                <>
+                {UsuarioDataFact.map(factura =>(
 
-                        <h4>MIS FACTURAS</h4>
+                    <div className="m-4">
+
+                        <Card>
+                          <Card.Header className="card-usuario-fac">
+                            <p>Factura # 00 {factura.codigo_fac}</p>
+                          </Card.Header>
+                          <Card.Body  className="tarjeta-fact-cliente">
+                            <div>
+                            <strong><p>Fecha</p></strong>
+                              <br/>
+                              <p>{factura.fechaReg_fac}</p>
+
+                            </div>
+                            <div>
+                              <strong><p>Cédula</p></strong>
+                              <br/>
+                              <p>{factura.id_usuario}</p>
+                            </div>
+                            <div>
+                            <strong><p>URL Factura</p></strong>
+                              <br/>
+                              {/* <p></p> */}
+                              {/* <Link to=></Link> */}
+                              <a href={factura.url_fac} target="_blank">Ver Factura</a>
+                            </div>
+                            
+
+                          </Card.Body>
+                        </Card>
                     </div>
+                ))}
+                </>
                 }
 
             </div>

@@ -191,7 +191,7 @@ function Facturacion() {
                                 <div className="subtotal-factura">
                                     <h4>SUBTOTAL:</h4>
                                     <div className="alineacion">
-                                        <h4>100</h4>
+                                        <h4>0</h4>
                                     </div>
                                 </div>
                                 <div className="impuesto-factura">
@@ -203,7 +203,7 @@ function Facturacion() {
                                 <div className="total-factura">
                                     <h1>TOTAL:</h1>
                                     <div className="alineacion">
-                                        <h1>112</h1>
+                                        <h1>0</h1>
                                     </div>
                                 </div>
                             </div>

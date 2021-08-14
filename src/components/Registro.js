@@ -4,8 +4,17 @@ import "../css/loguin-registro.css";
 import logopng2 from "../assets/logos/logopng2.png";
 
 import { useState } from "react";
+import {useHistory} from 'react-router-dom'
 import { FormControl } from "react-bootstrap";
+import clienteAxios from "../config/axios";
+import Swal from "sweetalert2";
+
+
+
 function Registro() {
+
+  const history = useHistory();
+
   const expresiones = {
     nombreApellido: /^[a-zA-ZÀ-ÿ\s]{1,30}$/, // Letras y espacios, pueden llevar acentos.
     password: /^.{4,20}$/, // 4 a 12 digitos.
@@ -25,7 +34,6 @@ function Registro() {
     celular_usu: "",
     convencional_usu: "",
     contrasenia_usu: "",
-    contrasenia_usu_rep: "",
     contrasenia_usu_rep: "",
     correo_usu: "",
     
@@ -55,6 +63,8 @@ function Registro() {
   //!direccion
   const [validDireccion, setValidDireccion] = useState(false);
   const [inValidDireccion, setInValidDireccion] = useState(false);
+  //!estadoBoton
+  const [estadoBoton, setestadoBoton] = useState(true)
 
   // validar campos
   const guardarState = (e) => {
@@ -69,84 +79,157 @@ function Registro() {
     // nombre
     if (usuario.nombre_usu == "") {
       setInValidNombre(true);
+      setestadoBoton(true)
     } else if (
       expresiones.nombreApellido.test(usuario.nombre_usu) ||
       expresiones.nombreApellido.test(usuario.apellido_usu)
     ) {
       setInValidNombre(false);
       setValidNombre(true);
+      setestadoBoton(false)
     } else {
       setInValidNombre(true);
       setValidNombre(false);
+      setestadoBoton(true)
     }
     // apellido
     if (usuario.apellido_usu == "") {
       setInValidApellido(true);
+      setestadoBoton(true)
     } else if (expresiones.nombreApellido.test(usuario.apellido_usu)) {
       setInValidApellido(false);
       setValidApellido(true);
+      setestadoBoton(false)
     } else {
       setInValidApellido(true);
       setValidApellido(false);
+      setestadoBoton(true)
     }
     // cedula
     if (usuario.id_usuario == "") {
       setInValidCedula(true);
+      setestadoBoton(true)
     } else if (expresiones.cedula.test(usuario.id_usuario)) {
       setInValidCedula(false);
       setValidCedula(true);
+      setestadoBoton(false)
     } else {
       setInValidCedula(true);
       setValidCedula(false);
+      setestadoBoton(true)
     }
     //correo
     if (usuario.correo_usu == "") {
         setInValidCorreo(true);
+        setestadoBoton(true)
       } else if (expresiones.correo.test(usuario.correo_usu)) {
         setInValidCorreo(false);
         setValidCorreo(true);
+        setestadoBoton(false)
       } else {
         setInValidCorreo(true);
         setValidCorreo(false);
+        setestadoBoton(true)
       }
     //contraseña
     if (usuario.contrasenia_usu == "") {
         setInValidContrasenia(true);
+        setestadoBoton(true)
       } else if (expresiones.password.test(usuario.contrasenia_usu)) {
         setInValidContrasenia(false);
         setValidContrasenia(true);
+        
       } else {
         setInValidContrasenia(true);
         setValidContrasenia(false);
+        setestadoBoton(true)
       }
     //contraseña repetir
     if (usuario.contrasenia_usu_rep != usuario.contrasenia_usu) {
-        setInValidContraseniaRep(true);      
+        setInValidContraseniaRep(true);  
+        setestadoBoton(true)    
     } else {
         setInValidContraseniaRep(false);
         setValidContraseniaRep(true);
+        setestadoBoton(false)
      }
     //celular
     if (usuario.celular_usu == "") {
         setInValidCelular(true);
+        setestadoBoton(true)
       } else if (expresiones.telefono.test(usuario.celular_usu)) {
         setInValidCelular(false);
         setValidCelular(true);
+        setestadoBoton(false)
       } else {
         setInValidCelular(true);
         setValidCelular(false);
+        setestadoBoton(true)
       }
     //direccion
     if (usuario.direccion_usu == "") {
         setInValidDireccion(true);
+        setestadoBoton(true)
       } else if (expresiones.direccion.test(usuario.direccion_usu)) {
         setInValidDireccion(false);
         setValidDireccion(true);
+        setestadoBoton(false)
       } else {
         setInValidDireccion(true);
         setValidDireccion(false);
+        setestadoBoton(true)
       }
   };
+
+  //registroUsuario
+  const registroUsuario = e =>{
+    e.preventDefault();
+    // console.log(usuario);
+    clienteAxios.post('/usuarios', usuario)
+    .then(respuesta =>{
+      console.log(respuesta.data.msg);
+      if(respuesta.data.msgSuccess){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'El registro fue exitoso!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+       setTimeout(() => {
+        history.push('/loguin')   
+         
+       }, 1550);   
+
+        
+      }
+      if(respuesta.data.msgError){
+       
+        Swal.fire({
+          icon: 'error',
+          title: 'Registro Invalido',
+          text: 'No se pudo enviar el registro, los datos pueden ser incorrectos!',
+          confirmButtonColor: '#fc5c1b'
+          
+        })
+
+      }
+     
+    })
+    // .catch(error => {
+    //   // if(error){
+
+    //     console.log(error);
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Registro Invalido',
+    //       text: 'No se pudo enviar el registro!',
+    //       confirmButtonColor: '#fc5c1b'
+          
+    //     })
+      // }
+    // })
+  }
 
   return (
     <div className="Registro">
@@ -320,10 +403,10 @@ function Registro() {
                     class="form-control"
                     id="convencional"
                     placeholder="Ingrese su número convencional"
-                    required
+                  
                   />
                   <small id="emailHelp" class="form-text text-muted">
-                    Este campo es opcional.
+                    Campo Opcional ( 9 digitos sin espacios ).
                   </small>
                 </div>
               </div>
@@ -355,6 +438,8 @@ function Registro() {
                   type="submit"
                   id="enviar-registro"
                   value="REGISTRARME"
+                  disabled={estadoBoton}
+                  onClick={registroUsuario}
                 />
               </div>
             </form>

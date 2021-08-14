@@ -171,6 +171,29 @@
     min-height: 20rem;
     /* background: rgb(226, 58, 248); */
 }
+.card-usuario-fac{
+   
+    background: #686f86;
+    color: #fff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 12px;
+}
+.card-usuario-fac, p{
+    text-align: center;
+    margin: 0!important;
+}
+.tarjeta-fact-cliente{
+    display: flex !important;
+    flex-direction: row !important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 12px;
+}
+.tarjeta-fact-cliente div{
+    
+    margin: auto;
+
+}
+
 @media screen and (max-width: 800px) {
     .opciones-admin{
         margin-bottom: 30px;
