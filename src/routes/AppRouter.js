@@ -82,7 +82,7 @@ function AppRouter() {
         <PrivateRoute exact path="/perfil-admin" component={PerfilAdmin} />
         <PrivateRoute exact path="/perfil-operativo" component={PerfilOperativo} />
 
-        <PrivateRoute exact path="/perfil-admin/productos" component={AdminProductos} />
+        <PrivateRoute exact path="/perfil-admin/productos" component={() => <AdminProductos productos={productos} />} />
         <PrivateRoute exact path="/perfil-admin/usuarios" component={AdminUsuarios} />
         <PrivateRoute exact path="/perfil-admin/facturas" component={AdminFacturas} />
         <PrivateRoute exact path="/facturacion" component={Facturacion} />

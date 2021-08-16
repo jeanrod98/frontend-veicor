@@ -178,7 +178,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 12px;
 }
-.card-usuario-fac, p{
+.card-usuario-fac p, .tarjeta-fact-cliente p{
     text-align: center;
     margin: 0!important;
 }
@@ -188,6 +188,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 12px;
 }
+
 .tarjeta-fact-cliente div{
     
     margin: auto;

@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
               showCloseButton: true,
               confirmButtonColor: "#fc5c1b",
             });
-            // ruta = '/loguin'
+            ruta = '/loguin'
           }
 
           // Guardar en el state el resultado

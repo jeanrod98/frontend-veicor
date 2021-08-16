@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header';
 import Footer from './Footer';
 import {Card, Button, Table} from 'react-bootstrap';
@@ -6,7 +6,63 @@ import img from '../assets/imguso.jpg'
 import { Link } from "react-router-dom";
 
 import '../css/adminOpciones.css'
-function AdminProductos() {
+import Swal from 'sweetalert2';
+function AdminProductos({productos}) {
+
+    // console.log(productos);
+    //estado para capturar el input de busqueda
+    const [filtrar, setFiltrar] = useState({
+        buscar: ''
+    })
+    
+    const inputFiltrar = e =>{
+        e.preventDefault()
+        setFiltrar({
+            ...filtrar,
+            buscar: e.target.value,
+        })
+        if(e.target.value == ''){
+
+            setresultadoProducto([]);
+        }
+    }
+    
+    //estado para mostrar el producto
+    const [resultadoProducto, setresultadoProducto] = useState([])
+
+    const filtrarProductos  = e =>{
+        e.preventDefault()
+        const filtrarValue = filtrar.buscar
+        if(filtrarValue != ''){
+            //realizamos el filtrado
+            // console.log(filtrarValue);
+            const result = productos.filter((producto) => producto.id_producto === filtrarValue);
+            //validar el resultado
+            if(result.length > 0){
+
+                // console.log(result);
+                setresultadoProducto(result) 
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Producto Invalido',
+                    text: 'EL producto ingresado no existe en la Base de Datos!',
+                    confirmButtonColor: "#f05416"
+                    
+                  })
+            }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de Busqueda',
+                text: 'EL campo de busqueda esta vacío, por favor introdusca un código de producto!',
+                confirmButtonColor: "#f05416"
+                
+              })
+        }
+
+    } 
+
     return (
         <div className="AdminProductos">
             <Header/>
@@ -39,9 +95,9 @@ function AdminProductos() {
                         {/* <div className="buscador"> */}
                         
                                 <div class="buscador-productos input-group">
-                                    <input type="search" class="search-input-productos form-control rounded" placeholder="Código de Producto..." aria-label="Search"
+                                    <input onChange={inputFiltrar} type="search" class="search-input-productos form-control rounded" placeholder="Código de Producto..." aria-label="Search"
                                         aria-describedby="search-addon" />
-                                    <button id="btn-search-productos" type="button" class="btn"><ion-icon name="search-outline"></ion-icon></button>
+                                    <button onClick={filtrarProductos} id="btn-search-productos" type="button" class="btn"><ion-icon name="search-outline"></ion-icon></button>
                                 </div>
 
                         {/* </div> */}
@@ -79,13 +135,19 @@ function AdminProductos() {
                         </tr>
                     </thead>
                     <tbody>
+
+                        {resultadoProducto.length > 0 
+                        ? 
+                        <>
+                        {resultadoProducto.map(product => (
+
                         <tr>
-                        <td>PH009D8D</td>
-                        <td><img src={img} width="100" height="auto" alt="" /></td>
-                        <td>Ollas de Metal Unco</td>
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos pariatur atque itaque laborum quidem hic modi. Assumenda quibusdam iusto numquam magnam adipisci, ratione, placeat, quae exercitationem ipsam sit aut ad.</td>
-                        <td>$5.99</td>
-                        <td>100</td>
+                        <td>{product.id_producto}</td>
+                        <td><img src={product.imagen_produc} width="100" height="auto" alt="" /></td>
+                        <td>{product.nombre_produc}</td>
+                        <td>{product.descripcion_produc}</td>
+                        <td>{product.precio_produc}</td>
+                        <td>{product.cantidad_produc}</td>
                         <td >
                             <div className="opciones-tabla">
                                 <Button className="btn btn-warning">Modificar</Button>
@@ -94,22 +156,33 @@ function AdminProductos() {
                         </td>                        
                         
                         </tr>
+                        ))}
+                        </>
 
-                        {/* <tr>
-                        <td>#</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
-                        <td>N/A</td>
-                        <td>
-                            <div className="opciones-tabla">
-                                <Button className="btn btn-warning">Modificar</Button>
-                                <Button className="btn btn-danger">Eliminar</Button>
-                            </div>
-                        </td>                        
+                        :
+                        <>
+                        {productos.map(producto => (
+
+                            <tr>
+                            <td>{producto.id_producto}</td>
+                            <td><img src={producto.imagen_produc} width="100" height="auto" alt="" /></td>
+                            <td>{producto.nombre_produc}</td>
+                            <td>{producto.descripcion_produc}</td>
+                            <td>{producto.precio_produc}</td>
+                            <td>{producto.cantidad_produc}</td>
+                            <td >
+                                <div className="opciones-tabla">
+                                    <Button className="btn btn-warning">Modificar</Button>
+                                    <Button className="btn btn-danger">Eliminar</Button>
+                                </div>
+                            </td>                        
+                            
+                            </tr>
+
+                            ))}
+                        </>
+                        }
                         
-                        </tr> */}
                         
                     </tbody>
                     </Table>
