@@ -3,11 +3,14 @@ import Header from './Header';
 import Footer from './Footer';
 import {Card, Button, Table} from 'react-bootstrap';
 import img from '../assets/imguso.jpg'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import '../css/adminOpciones.css'
 import Swal from 'sweetalert2';
+
 function AdminProductos({productos}) {
+
+    const history = useHistory();
 
     // console.log(productos);
     //estado para capturar el input de busqueda
@@ -62,6 +65,28 @@ function AdminProductos({productos}) {
         }
 
     } 
+    //Insertar Productos
+    const insertarProductos = e => {
+        e.preventDefault();
+        history.push('/perfil-admin/productos/CRUD/newProduct')
+
+    }
+    //Modificar productos
+    const modificarProductos = e => {
+        e.preventDefault();
+        const elementoPadre = e.target.parentElement.parentElement.parentElement;
+        const idProducto = elementoPadre.querySelector('td').textContent
+
+        // console.log();
+        history.push(`/perfil-admin/productos/CRUD/${idProducto}`)
+        
+
+    }
+    //Eliminar productos
+    const eliminarProductos = e => {
+        e.preventDefault();
+
+    }
 
     return (
         <div className="AdminProductos">
@@ -104,7 +129,7 @@ function AdminProductos({productos}) {
 
                         {/* <div className="agregar-productos"> */}
                             <div className="agregarProducto">
-                                <Button className="btn-agregarProductos">Agregar Productos</Button>
+                                <Button onClick={insertarProductos} className="btn-agregarProductos">Agregar Productos</Button>
                             </div>
                         {/* </div> */}
 
@@ -172,8 +197,8 @@ function AdminProductos({productos}) {
                             <td>{producto.cantidad_produc}</td>
                             <td >
                                 <div className="opciones-tabla">
-                                    <Button className="btn btn-warning">Modificar</Button>
-                                    <Button className="btn btn-danger">Eliminar</Button>
+                                    <Button onClick={modificarProductos} className="btn btn-warning">Modificar</Button>
+                                    <Button onClick={eliminarProductos} className="btn btn-danger">Eliminar</Button>
                                 </div>
                             </td>                        
                             

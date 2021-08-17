@@ -30,25 +30,30 @@ function AppRouter() {
 
   //State de los productos
   const [productos, guardarProductos] = useState([]);
+  const [guardarConsulta, setguardarConsulta] = useState(true)
 
   useEffect(() => {
-    // if(productos){
-    const consultarAPI = () => {
-      clienteAxios
-        .get("/productos")
-        .then((respuesta) => {
-          // console.log(respuesta.data);
+    if(guardarConsulta){
 
-          // Guardar en el state el resultado
-          guardarProductos(respuesta.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    consultarAPI();
+      const consultarAPI = () => {
+        clienteAxios
+          .get("/productos")
+          .then((respuesta) => {
+            // console.log(respuesta.data);
+  
+            // Guardar en el state el resultado
+            guardarProductos(respuesta.data);
+            setguardarConsulta(false)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+      consultarAPI();
+    }
+
     // }
-  }, []);
+  }, [guardarConsulta]);
 
   return (
     <Router className="App">
@@ -86,7 +91,7 @@ function AppRouter() {
         <PrivateRoute exact path="/perfil-admin/usuarios" component={AdminUsuarios} />
         <PrivateRoute exact path="/perfil-admin/facturas" component={AdminFacturas} />
         <PrivateRoute exact path="/facturacion" component={Facturacion} />
-        <PrivateRoute exact path="/perfil-admin/productos/CRUD" component={ProductosCRUD} />
+        <PrivateRoute exact path="/perfil-admin/productos/CRUD/:id"  component={ProductosCRUD} component={() => <ProductosCRUD setguardarConsulta={setguardarConsulta}/>} />
         <PrivateRoute exact path="/perfil-admin/usuarios/CRUD" component={UsuariosCRUD} />
 
 
