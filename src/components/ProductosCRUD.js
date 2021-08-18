@@ -249,6 +249,10 @@ if(inptFile){
    
 
   // setimagen(readFile)
+  guardarProducto({
+    ...producto,
+    imagen_produc: readFile.result,
+  });
   
 }else{
   preview.src = imagen;
@@ -262,66 +266,120 @@ if(inptFile){
  //enviar datos  al servidor
  const guardarCambios = e =>{
    e.preventDefault();
-
-   const img = new FormData();
-   if(imagenSubir != null){
-
-    if(imagenSubir.length > 0){
-
-      img.append("img-product", imagenSubir[0])
-      img.append("producto", JSON.stringify(producto))
+   // validamos que se quiara actualizar o insertar
+   if(productoFiltrado.length <= 0){
+     //!proceso de insertar en la base de datos
+     //alerta de confirmacion para insertar
+     Swal.fire({
+      title: 'Agregar Producto?',
+      text: "Esta seguro de agregar este producto a la base de datos!",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#f05416',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Guardar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const img = new FormData();
+        console.log(imagenSubir);
+        if(imagenSubir != null){
  
-      clienteAxios.put(`/productos-update/${id}`, img)
-      .then(res => {
-        console.log(res.data.msg);
-        if(res.data.msg){
-          
-          Swal.fire({
-           position: 'center',
-           icon: 'success',
-           title: 'Los cambios se guardaron con éxito!!',
-           showConfirmButton: false,
-           timer: 1500
-         })
-         props.setguardarConsulta(true)
+          img.append("img-product", imagenSubir[0])
         }
-      })
-      .catch(error => {
-        console.log(error);
-        Swal.fire({
-         icon: 'error',
-         title: 'Error de Imagen',
-         text: 'El tamaño maximo es de 500 kb y solo se permiten imagenes con extensión (JPG, JPEG y PNG).',
-         confirmButtonColor: "#f05416",
+        img.append("producto", JSON.stringify(producto))
+        clienteAxios.post('/productos', img)
+        .then(res => {
+          console.log(res.data.msg);
+          
+          props.setguardarConsulta(true)
          
-       })
-      })
-    }else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Actualización Incorrecta',
-        text: 'Para guardar cambios debe seleccionar una imagen de producto!',
-        confirmButtonColor: "#f05416",
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El producto fue registrado!.',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
+          
+        })
+        .catch(error => {
+          console.log(error);
+          Swal.fire({
+          icon: 'error',
+          title: 'Error de Imagen',
+          text: 'El tamaño maximo es de 500 kb y solo se permiten imagenes con extensión (JPG, JPEG y PNG).',
+          confirmButtonColor: "#f05416",
+          
+        })
+        })
+ 
         
-      })
-    }
-   }else{
-    Swal.fire({
-      icon: 'error',
-      title: 'Actualización Incorrecta',
-      text: 'Para guardar cambios debe seleccionar una imagen de producto!',
-      confirmButtonColor: "#f05416",
-      
+      }
     })
+
+   }else{
+     //!proceso de modificar
+     //alerta de confirmacion para actualizar
+     Swal.fire({
+       title: 'Guardar Cambios?',
+       text: "Los cambios no se podran revertir y si no seleccionó una imagen se colocará una por defecto!",
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#f05416',
+       cancelButtonColor: '#d33',
+       cancelButtonText: 'Cancelar',
+       confirmButtonText: 'Guardar!'
+     }).then((result) => {
+       if (result.isConfirmed) {
+         const img = new FormData();
+         console.log(imagenSubir);
+         if(imagenSubir != null){
+  
+           img.append("img-product", imagenSubir[0])
+         }
+         img.append("producto", JSON.stringify(producto))
+         clienteAxios.put(`/productos-update/${id}`, img)
+         .then(res => {
+           console.log(res.data.msg);
+           
+           props.setguardarConsulta(true)
+          
+           Swal.fire({
+             position: 'center',
+             icon: 'success',
+             title: 'El producto fue actualizado!.',
+             showConfirmButton: false,
+             timer: 1500
+           })
+           
+           
+         })
+         .catch(error => {
+           console.log(error);
+           Swal.fire({
+           icon: 'error',
+           title: 'Error de Imagen',
+           text: 'El tamaño maximo es de 500 kb y solo se permiten imagenes con extensión (JPG, JPEG y PNG).',
+           confirmButtonColor: "#f05416",
+           
+         })
+         })
+  
+         
+       }
+     })
+
    }
 
-   //agregamos la imagen al estado para enviarla
-  //  const dataProductos = [producto, img]
-  // console.log(producto);
-  // //  const img = document.getElementById('img_product')
-  // //  const imagenProducto = img.files[0]
-  // // console.log(imagenProducto);
- }
+   
+        
+        
+    
+
+
+}
 //  console.log(imagenSubir);
   
   return (

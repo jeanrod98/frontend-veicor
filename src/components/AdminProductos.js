@@ -3,12 +3,13 @@ import Header from './Header';
 import Footer from './Footer';
 import {Card, Button, Table} from 'react-bootstrap';
 import img from '../assets/imguso.jpg'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 
 import '../css/adminOpciones.css'
 import Swal from 'sweetalert2';
+import clienteAxios from '../config/axios';
 
-function AdminProductos({productos}) {
+function AdminProductos({productos, setguardarConsulta}) {
 
     const history = useHistory();
 
@@ -83,9 +84,56 @@ function AdminProductos({productos}) {
 
     }
     //Eliminar productos
-    const eliminarProductos = e => {
+    const eliminarProductos = async e => {
         e.preventDefault();
-
+        const elementoPadre = e.target.parentElement.parentElement.parentElement;
+        const idProducto = elementoPadre.querySelector('td').textContent
+        console.log(idProducto);
+        // alerta para confirmar la eliminacion
+        Swal.fire({
+            title: 'Eliminar Producto?',
+            text: "Una vez eliminado no se podra recuperar el producto...",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#f05416',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                //axios para eliminar el producto
+              clienteAxios.delete(`/productos-delete/${idProducto}`)
+              .then(res => {
+                console.log(res.data.msg);
+                
+                setguardarConsulta(true)
+                               
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'El producto fue eliminado con éxito!.',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+                
+                
+              })
+              .catch(error => {
+                console.log(error);
+                Swal.fire({
+                icon: 'error',
+                title: 'Error de Eliminación',
+                text: 'No se pudo eliminar el producto de la base de datos!.',
+                confirmButtonColor: "#f05416",
+                
+              })
+              })
+       
+              
+            }
+          })
+       
     }
 
     return (
@@ -175,8 +223,8 @@ function AdminProductos({productos}) {
                         <td>{product.cantidad_produc}</td>
                         <td >
                             <div className="opciones-tabla">
-                                <Button className="btn btn-warning">Modificar</Button>
-                                <Button className="btn btn-danger">Eliminar</Button>
+                                <Button onClick={modificarProductos} className="btn btn-warning">Modificar</Button>
+                                <Button onClick={eliminarProductos}  className="btn btn-danger">Eliminar</Button>
                             </div>
                         </td>                        
                         
@@ -221,5 +269,5 @@ function AdminProductos({productos}) {
     )
 }
 
-export default AdminProductos
+export default withRouter(AdminProductos)
 

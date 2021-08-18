@@ -22,159 +22,156 @@ import { Elements, CardElement, useStripe, useElements } from "@stripe/react-str
 
 import clienteAxios from "../config/axios";
 
-let deliveryConfirmacion = 0;
-//!variable para confirmar el deliveri
-// let valdeli = 0;
-//stripe
-const stripePromise = loadStripe('pk_test_51JMFb2IlbeGS9J0JfqYi3Gjd83j8gOW2uZ4zhwdRQNUTTXRIMJfwsQPnM7T5Dd4mC06jJPUrIZIzwulDIU98cXsU00wU9KlacD');
-
-const CheckoutForm = () => {
-
-  // estados para el modal de pago, espiner y mensaje
-  const [loading, setloading] = useState(false)
-  
-  const [invalid, setinvalid] = useState('')
-  
-  
-  const stripe = useStripe();
-  const elements = useElements();
-  // obtenemos los datos del usuario 
-  const localUsuario = JSON.parse(localStorage.getItem('dataUser'));
-  // obtenemos los productos del carrito 
-  const localProductos = JSON.parse(localStorage.getItem('poductCarrito'));
-  // obtenemos los precios del carrito 
-  const localPrecios = JSON.parse(localStorage.getItem('prices'));
-  
-  const handleSubmit = async (e) =>{
-    e.preventDefault();
-    // console.log('click');
-    
-    const {error, paymentMethod} = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    })
-
-    
-
-
-    if(!error){
-      // console.log(paymentMethod);
-      // console.log(correoUsuario);
-      // if(valdeli > 0){deliveryConfirmacion = 1}
-      setloading(true)
-      const {id} = paymentMethod;
-      // datos para la factura 
-      // const objetoUsuarioFactura = {
-      //   nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
-      //   id_usuario: localUsuario.id_usuario,
-      //   direccion_cli: localUsuario.direccion_usu,
-      //   celular_cli: localUsuario.celular_usu,
-      //   productos: localProductos,
-      //   subTotal_produc: localPrecios.subTotal_produc,
-      //   total_produc: localPrecios.total_produc,
-      //   delivery_id: localPrecios.delivery_precio,   
-      //   id_transaccion: id    
-        
-        
-      // }
-      console.log(localPrecios.total_produc * 100);
-      try {
-        
-        const {data} = await clienteAxios.post("/transaccion", {
-           nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
-           id_usuario: localUsuario.id_usuario,
-           direccion_cli: localUsuario.direccion_usu,
-           celular_cli: localUsuario.celular_usu,
-           productos: localProductos,
-           subTotal_produc: localPrecios.subTotal_produc,
-           total_produc: localPrecios.total_produc,
-           delivery_precio: localPrecios.delivery_precio,   
-           id_transaccion: id,   
-           amount: Math.round(localPrecios.total_produc * 100),
-   
-         })
-        //  console.log(data);
-        
-
-         if(data.message){
-          setinvalid(data.message)
-
-         }else{
-          setinvalid('')
-          //borramos el formulario  
-          elements.getElement(CardElement).clear();
-
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Su pago se realizó con éxito!',
-            showConfirmButton: false,
-            timer: 1500
-          })
-         }
-         
-
-
-      } catch (error) {
-        console.log(error);
-        
-      }
-
-      setloading(false)
-    }else{
-      setinvalid('Por favor llene bien los datos de la tarjeta!.')
-    }
-    
-  }
-  return (<Form >
-  {/* Correo  */}
-  <InputGroup>
-    <InputGroup.Text>
-      <ion-icon name="mail-outline"></ion-icon>
-    </InputGroup.Text>
-    <FormControl
-      isValid={true}
-      isInvalid={false}
-      type = "mail"
-      id="modalCorreo"
-      defaultValue={localUsuario.correo_usu}     
-      disabled={true}
-      />
-  </InputGroup>
-  {/* Tarjeta  */}
-  <FormGroup className="modal-form-group text-center">
-    <h5>DATOS DE LA TARJETA</h5>
-  </FormGroup>
-  <FormGroup className="modal-form-group">
-    
-   {/* CardElement */}
-   <CardElement/>
-  
-  </FormGroup>
-  
-  <div class="invalid">{invalid}</div>
- 
-  <FormGroup className="modal-form-group text-center">
-
-    <Button onClick={handleSubmit} disabled={!stripe ? true:false} className="btn-modal-pago">
-      {loading
-        ?
-        <div class="spinner-border text-dark" role="status">
-          <span class="sr-only"></span>
-        </div>
-        :
-      "Realizar Pago"
-      }
-    </Button>
-  </FormGroup>
-</Form>)
-}
 
 
 
 
-function Carrito(props) {
+function Carrito({setguardarConsulta}) {
   const history = useHistory();
+
+  //modal y transaccion de pago
+  let deliveryConfirmacion = 0;
+  //!variable para confirmar el deliveri
+  
+  //stripe
+  const stripePromise = loadStripe('pk_test_51JMFb2IlbeGS9J0JfqYi3Gjd83j8gOW2uZ4zhwdRQNUTTXRIMJfwsQPnM7T5Dd4mC06jJPUrIZIzwulDIU98cXsU00wU9KlacD');
+  
+  const CheckoutForm = () => {
+    // {setguardarConsulta}
+    // console.log(setguardarConsulta());
+  
+    // estados para el modal de pago, espiner y mensaje
+    const [loading, setloading] = useState(false)
+    
+    const [invalid, setinvalid] = useState('')
+  
+    // const [actualizar, setinActualizar] = useState(null)
+    
+    
+    const stripe = useStripe();
+    const elements = useElements();
+    // obtenemos los datos del usuario 
+    const localUsuario = JSON.parse(localStorage.getItem('dataUser'));
+    // obtenemos los productos del carrito 
+    const localProductos = JSON.parse(localStorage.getItem('poductCarrito'));
+    // obtenemos los precios del carrito 
+    const localPrecios = JSON.parse(localStorage.getItem('prices'));
+    
+    const handleSubmit = async (e) =>{
+      e.preventDefault();
+      // console.log('click');
+      
+      const {error, paymentMethod} = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardElement),
+      })
+  
+      
+  
+  
+      if(!error){
+        // console.log(paymentMethod);
+        // console.log(correoUsuario);
+        // if(valdeli > 0){deliveryConfirmacion = 1}
+        setloading(true)
+        const {id} = paymentMethod;
+        // datos para la factura 
+        // 
+        try {
+          
+          const {data} = await clienteAxios.post("/transaccion", {
+             nombre_cli: localUsuario.nombre_usu+' '+localUsuario.apellido_usu,
+             id_usuario: localUsuario.id_usuario,
+             direccion_cli: localUsuario.direccion_usu,
+             celular_cli: localUsuario.celular_usu,
+             productos: localProductos,
+             subTotal_produc: localPrecios.subTotal_produc,
+             total_produc: localPrecios.total_produc,
+             delivery_precio: localPrecios.delivery_precio,   
+             id_transaccion: id,   
+             amount: Math.round(localPrecios.total_produc * 100),
+     
+           })
+          //  console.log(data);
+          
+  
+           if(data.message){
+            setinvalid(data.message)
+  
+           }else{
+            setinvalid('')
+            //borramos el formulario  
+            elements.getElement(CardElement).clear();
+  
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Su pago se realizó con éxito!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            setguardarConsulta(true)
+            
+           }
+           
+  
+  
+        } catch (error) {
+          console.log(error);
+          
+        }
+  
+        setloading(false)
+      }else{
+        setinvalid('Por favor llene bien los datos de la tarjeta!.')
+      }
+      
+    }
+    return (<Form >
+      {/* Correo  */}
+      <InputGroup>
+        <InputGroup.Text>
+          <ion-icon name="mail-outline"></ion-icon>
+        </InputGroup.Text>
+        <FormControl
+          isValid={true}
+          isInvalid={false}
+          type = "mail"
+          id="modalCorreo"
+          defaultValue={localUsuario.correo_usu}     
+          disabled={true}
+          />
+      </InputGroup>
+      {/* Tarjeta  */}
+      <FormGroup className="modal-form-group text-center">
+        <h5>DATOS DE LA TARJETA</h5>
+      </FormGroup>
+      <FormGroup className="modal-form-group">
+        
+      {/* CardElement */}
+      <CardElement/>
+      
+      </FormGroup>
+      
+      <div class="invalid">{invalid}</div>
+    
+      <FormGroup className="modal-form-group text-center">
+  
+        <Button onClick={handleSubmit} disabled={!stripe ? true:false} className="btn-modal-pago">
+          {loading
+            ?
+            <div class="spinner-border text-dark" role="status">
+              <span class="sr-only"></span>
+            </div>
+            :
+          "Realizar Pago"
+          }
+        </Button>
+      </FormGroup>
+    </Form>)
+  }
+
+  
   
   const storageProducts = JSON.parse(localStorage.getItem("poductCarrito"));
   // console.log(storageProducts);
@@ -183,11 +180,7 @@ function Carrito(props) {
   // !variable para ir calculando el total 
   let totalCarrito = 0;
   
-  // if(storageProducts == null){
-    //   console.log('No hay productos');
-    // }else{
-      //   console.log('Si hay productos');
-      // }
+  
       // !Estado para cambiar el valor del delibery 
       
       const [valDelivery, setvalDelivery] = useState(0);
@@ -212,16 +205,6 @@ function Carrito(props) {
   
   
   
-  // estado para marcar el check
-  // const [checkDelivery, setvalDelivery] = useState(true);
-  
-  // const total_inpu = 5 * 0.12 + 5;
-  
-  // const detalles = {
-    //   subtotal: 5,
-    //   total: total_inpu,
-    // };
-    
     // Estado para el modal de transaccion
     const [openModalTransaccion, setOpenModalTransaccion] = useState(false);
     
@@ -232,9 +215,7 @@ function Carrito(props) {
     
     const [btnFinalizar, setBtnFinalizar] = useState(true)
     
-    //estado para los terminos y condiciones
-    
-    //  const [terminosCondiciones, setterminosCondiciones] = useState(null)
+   
     
     //  validar los terminos para hacer la compra
     const terminos = e => {
@@ -292,27 +273,22 @@ function Carrito(props) {
       
     }
   };
-  // if(terminosCondiciones == true){
-
-        
-  //   setBtnFinalizar(false)
-  // }
+ 
   // funcion para capturar si se checkea sin delivery
   const checkedSinDelivery = (e) => {
-    // console.log("chekeado sin");
+   
     setvalDelivery(0);
-    // valdeli = 0;
+  
   };
   // funcion para capturar si se checkea con delivery
   const checkedConDelivery = (e) => {
-    // console.log("chekeado con");
+   
     // aqui hay que consultar a la base de datos por el precio del delivery 
     clienteAxios.get('/delivery/1')
     .then( respuesta => {
       const newPrecio = respuesta.data.precio_deli
       setvalDelivery(newPrecio);
-      // valdeli = 1;
-      
+     
     })
     .catch(error => {
       console.log(error);
@@ -579,4 +555,4 @@ function Carrito(props) {
   );
 }
 
-export default withRouter(Carrito);
+export default Carrito;

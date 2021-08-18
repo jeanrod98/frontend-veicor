@@ -2,13 +2,13 @@ import React from 'react'
 import Header from './Header';
 import Footer from './Footer';
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {Form} from 'react-bootstrap'
 
 import '../css/facturas.css'
 
 function Facturacion() {
-
+    const history = useHistory();
     const addProductFactura = e => {
         e.preventDefault()
         // console.log('Se agrego una seccion');
@@ -49,10 +49,26 @@ function Facturacion() {
 
     }
 
+    const redireccionar = e => {
+        e.preventDefault()
+        const usuarioTipo = JSON.parse(localStorage.getItem('dataUser'))
+        if(usuarioTipo.tipo_usu == 'Operativo'){
+            history.push('/perfil-operativo')
+    
+        }else{
+            history.push('/perfil-admin')
+        }
+    }
+
     return (
         <div className="Facturacion">
             <Header/>
             <div className="container contenedor-fact">
+            <div>
+                <Link onClick={redireccionar} className="btn-atras">
+                    <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                </Link>
+            </div>
                 <div className="adminFactura-titulo">
                     <ion-icon name="newspaper-outline"></ion-icon>
                     <h2>FACTURACIÓN</h2>

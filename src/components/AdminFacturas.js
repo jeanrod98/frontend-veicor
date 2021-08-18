@@ -89,6 +89,16 @@ const actualizarEstadoFac = e =>{
     
 
 }
+const redireccionar = e => {
+    e.preventDefault()
+    const usuarioTipo = JSON.parse(localStorage.getItem('dataUser'))
+    if(usuarioTipo.tipo_usu == 'Operativo'){
+        history.push('/perfil-operativo')
+
+    }else{
+        history.push('/perfil-admin')
+    }
+}
     
     return (
         <div className="AdminFacturas">
@@ -96,7 +106,7 @@ const actualizarEstadoFac = e =>{
             <div className="container">
 
             <div>
-                <Link to="/perfil-admin" className="btn-atras">
+                <Link onClick={redireccionar} className="btn-atras">
                     <ion-icon name="arrow-back-circle-outline"></ion-icon>
                 </Link>
             </div>

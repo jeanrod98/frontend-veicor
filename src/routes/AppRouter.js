@@ -82,17 +82,17 @@ function AppRouter() {
           }}
         />
 
-        <PrivateRoute exact path="/carrito" component={() => <Carrito/>}/>
+        <PrivateRoute exact path="/carrito" component={() => <Carrito setguardarConsulta={setguardarConsulta}/>}/>
         <PrivateRoute exact path="/perfil-usuario" component={PerfilCliente} />
         <PrivateRoute exact path="/perfil-admin" component={PerfilAdmin} />
         <PrivateRoute exact path="/perfil-operativo" component={PerfilOperativo} />
 
-        <PrivateRoute exact path="/perfil-admin/productos" component={() => <AdminProductos productos={productos} />} />
+        <PrivateRoute exact path="/perfil-admin/productos" component={() => <AdminProductos productos={productos}  setguardarConsulta={setguardarConsulta}/>} />
         <PrivateRoute exact path="/perfil-admin/usuarios" component={AdminUsuarios} />
         <PrivateRoute exact path="/perfil-admin/facturas" component={AdminFacturas} />
         <PrivateRoute exact path="/facturacion" component={Facturacion} />
-        <PrivateRoute exact path="/perfil-admin/productos/CRUD/:id"  component={ProductosCRUD} component={() => <ProductosCRUD setguardarConsulta={setguardarConsulta}/>} />
-        <PrivateRoute exact path="/perfil-admin/usuarios/CRUD" component={UsuariosCRUD} />
+        <PrivateRoute exact path="/perfil-admin/productos/CRUD/:id"  component={() => <ProductosCRUD setguardarConsulta={setguardarConsulta}/>} />
+        <PrivateRoute exact path="/perfil-admin/usuarios/CRUD/:id" component={() => <UsuariosCRUD setguardarConsulta={setguardarConsulta}/>}/>
 
 
 

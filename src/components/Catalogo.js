@@ -46,6 +46,25 @@ function Catalogo({productos}) {
 // console.log(productos);
 // Si el arreglo viene vacio no retorna nada 
 
+ //estado para capturar el input de busqueda
+ const [filtrar, setFiltrar] = useState({
+  buscar: "",
+});
+
+//estado para mostrar el producto
+const [resultadoProducto, setresultadoProducto] = useState([])
+
+const inputFiltrar = (e) => {
+  e.preventDefault();
+  setFiltrar({
+    ...filtrar,
+    buscar: e.target.value,
+  });
+  if (e.target.value == "") {
+    setresultadoProducto([]);
+  }
+};
+
 
 // Configuraciones y uso del stage para el carousel de imagenes 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -131,7 +150,36 @@ function Catalogo({productos}) {
      
     // }
 
-
+    const filtrarUsuarios = (e) => {
+      e.preventDefault();
+      const filtrarValue = filtrar.buscar;
+      if (filtrarValue != "") {
+        //realizamos el filtrado
+        // console.log(filtrarValue);
+        const result = productos.filter(
+          (producto) => producto.nombre_produc.toUpperCase() === filtrarValue.toUpperCase()
+        );
+        //validar el resultado
+        if (result.length > 0) {
+          // console.log(result);
+          setresultadoProducto(result);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Producto Invalido",
+            text: "EL producto ingresado no existe en la Base de Datos!",
+            confirmButtonColor: "#f05416",
+          });
+        }
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error de Busqueda",
+          text: "EL campo de busqueda esta vacío, por favor introdusca el nombre de un producto!",
+          confirmButtonColor: "#f05416",
+        });
+      }
+    };
 
     return (
       <div className="Catalogo">
@@ -140,9 +188,9 @@ function Catalogo({productos}) {
 
             <div className="search-catalogo">
                 <div class="buscador input-group">
-                    <input type="search" class="search-input form-control rounded" placeholder="Buscar..." aria-label="Search"
+                    <input onChange={inputFiltrar} type="search" class="search-input form-control rounded" placeholder="Buscar..." aria-label="Search"
                         aria-describedby="search-addon" />
-                    <button id="btn-search" type="button" class="btn"><ion-icon name="search-outline"></ion-icon></button>
+                    <button onClick={filtrarUsuarios} id="btn-search" type="button" class="btn"><ion-icon name="search-outline"></ion-icon></button>
                 </div>
             </div>
 {/* Diseño del carousel de imagenes */}
@@ -190,6 +238,61 @@ function Catalogo({productos}) {
                     <div className="recomendados">
                     <h4>RECOMENDACIONES PARA TI</h4>
                     </div>
+                    {resultadoProducto.length > 0
+                    ?
+                    <>
+                    {resultadoProducto.map(product => (
+                      <div className="contenedor-card">
+
+                        
+                          <div className="card card-producto">
+                            { auth.isLogged()
+                            ? 
+                            <Link to={`/producto/${product.id_producto}`} key={product.id_producto} > 
+                            <img name="imagen" className="card-img-top" src={product.imagen_produc} alt={product.nombreImg_produc}/>
+                           
+                           <div className="card-body titulo">
+                             <h5 name="nombre" >{product.nombre_produc}</h5>
+                           </div>
+                           </Link>
+                            : 
+                            <Link to={`/producto/catalogo`} key={product.id_producto}  onClick={productoPerfil} >  
+                            <img name="imagen" className="card-img-top" src={product.imagen_produc} alt={product.nombreImg_produc}/>
+                           
+                           <div className="card-body titulo">
+                             <h5 name="nombre" >{product.nombre_produc}</h5>
+                           </div>
+                           </Link>
+                            }
+                            
+                            <div className="card-body">
+                              <div className="input-group-prepend">
+                                <p name="descripcion" className="descripcion">{product.descripcion_produc}</p>
+                              </div>
+                              <div class="input-group-prepend">
+                                <p name="existencia" className="existencia"><span>Unidades Disponibles: </span>{product.cantidad_produc}</p>
+                              </div>
+                              <div className="input-group-prepend precio">
+                                
+                                <p name="precio" >$ <span>{product.precio_produc}</span></p>
+                              </div>
+                              
+
+                            </div>
+                            {/* <div className="addCarrito-catalogo">
+
+                              <button className="btn" onClick={addLocalStorage}>Agregar al Carrito</button>
+                            </div> */}
+                            
+                          </div>
+                    
+                      </div>
+
+                    ))}
+                    </>
+
+                    :
+<>
                       {productos.map(producto => (
                       <div className="contenedor-card">
 
@@ -238,6 +341,8 @@ function Catalogo({productos}) {
                       </div>
 
                     ))}
+                    </>
+                    }
 
                     {/* </div> */}
                 </div>
